@@ -1,20 +1,18 @@
-# QUT-Notes-Template - Unit name
+# MXB202 - Advanced Calculus
 
-## Unit coordinator name
+## Dr Pascal Buenzli
 
-### 
+### Semester 2, 2023
 
 ---
 
 ## Downloads
 
-Lecture notes download: [QUT-Notes-Template Lecture Notes PDF](https://www.github.com/Tarang74/QUT-Notes-Template/raw/main/QUT-Notes-Template%20Lecture%20Notes.pdf)
-
-Exam notes download: [QUT-Notes-Template Exam Notes PDF](https://www.github.com/Tarang74/QUT-Notes-Template/raw/main/QUT-Notes-Template%20Exam%20Notes.pdf)
+Lecture notes download: [MXB202 Lecture Notes PDF](https://www.github.com/Tarang74/MXB202/raw/main/MXB202%20Lecture%20Notes.pdf)
 
 ---
 
-This repository provides **lecture notes** and **exam notes** for **QUT-Notes-Template - Unit name**.
+This repository provides **lecture notes** for **MXB202 - Advanced Calculus**.
 
 *The contents of the lecture notes are described below.*
 
