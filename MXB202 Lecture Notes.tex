@@ -45,5 +45,239 @@
 \tableofcontents
 \newpage
 %
-\section{Section 1}
+\section{Euclidean Space}
+The Euclidean space \(\R^n\) is an \(n\)-dimensional vector space of real numbers.
+This space is closed under addition and scalar multiplication.
+\subsection{Operations}
+\subsubsection{Addition}
+The sum of two vectors \(\symbf{x}\) and \(\symbf{y}\) is defined element-wise
+\begin{equation*}
+    \symbf{x} + \symbf{y} = \begin{bmatrix}
+        x_1 + y_1 \\
+        x_2 + y_2 \\
+        \vdots    \\
+        x_n + y_n
+    \end{bmatrix}
+\end{equation*}
+In a coordinate system, the vectors \(\symbf{x}\) and \(\symbf{y}\) are added tip-to-tail.
+\subsubsection{Scalar Multiplication}
+The scalar multiplication of a vector \(\symbf{x}\) by a scalar \(\lambda \in \R\) is defined element-wise
+\begin{equation*}
+    \lambda \symbf{x} = \begin{bmatrix}
+        \lambda x_1 \\
+        \lambda x_2 \\
+        \vdots      \\
+        \lambda x_n
+    \end{bmatrix}
+\end{equation*}
+In a coordinate system, \(\lambda\) scales the vector \(\symbf{x}\) along the same line.
+\subsubsection{Norm}
+The norm (length) of a vector \(\symbf{x}\) is defined as
+\begin{equation*}
+    \norm{\symbf{x}} = \sqrt{\symbf{x} \cdot \symbf{x}} = \sqrt{\sum_{i=1}^n x_i^2}
+\end{equation*}
+The norm of a vector \(\symbf{x}\) is the distance from the origin to the tip of the vector.
+This allows us to define the unit vector \(\hat{\symbf{x}}\) as
+\begin{equation*}
+    \hat{\symbf{x}} = \frac{\symbf{x}}{\norm{\symbf{x}}}
+\end{equation*}
+which is a vector of length 1 in the same direction as \(\symbf{x}\).
+\subsubsection{Scalar Product}
+The scalar product (dot product) of two vectors \(\symbf{x}\) and \(\symbf{y}\) is defined as
+\begin{equation*}
+    \symbf{x} \cdot \symbf{y} = \sum_{i=1}^n x_i y_i
+\end{equation*}
+The scalar product allows us to define the angle \(\theta\) between two vectors \(\symbf{x}\) and \(\symbf{y}\) as
+\begin{equation*}
+    \cos{\left( \theta \right)} = \hat{\symbf{x}} \cdot \hat{\symbf{y}}
+\end{equation*}
+where we use the unit vectors of \(\symbf{x}\) and \(\symbf{y}\), as the angle between two vectors is invariant under scaling.
+Additionally, we can determine the projection of the vector \(\symbf{x}\) onto the vector \(\symbf{y}\) using trigonometry
+\begin{equation*}
+    \proj_{\symbf{y}} \left( \symbf{x} \right) = \left( \norm{\symbf{x}} \cos{\left( \theta \right)} \right) \hat{\symbf{y}} = \left( \norm{\symbf{x}} \left( \hat{\symbf{x}} \cdot \hat{\symbf{y}} \right) \right) \hat{\symbf{y}} = \left( \symbf{x} \cdot \hat{\symbf{y}} \right) \hat{\symbf{y}}
+\end{equation*}
+where \(\symbf{x} \cdot \hat{\symbf{y}}\) is the norm of the projection vector.
+\subsection{Additional Properties}
+\subsubsection{Triangle Inequality}
+\begin{equation*}
+    \norm{\symbf{x} + \symbf{y}} \leqslant \norm{\symbf{x}} + \norm{\symbf{y}}
+\end{equation*}
+\subsubsection{Inverse Triangle Inequality}
+\begin{equation*}
+    \norm{\symbf{x} - \symbf{y}} \geqslant \abs{\norm{\symbf{x}} - \norm{\symbf{y}}}
+\end{equation*}
+\subsubsection{Cauchy-Schwarz Inequality}
+\begin{equation*}
+    \abs{\symbf{x} \cdot \symbf{y}} \leqslant \norm{\symbf{x}} \norm{\symbf{y}}
+\end{equation*}
+\subsection{Multivariable Functions}
+A multivariable function \(f\) maps a vector \(\symbf{x} \in \R^n\) to a real number \(f \left( \symbf{x} \right) \in \R\).
+This function can be expressed in \textbf{explicit form} as
+\begin{equation*}
+    z = f\left( x,\: y \right)
+\end{equation*}
+or in \textbf{implicit form} as
+\begin{equation*}
+    F\left( x,\: y,\: z \right) = z - f\left( x,\: y \right)
+\end{equation*}
+These equations define a surface in \(\R^3\).
+\subsubsection{Level Curves}
+The level curves of a function \(f \left( x,\: y \right)\) are the curves in \(\R^2\) where
+\begin{equation*}
+    f \left( x,\: y \right) = c
+\end{equation*}
+where \(c\) is the height of the curve. Implicitly, this is equivalent to
+\begin{equation*}
+    F\left( x,\: y,\: z \right) = 0.
+\end{equation*}
+Level curves represent paths of equal height on the surface defined by \(z = f \left( x,\: y \right)\).
+\subsection{Special Regions}
+\subsubsection{Balls}
+In an Euclidean space, an open ball of radius \(r > 0\) centred at a point \(\symbf{p} \in \R^n\)
+is denoted \(B_r\left( \symbf{p} \right)\), and is defined as
+\begin{equation*}
+    B_r\left( \symbf{p} \right) = \left\{ \symbf{x} \in \R^n : \norm{\symbf{x} - \symbf{p}} < r \right\}.
+\end{equation*}
+This region includes all points less than a distance \(r\) from the vector \(\symbf{p}\),
+where the distance is typically defined by the \(L_2\)-norm:
+\begin{equation*}
+    \norm{\symbf{x} - \symbf{p}}_2 = \left( \sum_{i=1}^n \left( x_i - p_i \right)^2 \right)^{1/2}.
+\end{equation*}
+\subsection{Mathematical Representation of Curves}
+\subsubsection{Explicit Form}
+A curve in \(\R^2\) can be represented in explicit form as
+\begin{equation*}
+    y = f\left( x \right)
+\end{equation*}
+but this is not possible in \(\R^3\) as a 3D curve requires two equations.
+For a 2D explicit curve:
+\begin{itemize}
+    \item \(x\) is an independent variable such that we have 1 degree of freedom.
+\end{itemize}
+\subsubsection{Implicit Form}
+A curve in \(\R^2\) can be represented in implicit form as
+\begin{equation*}
+    F\left( x,\: y \right) = 0.
+\end{equation*}
+In 3D, we must impose an additional equation that intersects a surface.
+\begin{equation*}
+    \left\{ \begin{aligned}
+        F\left( x,\: y,\: z \right) & = 0 \\
+        G\left( x,\: y,\: z \right) & = 0
+    \end{aligned} \right.
+\end{equation*}
+In both cases, we have 1 degree of freedom as the degrees of freedom is the
+difference between the number of variables and the number of equations.
+\subsubsection{Parametric Form}
+In parametric form, curves are parametrised in terms of a parameter \(t\).
+In 2D, this is represented as
+\begin{equation*}
+    \symbf{r}\left( t \right) = \abracket*{x\left( t \right),\: y\left( t \right)}
+\end{equation*}
+and similarly in 3D,
+\begin{equation*}
+    \symbf{r}\left( t \right) = \abracket*{x\left( t \right),\: y\left( t \right),\: z\left( t \right)}
+\end{equation*}
+\subsection{Converting Between Representations}
+\subsubsection{Explicit to Implicit}
+The equation \(y = f\left( x \right)\) can always be converted to implicit form by rewriting it as
+\begin{equation*}
+    F\left( x,\: y \right) = y - f\left( x \right) = 0.
+\end{equation*}
+\subsubsection{Implicit to Explicit}
+The equation \(F\left( x,\: y \right) = 0\) can be converted to explicit form if we can solve for \(y\) (or \(x\)):
+\subsubsection{Parametric to Explicit/Implicit}
+The equation \(\symbf{r}\left( t \right) = \abracket*{x\left( t \right),\: y\left( t \right)}\) can be written in
+explicit or implicit form, if the parameter \(t\) can be eliminated from the simultaneous equations.
+\subsubsection{Explicit to Parametric}
+The equation \(y = f\left( x \right)\) can always be converted to parametric form by choosing the parameter \(t = x\), so that
+\begin{equation*}
+    \symbf{r}\left( t \right) = \abracket*{t,\: f\left( t \right)}.
+\end{equation*}
+\subsubsection{Implicit to Parametric}
+The equation \(F\left( x,\: y \right) = 0\) can be converted to parametric form if we can find \(x = p\left( t \right)\) and \(y = q\left( t \right)\),
+such that \(F\left( p\left( t \right),\: q\left( t \right) \right) = 0\), and
+\begin{equation*}
+    \symbf{r}\left( t \right) = \abracket*{p\left( t \right),\: q\left( t \right)}
+\end{equation*}
+for all \(t\).
+\subsection{Paramaterisation}
+To parametrise a curve, consider the following strategies:
+\begin{itemize}
+    \item For a closed curve, consider the polar parametrisation in terms of the angle \(\theta\):
+    \begin{equation*}
+        \symbf{r}\left( \theta \right) = \abracket*{R\left( \theta \right) \cos{\left( \theta \right)},\: R\left( \theta \right) \sin{\left( \theta \right)}}.
+    \end{equation*}
+    \item For a curve that is the intersection of two surfaces, consider one of the following mappings:
+    \begin{equation*}
+        x \mapsto \begin{bmatrix}
+            x \\
+            y\left( x \right) \\
+            z\left( x \right)
+        \end{bmatrix} \qquad
+        y \mapsto \begin{bmatrix}
+            x\left( y \right) \\
+            y \\
+            z\left( y \right)
+        \end{bmatrix} \qquad
+        z \mapsto \begin{bmatrix}
+            x\left( z \right) \\
+            y\left( z \right) \\
+            z
+        \end{bmatrix}
+    \end{equation*}
+    \item Otherwise, consider a vector construction.
+\end{itemize}
+\subsubsection{Line Segments}
+To parametrise a line segment from point \(A\) to \(B\), define the parameter \(t \in \interval{0}{1}\).
+Then, consider the vectors \(\symbf{a} = \overline{OA}\) and \(\symbf{b} = \overline{OB}\).
+By scaling the vector from \(A\) to \(B\) by \(t\), we can parametrise the line segment as
+\begin{equation*}
+    \symbf{r}\left( t \right) = \symbf{a} + t \left( \symbf{b} - \symbf{a} \right) = \symbf{a} \left( 1 - t \right) + \symbf{b} t.
+\end{equation*}
+\subsubsection{Circles}
+To parametrise a circle of radius \(R\) centred at the \(\abracket*{x_0,\: y_0}\),
+first parametrise the curve in terms of the angle \(\theta\), then shift the curve by \(\abracket*{x_0,\: y_0}\).
+\begin{equation*}
+    \symbf{r}\left( \theta \right) =
+    \begin{bmatrix}
+        x_0 \\
+        y_0
+    \end{bmatrix} +
+    \begin{bmatrix}
+        R \cos{\left( \theta \right)} \\
+        R \sin{\left( \theta \right)}
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        x_0 + R \cos{\left( \theta \right)} \\
+        y_0 + R \sin{\left( \theta \right)}
+    \end{bmatrix}
+\end{equation*}
+\subsubsection{Velocity Vectors}
+The velocity vector of a parametrised curve \(\symbf{r}\left( t \right) = \begin{bmatrix}
+    x\left( t \right) \\
+    y\left( t \right)
+\end{bmatrix}\) is defined as
+\begin{equation*}
+    \symbf{v}\left( t \right) = \symbf{r}'\left( t \right) = \lim_{\Delta t \to 0} \frac{\symbf{r}\left( t + \Delta t \right) - \symbf{r}\left( t \right)}{\Delta t} =
+    \begin{bmatrix}
+        x'\left( t \right) \\
+        y'\left( t \right)
+    \end{bmatrix}
+\end{equation*}
+where \(\symbf{v}\left( t \right)\) is a tangent vector to the curve at the point \(\symbf{r}\left( t \right)\), for all \(t\).
+\subsubsection{Tangent Vectors}
+Following from the definition of the velocity vector, the tangent vectors of a parametrised curve
+are unit vectors in the direction of the velocity vector.
+\begin{equation*}
+    \hat{\symbf{\tau}}\left( t \right) = \pm \frac{\symbf{v}\left( t \right)}{\norm{\symbf{v}\left( t \right)}} = \pm \hat{\symbf{v}\left( t \right)}
+\end{equation*}
+For a curve given in explicit form \(y = f\left( x \right)\), the tangent vectors are given by
+\begin{equation*}
+    \hat{\symbf{\tau}}\left( x \right) = \pm \frac{1}{\sqrt{1 + \left( f'\left( x \right) \right)^2}} \begin{bmatrix}
+        1 \\
+        f'\left( x \right)
+    \end{bmatrix}
+\end{equation*}
 \end{document}
