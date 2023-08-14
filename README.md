@@ -20,7 +20,7 @@ This repository provides **lecture notes** for **MXB202 - Advanced Calculus**.
 
 ## Contents
 
-1. Section 1
+1. Euclidean Space
 
 ---
 
