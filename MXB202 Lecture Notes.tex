@@ -205,27 +205,27 @@ for all \(t\).
 To parametrise a curve, consider the following strategies:
 \begin{itemize}
     \item For a closed curve, consider the polar parametrisation in terms of the angle \(\theta\):
-    \begin{equation*}
-        \symbf{r}\left( \theta \right) = \abracket*{R\left( \theta \right) \cos{\left( \theta \right)},\: R\left( \theta \right) \sin{\left( \theta \right)}}.
-    \end{equation*}
+          \begin{equation*}
+              \symbf{r}\left( \theta \right) = \abracket*{R\left( \theta \right) \cos{\left( \theta \right)},\: R\left( \theta \right) \sin{\left( \theta \right)}}.
+          \end{equation*}
     \item For a curve that is the intersection of two surfaces, consider one of the following mappings:
-    \begin{equation*}
-        x \mapsto \begin{bmatrix}
-            x \\
-            y\left( x \right) \\
-            z\left( x \right)
-        \end{bmatrix} \qquad
-        y \mapsto \begin{bmatrix}
-            x\left( y \right) \\
-            y \\
-            z\left( y \right)
-        \end{bmatrix} \qquad
-        z \mapsto \begin{bmatrix}
-            x\left( z \right) \\
-            y\left( z \right) \\
-            z
-        \end{bmatrix}
-    \end{equation*}
+          \begin{equation*}
+              x \mapsto \begin{bmatrix}
+                  x                 \\
+                  y\left( x \right) \\
+                  z\left( x \right)
+              \end{bmatrix} \qquad
+              y \mapsto \begin{bmatrix}
+                  x\left( y \right) \\
+                  y                 \\
+                  z\left( y \right)
+              \end{bmatrix} \qquad
+              z \mapsto \begin{bmatrix}
+                  x\left( z \right) \\
+                  y\left( z \right) \\
+                  z
+              \end{bmatrix}
+          \end{equation*}
     \item Otherwise, consider a vector construction.
 \end{itemize}
 \subsubsection{Line Segments}
@@ -280,4 +280,288 @@ For a curve given in explicit form \(y = f\left( x \right)\), the tangent vector
         f'\left( x \right)
     \end{bmatrix}
 \end{equation*}
+\section{Multivariable Calculus}
+\subsection{Multivariable Functions}
+\begin{definition}[Multivariable Function]
+    A multivariable function \(f\) maps several independent variables to a real number:
+    \begin{equation*}
+        f : E \subset \R^n \to \R
+    \end{equation*}
+    where
+    \begin{align*}
+        \abracket*{x_1,\: x_2,\: \ldots,\: x_n} & \mapsto z = f\left( x_1,\: x_2,\: \ldots,\: x_n \right) \\
+        \symbf{x}                               & \mapsto z = f\left( \symbf{x} \right)
+    \end{align*}
+\end{definition}
+\begin{definition}[Domain]
+    The domain of \(f\) is the subset of \(\R^n\) for which \(f\) is defined.
+    It corresponds to the set of all possible inputs to \(f\).
+    \begin{equation*}
+        \mathscr{D} \left( f \right) = E
+    \end{equation*}
+\end{definition}
+\begin{definition}[Range]
+    The range of \(f\) is the image of the domain \(E\) under \(f\):
+    \begin{equation*}
+        \mathscr{R} \left( f \right) = \left\{ f\left( \symbf{x} \right) \in \R : \symbf{x} \in E \right\}
+    \end{equation*}
+\end{definition}
+\begin{definition}[Graph]
+    The graph of \(f\) is the defined as the set
+    \begin{equation*}
+        G = \left\{ \abracket*{\symbf{x},\: f\left( \symbf{x} \right)} : \symbf{x} \in E \right\} \subset \R^{n + 1}
+    \end{equation*}
+\end{definition}
+\subsection{Curves of Intersection}
+\begin{definition}[Curves of Intersection]
+    The curves of intersection of \(f\) with the plane \(x_i = c\) are defined as
+    \begin{equation*}
+        \left\{ \abracket*{x_1,\: x_2,\: \ldots,\: x_{i - 1},\: c,\: x_{i + 1},\: \ldots,\: x_n} : \abracket*{x_1,\: x_2,\: \ldots,\: x_n} \in E \right\}
+    \end{equation*}
+    In 3D, curves of intersection of \(z = f\left( x,\: y \right)\) with the planes perpendicular to the
+    \(x\), \(y\), or \(z\)-axes allow us to represent the function in 3D.
+    \begin{align*}
+        \perp x \: (x = c)                             &  & \perp y \: (y = c)                             &  & \perp z \: (z = c)                                        \\
+        z = f\left( c,\: y \right) = g\left( y \right) &  & z = f\left( x,\: c \right) = g\left( x \right) &  & c = f\left( x,\: y \right) \implies y = g\left( x \right)
+    \end{align*}
+\end{definition}
+\begin{definition}[Level Set]
+    The level sets of \(f\) are the set of all points in the domain of \(f\) that map to a given value \(c\).
+    \begin{equation*}
+        \left\{ \symbf{x} \in E : f\left( \symbf{x} \right) = c \right\}
+    \end{equation*}
+    In 2D, level sets are called \textbf{level curves}.
+\end{definition}
+\begin{definition}[Contour Map]
+    The projection of all level curves onto the \(xy\)-plane is called the \textbf{contour map} of \(f\). T
+    he lines of a contour map are called \textbf{contours}.
+\end{definition}
+\subsection{Derivatives}
+\begin{definition}[Continuity]
+    A function \(f\) is continuous at a point \(\symbf{x}_0\) if
+    \begin{equation*}
+        \forall \varepsilon > 0,\: \exists \delta > 0 : \norm{\symbf{x} - \symbf{x}_0} < \delta \implies \norm{f\left( \symbf{x} \right) - f\left( \symbf{x}_0 \right)} < \varepsilon
+    \end{equation*}
+    Equivalently, \(f\) is continuous at \(\symbf{x}_0\) when
+    \begin{equation*}
+        \lim_{n \to \infty} f\left( \symbf{x}_n \right) = f\left( \symbf{x}_0 \right)
+    \end{equation*}
+    for all sequences \(\left\{ \symbf{x}_n \right\} \) where \(\symbf{x}_n \to \symbf{x}_0\).
+
+    A function \(f\) is continuous on a set \(E\) if it is continuous at every point in \(E\).
+\end{definition}
+\begin{definition}[Partial Derivatives]
+    Partial derivatives represent the rate of change of a function with respect to one of its variables, holding all other variables constant.
+    \begin{equation*}
+        \pdv{f}{x_i} = f_{x_i} = \lim_{h \to 0} \frac{f\left( x_1,\: x_2,\: \ldots,\: x_i + h,\: \ldots,\: x_n \right) - f\left( x_1,\: x_2,\: \ldots,\: x_i,\: \ldots,\: x_n \right)}{h}
+    \end{equation*}
+\end{definition}
+\begin{definition}[Higher-order Partial Derivatives]
+    Higher-order partial derivatives are defined as
+    \begin{equation*}
+        \pdv[order=n]{f}{x_i} = \pdv{}{x_i} \left( \pdv[order={n - 1}]{f}{x_i} \right)
+    \end{equation*}
+\end{definition}
+\begin{definition}[Mixed Partial Derivatives]
+    Mixed partial derivatives are given the following notation
+    \begin{equation*}
+        \pdv{f}{x_i,x_j} = \pdv{}{x_i} \left( \pdv{f}{x_j} \right) = f_{x_i x_j}
+    \end{equation*}
+\end{definition}
+\begin{theorem}[Schwarz's Theorem (or Clairaut's Theorem)]
+    For a function \(f : E \subset \R^2 \to \R\) with \(\symbf{x}_a \in E\), if \(f_{xy}\) and \(f_{yx}\) are continuous on \(\symbf{x}_0\), then
+    \begin{equation*}
+        f_{xy} = f_{yx}
+    \end{equation*}
+\end{theorem}
+\begin{remark}
+    For an arbitrary \(n\) and \(k \leqslant n\), if all partials of order \(\leqslant \! k\) are continuous in the neighbourhood of \(\symbf{x}_0\),
+    then mixed partials of order \(k\) are equal for any permutation of indices:
+    \begin{equation*}
+        \pdv[mixed-order=k]{f}{x_{i_1}...,x_{i_k}} = \pdv[mixed-order=k]{f}{x_{j_1}\ldots,x_{j_k}}
+    \end{equation*}
+\end{remark}
+\subsection{Chain Rule}
+For a function with multiple arguments, each argument of \(f\) that has an implicit dependence on the variable of differentiation
+must be differentiated using the chain rule, where all contributions are summed.
+\begin{gather*}
+    \odv{}{t} f\left( x\left( t \right),\: y\left( t \right) \right) = \pdv{f}{x} \odv{x}{t} + \pdv{f}{y} \odv{y}{t} \\
+    \pdv{}{u} f\left( x\left( u,\: v \right),\: y\left( u,\: v \right) \right) = \pdv{f}{x} \pdv{x}{u} + \pdv{f}{y} \pdv{y}{u}
+\end{gather*}
+\begin{definition}[Total derivative]
+    The total derivative of a function \(f : \R^n \to \R\) is defined as
+    \begin{equation*}
+        \odv{f}{t} = \sum_{i = 1}^n \pdv{f}{x_i} \odv{x_i}{t} = \pdv{f}{x_1} \odv{x_1}{t} + \pdv{f}{x_2} \odv{x_2}{t} + \cdots + \pdv{f}{x_n} \odv{x_n}{t}
+    \end{equation*}
+\end{definition}
+\begin{proof}
+    Consider the case where \(n = 2\). The total derivative can be written as
+    \begin{equation*}
+        \odv{}{t} f\left( x\left( t \right),\: y\left( t \right) \right) = \lim_{\Delta{t} \to 0} \frac{1}{\Delta{t}} \left[ f\left( x\left( t + \Delta{t} \right),\: y\left( t + \Delta{t} \right) \right) - f\left( x\left( t \right),\: y\left( t \right) \right) \right]
+    \end{equation*}
+    Using the substitutions \(x\left( t + \Delta{t} \right) = x\left( t \right) + \Delta{x}\) and \(y\left( t + \Delta{t} \right) = y\left( t \right) + \Delta{y}\),
+    \begin{align*}
+        \odv{f}{t} & = \lim_{\Delta{t} \to 0} \frac{1}{\Delta{t}} \left[ f\left( x + \Delta{x},\: y + \Delta{y} \right) - f\left( x,\: y \right) \right]                                                                                                                                                   \\
+                   & = \lim_{\Delta{t} \to 0} \frac{1}{\Delta{t}} \left[ f\left( x + \Delta{x},\: y + \Delta{y} \right) - f\left( x,\: y + \Delta{y} \right) + f\left( x,\: y + \Delta{y} \right) - f\left( x,\: y \right) \right]                                                                         \\
+                   & = \lim_{\Delta{t} \to 0} \left[ \frac{\Delta{x}}{\Delta{t}} \frac{f\left( x + \Delta{x},\: y + \Delta{y} \right) - f\left( x,\: y + \Delta{y} \right)}{\Delta{x}} + \frac{\Delta{y}}{\Delta{t}} \frac{f\left( x,\: y + \Delta{y} \right) - f\left( x,\: y \right)}{\Delta{y}} \right] \\
+                   & = \odv{x}{t} \pdv{f}{x} + \odv{y}{t} \pdv{f}{y}
+    \end{align*}
+\end{proof}
+\begin{definition}[Gradient]
+    The gradient is an operator that collects all partial derivatives of a function into a vector.
+    \begin{equation*}
+        \symbf{\nabla} = \begin{bmatrix}
+            \partial_{x_1} \\
+            \partial_{x_2} \\
+            \vdots         \\
+            \partial_{x_n}
+        \end{bmatrix} \implies \symbf{\nabla} f = \begin{bmatrix}
+            \partial_{x_1} f \\
+            \partial_{x_2} f \\
+            \vdots           \\
+            \partial_{x_n} f
+        \end{bmatrix}
+    \end{equation*}
+\end{definition}
+The gradient allows us to define the chain rule using the dot product:
+\begin{equation*}
+    \odv{f}{t} = \symbf{\nabla} f \cdot \odv{\symbf{x}}{t}
+\end{equation*}
+\subsection{Directional Derivative}
+The directional derivative of a function \(f : E \subset \R^n \to \R\) at a point \(\symbf{x}_0 \in E\) in the direction of a unit vector \(\hat{\symbf{u}} \in \R^n\)
+is the slope of \(f\) in the direction of \(\symbf{u}\):
+\begin{equation*}
+    D_{\symbf{u}} f\left( \symbf{x}_0 \right) = \partial_{\symbf{u}} f\left( \symbf{x}_0 \right) = \lim_{h \to 0} \frac{f\left( \symbf{x}_0 + h \hat{\symbf{u}} \right) - f\left( \symbf{x}_0 \right)}{h}
+\end{equation*}
+\begin{proposition}
+    The directional derivative can be computed using the gradient of \(f\)
+    \begin{equation*}
+        D_{\symbf{u}} f\left( \symbf{x}_0 \right) = \symbf{\nabla} f\left( \symbf{x}_0 \right) \cdot \hat{\symbf{u}}.
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    Consider the path in the output space \(g\left( s \right) = f\left( \symbf{x}_0 + s \hat{\symbf{u}} \right) \in \R\) for \(s \in \R\).
+    The derivative of \(g\) w.r.t.\ \(s\) is given by:
+    \begin{equation*}
+        \odv{g}{s} = \lim_{h \to 0} \frac{g\left( s + h \right) - g\left( s \right)}{h}
+    \end{equation*}
+    where if we evaluate \(g\) at \(s = 0\), we get
+    \begin{equation*}
+        \odv{g}{s}_{s = 0} = \lim_{h \to 0} \frac{g\left( h \right) - g\left( 0 \right)}{h} = \lim_{h \to 0} \frac{f\left( \symbf{x}_0 + h \hat{\symbf{u}} \right) - f\left( \symbf{x}_0 \right)}{h} = D_{\symbf{u}} f\left( \symbf{x}_0 \right).
+    \end{equation*}
+    Using the derivative of the parametrised vector \(\symbf{x} = \symbf{x}_0 + s \hat{\symbf{u}} \in \R^n\):
+    \begin{equation*}
+        \odv{\symbf{x}}{s} = \hat{\symbf{u}}
+    \end{equation*}
+    we can evaluate the derivative of \(g\) w.r.t.\ \(s\) using the total derivative:
+    \begin{align*}
+        \odv{g}{s}_{s = 0} & = \sum_{i = 1}^n \pdv{f}{x_i}_{s = 0} \odv{x_i}{s}_{s = 0}         \\
+                           & = \sum_{i = 1}^n \pdv{f}{x_i}_{s = 0} \hat{u}_i                    \\
+                           & = \symbf{\nabla} f\left( \symbf{x} \right)_{s = 0} \cdot \hat{\symbf{u}} \\
+                           & = \symbf{\nabla} f\left( \symbf{x}_0 \right) \cdot \hat{\symbf{u}}
+    \end{align*}
+    where \(\hat{u}_i\) is the \(i\)-th component of \(\hat{\symbf{u}}\).
+    Therefore \(D_{\symbf{u}} f\left( \symbf{x}_0 \right) = \symbf{\nabla} f\left( \symbf{x}_0 \right) \cdot \hat{\symbf{u}}\).
+\end{proof}
+\begin{remark}
+    Partial derivatives are directional derivatives in the direction of the canonical basis vectors \(\hat{\symbf{e}}_i\).
+    \begin{equation*}
+        \pdv{f}{x_i} = D_{\hat{\symbf{e}}_i} f
+    \end{equation*}
+    We can therefore say that the directional derivative is a generalisation of the partial derivative
+    for any direction \(\hat{\symbf{u}}\).
+\end{remark}
+\begin{proposition}
+    The gradient of a function \(\symbf{\nabla} f\) is orthogonal to the level curves of \(f\).
+\end{proposition}
+\begin{proof}
+    Consider the path \(\symbf{x}\left( s \right)\) on a contour of \(f\). As \(f\) is constant on the contour,
+    \begin{equation*}
+        \pdv{f}{s} = 0.
+    \end{equation*}
+    Using the chain rule,
+    \begin{equation*}
+        \pdv{f}{s} = \sum_{i = 1}^n \pdv{f}{x_i} \pdv{x_i}{s} = \symbf{\nabla} f \cdot \odv{\symbf{x}}{s} = 0
+    \end{equation*}
+    therefore as the dot product is zero, \(\symbf{\nabla} f\) is orthogonal to the path \(\symbf{x}\left( s \right)\).
+\end{proof}
+\begin{proposition}
+    The directional derivative is maximised when \(\hat{\symbf{u}}\) is parallel to \(\symbf{\nabla} f\).
+\end{proposition}
+\begin{proof}
+    Using the angle definition of the dot product, the directional derivative is given by
+    \begin{equation*}
+        D_{\symbf{u}} f = \symbf{\nabla} f \cdot \hat{\symbf{u}} = \norm{\symbf{\nabla} f} \norm{\hat{\symbf{u}}} \cos{\theta} = \norm{\symbf{\nabla} f} \cos{\theta}
+    \end{equation*}
+    This expression is maximised when \(\cos{\theta} = 1\), or when \(\symbf{u}\) is parallel to \(\symbf{\nabla} f\).
+\end{proof}
+\begin{remark}
+    The maximum slope of \(f\) at \(\symbf{x}_0\) is given by the magnitude of the gradient at \(\symbf{x}_0\):
+    \begin{equation*}
+        \max_{\hat{\symbf{u}}} D_{\symbf{u}} f\left( \symbf{x}_0 \right) = \norm{\symbf{\nabla} f\left( \symbf{x}_0 \right)}
+    \end{equation*}
+\end{remark}
+\subsection{Normal Vectors to Curves}
+\subsubsection{Parametric Curves}
+For a parametric curve \(\symbf{r}\left( t \right)\), we find a normal vector \(\hat{\symbf{n}}\) such that
+\begin{equation*}
+    \hat{\symbf{n}} \cdot \symbf{r}'\left( t \right) = 0
+\end{equation*}
+where \(\symbf{r}'\left( t \right)\) is a tangent vector to the curve.
+\subsubsection{Implicit Curves}
+For an implicit curve \(F\left( x,\: y \right) = 0\), the normal vector is given by
+\begin{equation*}
+    \hat{\symbf{n}} = \pm \frac{\symbf{\nabla} F}{\norm{\symbf{\nabla} F}}
+\end{equation*}
+\subsubsection{Explicit Curves}
+For an explicit curve \(y = f\left( x \right)\), we must convert the curve to implicit or parametric form.
+\subsection{Normal Vectors to Surfaces}
+\subsubsection{Parametric Surfaces}
+\subsubsection{Implicit Surfaces}
+For an implicit surface \(F\left( x,\: y,\: z \right) = 0\), the normal vector is given by
+\begin{equation*}
+    \hat{\symbf{n}} = \pm \frac{\symbf{\nabla} F}{\norm{\symbf{\nabla} F}}
+\end{equation*}
+\subsubsection{Explicit Surfaces}
+For an explicit surface \(z = f\left( x,\: y \right)\), we can either convert the surface to implicit form,
+or consider the tangents of two curves \(\symbf{r}_1\left( t \right)\) and \(\symbf{r}_2\left( t \right)\) on the surface.
+Then we can find the normal vector by taking the cross product of the tangent vectors:
+\begin{equation*}
+    \hat{\symbf{n}} = \pm \frac{\symbf{r}_1'\left( t \right) \times \symbf{r}_2'\left( t \right)}{\norm{\symbf{r}_1'\left( t \right) \times \symbf{r}_2'\left( t \right)}}
+\end{equation*}
+\subsection{Tangent Vectors to Curves}
+\subsubsection{Parametric Curves}
+For a parametric curve \(\symbf{r}\left( t \right)\), the tangent vector is given by
+\begin{equation*}
+    \hat{\symbf{\tau}} = \pm \frac{\symbf{r}'\left( t \right)}{\norm{\symbf{r}'\left( t \right)}}
+\end{equation*}
+\subsubsection{Implicit Curves in 2D}
+For an implicit curve \(F\left( x,\: y \right) = 0\), the tangent vector can be found by first
+determining the normal vector \(\hat{\symbf{n}}\) which is proportional to the gradient of \(F\):
+\begin{equation*}
+    \hat{\symbf{n}} = \begin{bmatrix}
+        n_1 \\
+        n_2
+    \end{bmatrix}
+    \propto \symbf{\nabla} f
+\end{equation*}
+such that the tangent vector is given by
+\begin{equation*}
+    \hat{\symbf{\tau}} = \pm \begin{bmatrix}
+        -n_2 \\
+        n_1
+    \end{bmatrix}
+\end{equation*}
+\subsubsection{Implicit Curves in 3D}
+Given the intersectin of two implicit curves \(F\left( x,\: y,\: z \right) = 0\) and \(G\left( x,\: y,\: z \right) = 0\),
+the tangent vector along the intersection is given by
+\begin{equation*}
+    \hat{\symbf{\tau}} = \pm \frac{\symbf{\nabla} F \times \symbf{\nabla} G}{\norm{\symbf{\nabla} F \times \symbf{\nabla} G}}
+\end{equation*}
+\subsubsection{Explicit Curves in 2D}
+For an explicit curve \(y = f\left( x \right)\), we can either:
+\begin{itemize}
+    \item convert the curve to parametric form: \(\symbf{r}\left( t \right) = \abracket*{t,\: f\left( t \right)}\)
+    \item convert the curve to implicit form: \(F\left( x,\: y \right) = y - f\left( x \right) = 0\)
+\end{itemize}
 \end{document}
