@@ -46,13 +46,16 @@
 \newpage
 %
 \section{Euclidean Space}
-The Euclidean space \(\R^n\) is an \(n\)-dimensional vector space of real numbers.
-This space is closed under addition and scalar multiplication.
+The Euclidean space \(\R^n\) is an \(n\)-dimensional vector space of
+real numbers. This space is closed under addition and scalar
+multiplication.
 \subsection{Operations}
 \subsubsection{Addition}
-The sum of two vectors \(\symbf{x}\) and \(\symbf{y}\) is defined element-wise
+The sum of two vectors \(\symbf{x}\) and \(\symbf{y}\) is defined
+element-wise
 \begin{equation*}
-    \symbf{x} + \symbf{y} = \begin{bmatrix}
+    \symbf{x} + \symbf{y} =
+    \begin{bmatrix}
         x_1 + y_1 \\
         x_2 + y_2 \\
         \vdots    \\
@@ -61,9 +64,11 @@ The sum of two vectors \(\symbf{x}\) and \(\symbf{y}\) is defined element-wise
 \end{equation*}
 In a coordinate system, the vectors \(\symbf{x}\) and \(\symbf{y}\) are added tip-to-tail.
 \subsubsection{Scalar Multiplication}
-The scalar multiplication of a vector \(\symbf{x}\) by a scalar \(\lambda \in \R\) is defined element-wise
+The scalar multiplication of a vector \(\symbf{x}\) by a scalar
+\(\lambda \in \R\) is defined element-wise
 \begin{equation*}
-    \lambda \symbf{x} = \begin{bmatrix}
+    \lambda \symbf{x} =
+    \begin{bmatrix}
         \lambda x_1 \\
         \lambda x_2 \\
         \vdots      \\
@@ -83,7 +88,8 @@ This allows us to define the unit vector \(\hat{\symbf{x}}\) as
 \end{equation*}
 which is a vector of length 1 in the same direction as \(\symbf{x}\).
 \subsubsection{Scalar Product}
-The scalar product (dot product) of two vectors \(\symbf{x}\) and \(\symbf{y}\) is defined as
+The scalar product (dot product) of two vectors \(\symbf{x}\) and
+\(\symbf{y}\) is defined as
 \begin{equation*}
     \symbf{x} \cdot \symbf{y} = \sum_{i=1}^n x_i y_i
 \end{equation*}
@@ -111,8 +117,9 @@ where \(\symbf{x} \cdot \hat{\symbf{y}}\) is the norm of the projection vector.
     \abs{\symbf{x} \cdot \symbf{y}} \leqslant \norm{\symbf{x}} \norm{\symbf{y}}
 \end{equation*}
 \subsection{Multivariable Functions}
-A multivariable function \(f\) maps a vector \(\symbf{x} \in \R^n\) to a real number \(f \left( \symbf{x} \right) \in \R\).
-This function can be expressed in \textbf{explicit form} as
+A multivariable function \(f\) maps a vector \(\symbf{x} \in \R^n\) to
+a real number \(f \left( \symbf{x} \right) \in \R\). This function can
+be expressed in \textbf{explicit form} as
 \begin{equation*}
     z = f\left( x,\: y \right)
 \end{equation*}
@@ -122,7 +129,8 @@ or in \textbf{implicit form} as
 \end{equation*}
 These equations define a surface in \(\R^3\).
 \subsubsection{Level Curves}
-The level curves of a function \(f \left( x,\: y \right)\) are the curves in \(\R^2\) where
+The level curves of a function \(f \left( x,\: y \right)\) are the
+curves in \(\R^2\) where
 \begin{equation*}
     f \left( x,\: y \right) = c
 \end{equation*}
@@ -133,8 +141,9 @@ where \(c\) is the height of the curve. Implicitly, this is equivalent to
 Level curves represent paths of equal height on the surface defined by \(z = f \left( x,\: y \right)\).
 \subsection{Special Regions}
 \subsubsection{Balls}
-In an Euclidean space, an open ball of radius \(r > 0\) centred at a point \(\symbf{p} \in \R^n\)
-is denoted \(B_r\left( \symbf{p} \right)\), and is defined as
+In an Euclidean space, an open ball of radius \(r > 0\) centred at a
+point \(\symbf{p} \in \R^n\) is denoted \(B_r\left( \symbf{p}
+\right)\), and is defined as
 \begin{equation*}
     B_r\left( \symbf{p} \right) = \left\{ \symbf{x} \in \R^n : \norm{\symbf{x} - \symbf{p}} < r \right\}.
 \end{equation*}
@@ -161,16 +170,18 @@ A curve in \(\R^2\) can be represented in implicit form as
 \end{equation*}
 In 3D, we must impose an additional equation that intersects a surface.
 \begin{equation*}
-    \left\{ \begin{aligned}
+    \left\{
+    \begin{aligned}
         F\left( x,\: y,\: z \right) & = 0 \\
         G\left( x,\: y,\: z \right) & = 0
-    \end{aligned} \right.
+    \end{aligned}
+    \right.
 \end{equation*}
 In both cases, we have 1 degree of freedom as the degrees of freedom is the
 difference between the number of variables and the number of equations.
 \subsubsection{Parametric Form}
-In parametric form, curves are parametrised in terms of a parameter \(t\).
-In 2D, this is represented as
+In parametric form, curves are parametrised in terms of a parameter
+\(t\). In 2D, this is represented as
 \begin{equation*}
     \symbf{r}\left( t \right) = \abracket*{x\left( t \right),\: y\left( t \right)}
 \end{equation*}
@@ -180,23 +191,30 @@ and similarly in 3D,
 \end{equation*}
 \subsection{Converting Between Representations}
 \subsubsection{Explicit to Implicit}
-The equation \(y = f\left( x \right)\) can always be converted to implicit form by rewriting it as
+The equation \(y = f\left( x \right)\) can always be converted to
+implicit form by rewriting it as
 \begin{equation*}
     F\left( x,\: y \right) = y - f\left( x \right) = 0.
 \end{equation*}
 \subsubsection{Implicit to Explicit}
-The equation \(F\left( x,\: y \right) = 0\) can be converted to explicit form if we can solve for \(y\) (or \(x\)):
+The equation \(F\left( x,\: y \right) = 0\) can be converted to
+explicit form if we can solve for \(y\) (or \(x\)):
 \subsubsection{Parametric to Explicit/Implicit}
-The equation \(\symbf{r}\left( t \right) = \abracket*{x\left( t \right),\: y\left( t \right)}\) can be written in
-explicit or implicit form, if the parameter \(t\) can be eliminated from the simultaneous equations.
+The equation \(\symbf{r}\left( t \right) = \abracket*{x\left( t
+\right),\: y\left( t \right)}\) can be written in explicit or implicit
+form, if the parameter \(t\) can be eliminated from the simultaneous
+equations.
 \subsubsection{Explicit to Parametric}
-The equation \(y = f\left( x \right)\) can always be converted to parametric form by choosing the parameter \(t = x\), so that
+The equation \(y = f\left( x \right)\) can always be converted to
+parametric form by choosing the parameter \(t = x\), so that
 \begin{equation*}
     \symbf{r}\left( t \right) = \abracket*{t,\: f\left( t \right)}.
 \end{equation*}
 \subsubsection{Implicit to Parametric}
-The equation \(F\left( x,\: y \right) = 0\) can be converted to parametric form if we can find \(x = p\left( t \right)\) and \(y = q\left( t \right)\),
-such that \(F\left( p\left( t \right),\: q\left( t \right) \right) = 0\), and
+The equation \(F\left( x,\: y \right) = 0\) can be converted to
+parametric form if we can find \(x = p\left( t \right)\) and \(y =
+q\left( t \right)\), such that \(F\left( p\left( t \right),\: q\left( t
+\right) \right) = 0\), and
 \begin{equation*}
     \symbf{r}\left( t \right) = \abracket*{p\left( t \right),\: q\left( t \right)}
 \end{equation*}
@@ -204,23 +222,30 @@ for all \(t\).
 \subsection{Paramaterisation}
 To parametrise a curve, consider the following strategies:
 \begin{itemize}
-    \item For a closed curve, consider the polar parametrisation in terms of the angle \(\theta\):
+    \item For a closed curve, consider the polar parametrisation in
+          terms of the angle \(\theta\):
           \begin{equation*}
               \symbf{r}\left( \theta \right) = \abracket*{R\left( \theta \right) \cos{\left( \theta \right)},\: R\left( \theta \right) \sin{\left( \theta \right)}}.
           \end{equation*}
-    \item For a curve that is the intersection of two surfaces, consider one of the following mappings:
+    \item For a curve that is the intersection of two surfaces,
+          consider one of the following mappings:
           \begin{equation*}
-              x \mapsto \begin{bmatrix}
+              x \mapsto
+              \begin{bmatrix}
                   x                 \\
                   y\left( x \right) \\
                   z\left( x \right)
-              \end{bmatrix} \qquad
-              y \mapsto \begin{bmatrix}
+              \end{bmatrix}
+              \qquad
+              y \mapsto
+              \begin{bmatrix}
                   x\left( y \right) \\
                   y                 \\
                   z\left( y \right)
-              \end{bmatrix} \qquad
-              z \mapsto \begin{bmatrix}
+              \end{bmatrix}
+              \qquad
+              z \mapsto
+              \begin{bmatrix}
                   x\left( z \right) \\
                   y\left( z \right) \\
                   z
@@ -229,21 +254,25 @@ To parametrise a curve, consider the following strategies:
     \item Otherwise, consider a vector construction.
 \end{itemize}
 \subsubsection{Line Segments}
-To parametrise a line segment from point \(A\) to \(B\), define the parameter \(t \in \interval{0}{1}\).
-Then, consider the vectors \(\symbf{a} = \overline{OA}\) and \(\symbf{b} = \overline{OB}\).
-By scaling the vector from \(A\) to \(B\) by \(t\), we can parametrise the line segment as
+To parametrise a line segment from point \(A\) to \(B\), define the
+parameter \(t \in \interval{0}{1}\). Then, consider the vectors
+\(\symbf{a} = \overline{OA}\) and \(\symbf{b} = \overline{OB}\). By
+scaling the vector from \(A\) to \(B\) by \(t\), we can parametrise the
+line segment as
 \begin{equation*}
     \symbf{r}\left( t \right) = \symbf{a} + t \left( \symbf{b} - \symbf{a} \right) = \symbf{a} \left( 1 - t \right) + \symbf{b} t.
 \end{equation*}
 \subsubsection{Circles}
-To parametrise a circle of radius \(R\) centred at the \(\abracket*{x_0,\: y_0}\),
-first parametrise the curve in terms of the angle \(\theta\), then shift the curve by \(\abracket*{x_0,\: y_0}\).
+To parametrise a circle of radius \(R\) centred at the
+\(\abracket*{x_0,\: y_0}\), first parametrise the curve in terms of the
+angle \(\theta\), then shift the curve by \(\abracket*{x_0,\: y_0}\).
 \begin{equation*}
     \symbf{r}\left( \theta \right) =
     \begin{bmatrix}
         x_0 \\
         y_0
-    \end{bmatrix} +
+    \end{bmatrix}
+    +
     \begin{bmatrix}
         R \cos{\left( \theta \right)} \\
         R \sin{\left( \theta \right)}
@@ -255,10 +284,13 @@ first parametrise the curve in terms of the angle \(\theta\), then shift the cur
     \end{bmatrix}
 \end{equation*}
 \subsubsection{Velocity Vectors}
-The velocity vector of a parametrised curve \(\symbf{r}\left( t \right) = \begin{bmatrix}
+The velocity vector of a parametrised curve \(\symbf{r}\left( t \right)
+=
+\begin{bmatrix}
     x\left( t \right) \\
     y\left( t \right)
-\end{bmatrix}\) is defined as
+\end{bmatrix}
+\) is defined as
 \begin{equation*}
     \symbf{v}\left( t \right) = \symbf{r}'\left( t \right) = \lim_{\Delta t \to 0} \frac{\symbf{r}\left( t + \Delta t \right) - \symbf{r}\left( t \right)}{\Delta t} =
     \begin{bmatrix}
@@ -268,14 +300,16 @@ The velocity vector of a parametrised curve \(\symbf{r}\left( t \right) = \begin
 \end{equation*}
 where \(\symbf{v}\left( t \right)\) is a tangent vector to the curve at the point \(\symbf{r}\left( t \right)\), for all \(t\).
 \subsubsection{Tangent Vectors}
-Following from the definition of the velocity vector, the tangent vectors of a parametrised curve
-are unit vectors in the direction of the velocity vector.
+Following from the definition of the velocity vector, the tangent
+vectors of a parametrised curve are unit vectors in the direction of
+the velocity vector.
 \begin{equation*}
     \hat{\symbf{\tau}}\left( t \right) = \pm \frac{\symbf{v}\left( t \right)}{\norm{\symbf{v}\left( t \right)}} = \pm \hat{\symbf{v}\left( t \right)}
 \end{equation*}
 For a curve given in explicit form \(y = f\left( x \right)\), the tangent vectors are given by
 \begin{equation*}
-    \hat{\symbf{\tau}}\left( x \right) = \pm \frac{1}{\sqrt{1 + \left( f'\left( x \right) \right)^2}} \begin{bmatrix}
+    \hat{\symbf{\tau}}\left( x \right) = \pm \frac{1}{\sqrt{1 + \left( f'\left( x \right) \right)^2}}
+    \begin{bmatrix}
         1 \\
         f'\left( x \right)
     \end{bmatrix}
@@ -348,7 +382,8 @@ For a curve given in explicit form \(y = f\left( x \right)\), the tangent vector
     \end{equation*}
     for all sequences \(\left\{ \symbf{x}_n \right\} \) where \(\symbf{x}_n \to \symbf{x}_0\).
 
-    A function \(f\) is continuous on a set \(E\) if it is continuous at every point in \(E\).
+    A function \(f\) is continuous on a set \(E\) if it is continuous
+    at every point in \(E\).
 \end{definition}
 \begin{definition}[Partial Derivatives]
     Partial derivatives represent the rate of change of a function with respect to one of its variables, holding all other variables constant.
@@ -382,8 +417,10 @@ For a curve given in explicit form \(y = f\left( x \right)\), the tangent vector
     \end{equation*}
 \end{remark}
 \subsection{Chain Rule}
-For a function with multiple arguments, each argument of \(f\) that has an implicit dependence on the variable of differentiation
-must be differentiated using the chain rule, where all contributions are summed.
+For a function with multiple arguments, each argument of \(f\) that has
+an implicit dependence on the variable of differentiation must be
+differentiated using the chain rule, where all contributions are
+summed.
 \begin{gather*}
     \odv{}{t} f\left( x\left( t \right),\: y\left( t \right) \right) = \pdv{f}{x} \odv{x}{t} + \pdv{f}{y} \odv{y}{t} \\
     \pdv{}{u} f\left( x\left( u,\: v \right),\: y\left( u,\: v \right) \right) = \pdv{f}{x} \pdv{x}{u} + \pdv{f}{y} \pdv{y}{u}
@@ -410,15 +447,16 @@ must be differentiated using the chain rule, where all contributions are summed.
 \begin{definition}[Gradient]
     The gradient is an operator that collects all partial derivatives of a function into a vector.
     \begin{equation*}
-        \symbf{\nabla} = \begin{bmatrix}
+        \symbf{\nabla} =
+        \begin{bmatrix}
             \partial_{x_1} \\
-            \partial_{x_2} \\
-            \vdots         \\
+            \partial_{x_2} \\ \vdots \\
             \partial_{x_n}
-        \end{bmatrix} \implies \symbf{\nabla} f = \begin{bmatrix}
+        \end{bmatrix}
+        \implies \symbf{\nabla} f =
+        \begin{bmatrix}
             \partial_{x_1} f \\
-            \partial_{x_2} f \\
-            \vdots           \\
+            \partial_{x_2} f \\ \vdots \\
             \partial_{x_n} f
         \end{bmatrix}
     \end{equation*}
@@ -428,10 +466,14 @@ The gradient allows us to define the chain rule using the dot product:
     \odv{f}{t} = \symbf{\nabla} f \cdot \odv{\symbf{x}}{t}
 \end{equation*}
 \subsection{Directional Derivative}
-The directional derivative of a function \(f : E \subset \R^n \to \R\) at a point \(\symbf{x}_0 \in E\) in the direction of a unit vector \(\hat{\symbf{u}} \in \R^n\)
-is the slope of \(f\) in the direction of \(\symbf{u}\):
+The directional derivative of a function \(f : E \subset \R^n \to \R\)
+at a point \(\symbf{x}_0 \in E\) in the direction of a unit vector
+\(\hat{\symbf{u}} \in \R^n\) is the slope of \(f\) in the direction of
+\(\symbf{u}\):
 \begin{equation*}
-    D_{\symbf{u}} f\left( \symbf{x}_0 \right) = \partial_{\symbf{u}} f\left( \symbf{x}_0 \right) = \lim_{h \to 0} \frac{f\left( \symbf{x}_0 + h \hat{\symbf{u}} \right) - f\left( \symbf{x}_0 \right)}{h}
+    D_{\symbf{u}} f\left( \symbf{x}_0 \right) = \partial_{\symbf{u}} f\left( \symbf{x}_0 \right) = \lim_{h \to 0}
+     \frac{f\left( \symbf{x}_0 + h \hat{\symbf{u}} \right) - f\left(
+     \symbf{x}_0 \right)}{h}
 \end{equation*}
 \begin{proposition}
     The directional derivative can be computed using the gradient of \(f\)
@@ -455,8 +497,8 @@ is the slope of \(f\) in the direction of \(\symbf{u}\):
     \end{equation*}
     we can evaluate the derivative of \(g\) w.r.t.\ \(s\) using the total derivative:
     \begin{align*}
-        \odv{g}{s}_{s = 0} & = \sum_{i = 1}^n \pdv{f}{x_i}_{s = 0} \odv{x_i}{s}_{s = 0}         \\
-                           & = \sum_{i = 1}^n \pdv{f}{x_i}_{s = 0} \hat{u}_i                    \\
+        \odv{g}{s}_{s = 0} & = \sum_{i = 1}^n \pdv{f}{x_i}_{s = 0} \odv{x_i}{s}_{s = 0}               \\
+                           & = \sum_{i = 1}^n \pdv{f}{x_i}_{s = 0} \hat{u}_i                          \\
                            & = \symbf{\nabla} f\left( \symbf{x} \right)_{s = 0} \cdot \hat{\symbf{u}} \\
                            & = \symbf{\nabla} f\left( \symbf{x}_0 \right) \cdot \hat{\symbf{u}}
     \end{align*}
@@ -503,43 +545,52 @@ is the slope of \(f\) in the direction of \(\symbf{u}\):
 \end{remark}
 \subsection{Normal Vectors to Curves}
 \subsubsection{Parametric Curves}
-For a parametric curve \(\symbf{r}\left( t \right)\), we find a normal vector \(\hat{\symbf{n}}\) such that
+For a parametric curve \(\symbf{r}\left( t \right)\), we find a normal
+vector \(\hat{\symbf{n}}\) such that
 \begin{equation*}
     \hat{\symbf{n}} \cdot \symbf{r}'\left( t \right) = 0
 \end{equation*}
 where \(\symbf{r}'\left( t \right)\) is a tangent vector to the curve.
 \subsubsection{Implicit Curves}
-For an implicit curve \(F\left( x,\: y \right) = 0\), the normal vector is given by
+For an implicit curve \(F\left( x,\: y \right) = 0\), the normal vector
+is given by
 \begin{equation*}
     \hat{\symbf{n}} = \pm \frac{\symbf{\nabla} F}{\norm{\symbf{\nabla} F}}
 \end{equation*}
 \subsubsection{Explicit Curves}
-For an explicit curve \(y = f\left( x \right)\), we must convert the curve to implicit or parametric form.
+For an explicit curve \(y = f\left( x \right)\), we must convert the
+curve to implicit or parametric form.
 \subsection{Normal Vectors to Surfaces}
 \subsubsection{Parametric Surfaces}
 \subsubsection{Implicit Surfaces}
-For an implicit surface \(F\left( x,\: y,\: z \right) = 0\), the normal vector is given by
+For an implicit surface \(F\left( x,\: y,\: z \right) = 0\), the normal
+vector is given by
 \begin{equation*}
     \hat{\symbf{n}} = \pm \frac{\symbf{\nabla} F}{\norm{\symbf{\nabla} F}}
 \end{equation*}
 \subsubsection{Explicit Surfaces}
-For an explicit surface \(z = f\left( x,\: y \right)\), we can either convert the surface to implicit form,
-or consider the tangents of two curves \(\symbf{r}_1\left( t \right)\) and \(\symbf{r}_2\left( t \right)\) on the surface.
-Then we can find the normal vector by taking the cross product of the tangent vectors:
+For an explicit surface \(z = f\left( x,\: y \right)\), we can either
+convert the surface to implicit form, or consider the tangents of two
+curves \(\symbf{r}_1\left( t \right)\) and \(\symbf{r}_2\left( t
+\right)\) on the surface. Then we can find the normal vector by taking
+the cross product of the tangent vectors:
 \begin{equation*}
     \hat{\symbf{n}} = \pm \frac{\symbf{r}_1'\left( t \right) \times \symbf{r}_2'\left( t \right)}{\norm{\symbf{r}_1'\left( t \right) \times \symbf{r}_2'\left( t \right)}}
 \end{equation*}
 \subsection{Tangent Vectors to Curves}
 \subsubsection{Parametric Curves}
-For a parametric curve \(\symbf{r}\left( t \right)\), the tangent vector is given by
+For a parametric curve \(\symbf{r}\left( t \right)\), the tangent
+vector is given by
 \begin{equation*}
     \hat{\symbf{\tau}} = \pm \frac{\symbf{r}'\left( t \right)}{\norm{\symbf{r}'\left( t \right)}}
 \end{equation*}
 \subsubsection{Implicit Curves in 2D}
-For an implicit curve \(F\left( x,\: y \right) = 0\), the tangent vector can be found by first
-determining the normal vector \(\hat{\symbf{n}}\) which is proportional to the gradient of \(F\):
+For an implicit curve \(F\left( x,\: y \right) = 0\), the tangent
+vector can be found by first determining the normal vector
+\(\hat{\symbf{n}}\) which is proportional to the gradient of \(F\):
 \begin{equation*}
-    \hat{\symbf{n}} = \begin{bmatrix}
+    \hat{\symbf{n}} =
+    \begin{bmatrix}
         n_1 \\
         n_2
     \end{bmatrix}
@@ -547,21 +598,319 @@ determining the normal vector \(\hat{\symbf{n}}\) which is proportional to the g
 \end{equation*}
 such that the tangent vector is given by
 \begin{equation*}
-    \hat{\symbf{\tau}} = \pm \begin{bmatrix}
+    \hat{\symbf{\tau}} = \pm
+    \begin{bmatrix}
         -n_2 \\
         n_1
     \end{bmatrix}
 \end{equation*}
 \subsubsection{Implicit Curves in 3D}
-Given the intersectin of two implicit curves \(F\left( x,\: y,\: z \right) = 0\) and \(G\left( x,\: y,\: z \right) = 0\),
-the tangent vector along the intersection is given by
+Given the intersectin of two implicit curves \(F\left( x,\: y,\: z
+\right) = 0\) and \(G\left( x,\: y,\: z \right) = 0\), the tangent
+vector along the intersection is given by
 \begin{equation*}
     \hat{\symbf{\tau}} = \pm \frac{\symbf{\nabla} F \times \symbf{\nabla} G}{\norm{\symbf{\nabla} F \times \symbf{\nabla} G}}
 \end{equation*}
 \subsubsection{Explicit Curves in 2D}
 For an explicit curve \(y = f\left( x \right)\), we can either:
 \begin{itemize}
-    \item convert the curve to parametric form: \(\symbf{r}\left( t \right) = \abracket*{t,\: f\left( t \right)}\)
-    \item convert the curve to implicit form: \(F\left( x,\: y \right) = y - f\left( x \right) = 0\)
+    \item convert the curve to parametric form: \(\symbf{r}\left( t
+          \right) = \abracket*{t,\: f\left( t \right)}\)
+    \item convert the curve to implicit form: \(F\left( x,\: y \right)
+          = y - f\left( x \right) = 0\)
 \end{itemize}
+\subsection{Differentiability}
+\subsection{Single Variable Functions}
+\(f\left( x \right)\) is differentiable at \(a\) if \(f'\left( a \right) = \lim_{x \to a} \frac{f\left( x \right) - f\left( a \right)}{x - a}\) exists.
+This is equivalent to saying that the tangent line at \(\abracket*{a,\: f\left( a \right)}\) is well-defined:
+\begin{equation*}
+    f\left( x \right) = \underbrace{f\left( a \right) + f'\left( a \right) f\left( x - a \right)}_{\text{tangent line}} + R\left( x - a \right) \qquad \text{with } \lim_{x \to a} \frac{R\left( x - a \right)}{x - a} = 0
+\end{equation*}
+\subsection{Multivariable Functions}
+\(f\left( \symbf{x} \right)\) is differentiable at \(\symbf{a} \in \Omega \subset \R^n\) if there exists a linear map \(f'\left( \symbf{a} \right) :
+\begin{cases*}
+    \R^n \to \R                                      \\
+    \xi \mapsto f'\left( \symbf{a} \right) \cdot \xi \\
+\end{cases*}
+\) such that
+\begin{equation*}
+    f\left( \symbf{x} \right) = \underbrace{f\left( \symbf{a} \right) + f'\left( \symbf{a} \right) \cdot \left( \symbf{x} - \symbf{a} \right)}_{\text{tangent plane}} + R\left( \symbf{x} - \symbf{a} \right) \qquad \text{with } \lim_{\symbf{x} \to \symbf{a}} \frac{R\left( \symbf{x} - \symbf{a} \right)}{\norm{\symbf{x} - \symbf{a}}} = 0
+\end{equation*}
+The linear map \(f'\left( \symbf{a} \right)\) is then the derivative of \(f\) at \(\symbf{a}\).
+\begin{theorem}[Derivative Equivalence with Gradient]
+    If \(f\) is differentiable, then
+    \begin{equation*}
+        f'\left( \symbf{a} \right) = \symbf{\nabla} f\left( \symbf{a} \right)
+    \end{equation*}
+    Additionally, if \(\symbf{\nabla} f\left( \symbf{a} \right)\) exists
+    \(\forall \symbf{a} \in \Omega\), and all partial derivatives are
+    continuous (i.e., \(\pdv{f}{x_i} : \Omega \subset \R^n \to R\) are
+    continuous), then \(f\) is differentiable everywhere in \(\Omega\).
+\end{theorem}
+The first result tells us that the derivative is unique, and that \(f\) is
+differentiable at \(\symbf{a}\) if it has a tangent plane at \(\symbf{a}\).
+The second result gives us a sufficient condition for differentiability.
+\subsection{Taylor Series Expansion}
+The Taylor series expansion of a function \(f\) at a point
+\(\symbf{a}\) is given by
+\begin{multline*}
+    f\left( \symbf{x} \right) = f\left( \symbf{a} \right) + \sum_{i = 0}^n \pdv{f\left( \symbf{a} \right)}{x_i} \left( x_i - a_i \right) + \frac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n \pdv{f\left( \symbf{a} \right)}{x_i,x_j} \left( x_i - a_i \right) \left( x_j - a_j \right) + \cdots \\
+    + \frac{1}{k!} \sum_{i_1, \ldots, i_k}^{n} \pdv{f\left( \symbf{a} \right)}{x_{i_1}, \cdots, x_{i_k}} \left( x_{i_1} - a_{i_1} \right) \cdots \left( x_{i_k} - a_{i_k} \right) + \cdots
+\end{multline*}
+This allows us to compute the tangent plane, paraboloid, and so on, of
+a function \(f\) at \(\symbf{a}\), by increasing the order \(k\) of the
+Taylor series expansion.
+\section{Integration}
+Integrals represent continuous sums of infinitesimal quantities, and
+allow us to measure extensive and average properties of objects, such
+as lengths, surface areas, volumes, masses, centres of mass, and so on.
+\subsection{Riemann Sums}
+The signed area under the function \(f\left( x \right)\) is represented
+by
+\begin{equation*}
+    \int_a^b f\left( x \right) \odif{x} = \lim_{n \to \infty} \sum_{i = 1}^n f\left( x_i \right) \Delta x
+\end{equation*}
+Similarly, the signed volume under the surface \(f\left( x,\: y \right)\)
+is represented by
+\begin{equation*}
+    \iint_R f\left( x,\: y \right) \odif{A} = \lim_{\Delta A_i \to 0} \sum_{i = 1}^n f\left( x_i,\: y_i \right) \Delta A_i
+\end{equation*}
+where \(R\) is the region of integration.
+\subsection{Lebesgue Integrals}
+Lebesgue integrals are a top down approach to multiple integrals that
+allow us to integrate a wider class of nonnegative functions. This
+includes improper integrals where \(f\) is discontinuous or singular,
+or when the domain of integration is unbounded.
+\begin{theorem}[Fubini's Theorem]
+    For a nonnegative function \(f : \R^2 \to \rinterval{0}{\infty}\),
+    the following equality holds,
+    \begin{equation*}
+        0 \leqslant \iint_{\R^2} f\left( x,\: y \right) \odif{A} = \int_{-\infty}^\infty \left[ \int_{-\infty}^\infty f\left( x,\: y \right) \odif{x} \right] \odif{y} = \int_{-\infty}^\infty \left[ \int_{-\infty}^\infty f\left( x,\: y \right) \odif{y} \right] \odif{x} \leqslant \infty
+    \end{equation*}
+\end{theorem}
+\subsection{Double Integrals}
+The above theorem holds for particular classes of functions. The
+following techniques can be used to integrate arbitrary functions.
+\subsubsection{Finite Domains}
+For double integrals over domains \(R \subset \R^2\), we can define a
+new function \(\tilde{f}\) such that
+\begin{equation*}
+    \iint_R f\left( x,\: y \right) \odif{A} \equiv \iint_{\R^2} \tilde{f}\left( x,\: y \right) \odif{A}, \qquad \text{where } \tilde{f}\left( x,\: y \right) =
+    \begin{cases}
+        f\left( x,\: y \right) & \left( x,\: y \right) \in R \\
+        0                      & \text{otherwise}
+    \end{cases}
+\end{equation*}
+\subsubsection{Nonpositive Functions}
+For nonpositive functions \(f : \R^2 \to \ointerval{-\infty}{\infty}\),
+we can express \(f\) as \(f = f^{+} - f^{-}\), where \(f^{+}\) and
+\(f^{-}\) are the positive and negative parts of \(f\) respectively:
+\begin{align*}
+    f^{+}\left( x,\: y \right) & = \max{\left\{ 0,\: f\left( x,\: y \right) \right\}}
+    =
+    \begin{cases}
+        f\left( x,\: y \right) & f\left( x,\: y \right) \geqslant 0 \\
+        0                      & f\left( x,\: y \right) < 0
+    \end{cases}
+    \\
+    f^{-}\left( x,\: y \right) & = -\min{\left\{ 0,\: f\left( x,\: y \right) \right\}}
+    =
+    \begin{cases}
+        -f\left( x,\: y \right) & f\left( x,\: y \right) < 0         \\
+        0                       & f\left( x,\: y \right) \geqslant 0
+    \end{cases}
+\end{align*}
+Therefore, the double integral is defined
+\begin{equation*}
+    \iint_{\R^2} f\left( x,\: y \right) \odif{A} = \iint_{\R^2} f^{+}\left( x,\: y \right) \odif{A} - \iint_{\R^2} f^{-}\left( x,\: y \right) \odif{A}
+\end{equation*}
+\begin{definition}[Integrable Function]
+    A function \(f : \R^n \to \R\) is \textbf{integrable} if
+    \begin{equation*}
+        \int_{\R^n} \abs{f\left( \symbf{x} \right)} \odif{\symbf{x}} < \infty
+    \end{equation*}
+\end{definition}
+\begin{theorem}[Fubini's Theorem for Integrable Functions]
+    If \(f : \R^2 \to \R\) is an integrable function
+    \begin{equation*}
+        \iint_{\R^2} f\left( x,\: y \right) \odif{A} = \int_{-\infty}^\infty \left[ \int_{-\infty}^\infty f\left( x,\: y \right) \odif{x} \right] \odif{y} = \int_{-\infty}^\infty \left[ \int_{-\infty}^\infty f\left( x,\: y \right) \odif{y} \right] \odif{x}
+    \end{equation*}
+\end{theorem}
+\subsection{Area of a Region}
+\begin{definition}[Indicator Function]
+    The indicator function of \(R\) is defined:
+    \begin{equation*}
+        1_R\left( x,\: y \right) =
+        \begin{cases}
+            1 & \left( x,\: y \right) \in R \\
+            0 & \text{otherwise}
+        \end{cases}
+    \end{equation*}
+\end{definition}
+The area of the domain \(R\) is then
+\begin{equation*}
+    \mu\left( R \right) = \iint_{\R^2} 1_R \odif{A} = \iint_R \odif{A}
+\end{equation*}
+\subsubsection{Rectangular Regions}
+For a rectangular region \(D = \left[ a,\: b \right] \times \left[ c,\:
+d \right]\), the indicator function is given by
+\begin{align*}
+    1_D\left( x,\: y \right) & =
+    \begin{cases}
+        1 & \left( x,\: y \right) \in D \\
+        0 & \text{otherwise}
+    \end{cases}
+    \\
+                             & = 1_{\left[ a,\: b \right]} \left( x \right) 1_{\left[ c,\: d \right]} \left( y \right)
+\end{align*}
+so that the area of \(D\) is given by
+\begin{align*}
+    \mu\left( D \right) & = \iint_{\R^2} 1_D \odif{A} = \int_{-\infty}^\infty \int_{-\infty}^\infty 1_{\left[ a,\: b \right]} \left( x \right) 1_{\left[ c,\: d \right]} \left( y \right) \odif{y} \odif{x} = \int_{-\infty}^\infty 1_{\left[ a,\: b \right]} \left( x \right) \int_{-\infty}^\infty 1_{\left[ c,\: d \right]} \left( y \right) \odif{y} \odif{x} \\
+                        & = \int_a^b 1 \int_c^d 1 \odif{y} \odif{x} = \int_a^b 1 \left[ \int_c^d 1 \odif{y} \right] \odif{x} = \int_a^b \left( d - c \right) \odif{x} = \left( b - a \right) \left( d - c \right)
+\end{align*}
+\subsubsection{Integrating Functions over Regions}
+We can integrate functions over regions by multiplying the indicator
+function of the region by the function itself:
+\begin{equation*}
+    \iint_R f\left( x,\: y \right) \odif{A} = \iint_{\R^2} f\left( x,\: y \right) 1_R \odif{A}
+\end{equation*}
+\subsection{Simple Domains}
+\subsubsection{Type I --- \texorpdfstring{\(y\)}{y}-Simple}
+Let \(Y\) be defined as a region bounded by
+\(x_1 \leqslant x \leqslant x_2\) and
+\(y_1\left( x \right) \leqslant y \leqslant y_2\left( x \right)\).
+\(Y\) is called \(y\)-simple as it can be split into subdomains \(R_i\)
+with continuous lines \textbf{parallel to the \(y\)-axis}.
+
+The double integral over \(Y\) can then be decomposed into the sum of
+integrals over each subdomain \(Y_i\):
+\begin{equation*}
+    \iint_Y f\left( x,\: y \right) \odif{A} = \sum_{i = 1}^n \iint_{Y_i} f\left( x,\: y \right) \odif{A}
+\end{equation*}
+which is equivalent to integrating between the \(y\)-bounds of each
+subdomain \(Y_i\) within the \(x\)-bounds of \(Y\):
+\begin{equation*}
+    \iint_Y f\left( x,\: y \right) \odif{A} = \int_{x_1}^{x_2} \left[ \int_{y_1\left( x \right)}^{y_2\left( x \right)} f\left( x,\: y \right) \odif{y} \right] \odif{x}
+\end{equation*}
+\subsubsection{Type II --- \texorpdfstring{\(x\)}{x}-Simple}
+Let \(X\) be defined as a region bounded by
+\(x_1\left( y \right) \leqslant x \leqslant x_2\left( y \right)\) and
+\(y_1 \leqslant y \leqslant y_2\).
+\(X\) is called \(x\)-simple as it can be split into subdomains \(R_i\)
+with continuous lines \textbf{parallel to the \(x\)-axis}.
+
+The double integral over \(X\) can then be decomposed into the sum of
+integrals over each subdomain \(X_i\):
+\begin{equation*}
+    \iint_X f\left( x,\: y \right) \odif{A} = \sum_{i = 1}^n \iint_{X_i} f\left( x,\: y \right) \odif{A}
+\end{equation*}
+which is equivalent to integrating between the \(x\)-bounds of each
+subdomain \(X_i\) within the \(y\)-bounds of \(X\):
+\begin{equation*}
+    \iint_X f\left( x,\: y \right) \odif{A} = \int_{y_1}^{y_2} \left[ \int_{x_1\left( y \right)}^{x_2\left( y \right)} f\left( x,\: y \right) \odif{x} \right] \odif{y}
+\end{equation*}
+\subsection{Change of Variables}
+In single variable calculus, we can use the transformation \(x =
+g\left( u \right)\) to change the variable of integration from \(x\) to
+\(u\), using the chain rule, \(\odif{x} = g'\left( u \right)
+\odif{u}\). For multiple integrals, the same can be accomplished using
+the Jacobian matrix.
+\begin{definition}[Jacobian Matrix]
+    Consider the transformation \(\symbf{x} = T\left( \symbf{u} \right)\),
+    where \(T : \R^m \to \R^n\) is once differentiable. The Jacobian
+    matrix of \(T\) is defined as an \(m \times n\) matrix, denoted
+    \(\symbf{J}\), whose \(\left( i,\: j \right)\)-th entry is given by
+    \begin{equation*}
+        \symbf{J}_{i,\: j} = \pdv{x_i}{u_j}.
+    \end{equation*}
+    Explicitly, the Jacobian matrix is given by
+    \begin{equation*}
+        \symbf{J} =
+        \displaystyle
+        \begin{bmatrix}
+            \displaystyle\pdv{x_1}{u_1} & \displaystyle\cdots & \displaystyle\pdv{x_1}{u_n} \\
+            \displaystyle\vdots         & \displaystyle\ddots & \displaystyle\vdots         \\
+            \displaystyle\pdv{x_m}{u_1} & \displaystyle\cdots & \displaystyle\pdv{x_m}{u_n} \\
+        \end{bmatrix}
+        .
+    \end{equation*}
+    It may also be notated as
+    \begin{equation*}
+        \symbf{J} = \frac{\partial\left( x_1,\: \ldots,\: x_m \right)}{\partial\left( u_1,\: \ldots,\: u_n \right)}
+    \end{equation*}
+\end{definition}
+\begin{definition}[Jacobian]
+    When \(m = n\), we can determine the ratio of the area of the
+    original region \(R\) to the area of the transformed region
+    \(T\left( R \right)\) using the determinant of the Jacobian matrix:
+    \begin{equation*}
+        \abs*{\symbf{J}} = \det{\left( \symbf{J} \right)} = \abs*{\frac{\partial\left( x_1,\: \ldots,\: x_n \right)}{\partial\left( u_1,\: \ldots,\: u_n \right)}}.
+    \end{equation*}
+\end{definition}
+In the case of two variables, \(\left( x,\: y \right) = T\left( u,\: v \right)\),
+and the Jacobian matrix is defined as
+\begin{equation*}
+    \symbf{J} =
+    \begin{bmatrix}
+        \displaystyle\pdv{x}{u} & \displaystyle\pdv{x}{v} \\
+        \displaystyle\pdv{y}{u} & \displaystyle\pdv{y}{v} \\
+    \end{bmatrix}
+    .
+\end{equation*}
+The Jacobian is then given by
+\begin{equation*}
+    \abs*{\symbf{J}} = \pdv{x}{u} \pdv{y}{v} - \pdv{x}{v} \pdv{y}{u}
+\end{equation*}
+\subsubsection{Change of Variables in Double Integrals}
+This matrix determinant allows us to change the variables of
+integration from \(\left( x,\: y \right)\) to \(\left( u,\: v \right)\)
+using the following formula:
+\begin{equation*}
+    \iint_{T\left( R \right)} f\left( x,\: y \right) \odif{x}\odif{y} = \iint_R f\left( T\left( u,\: v \right) \right) \abs*{\det{\left( \symbf{J} \right)}} \odif{u}\odif{v}
+\end{equation*}
+where \(f\left( T \right)\) is multiplied by the absolute value of the
+Jacobian.
+\subsection{Polar Coordinates}
+\begin{definition}[Polar Coordinates]
+    Polar coordinates are defined as
+    \begin{align*}
+        x & = r \cos{\theta} \\
+        y & = r \sin{\theta}
+    \end{align*}
+    where \(r \geqslant 0\) and \(\theta \in \rinterval{0}{2\pi}\).
+\end{definition}
+To convert a double integral from Cartesian coordinates to polar
+coordinates, we can use the Jacobian.
+\begin{align*}
+    \symbf{J}                      & =
+    \begin{bmatrix}
+        \displaystyle\pdv{x}{r} & \displaystyle\pdv{x}{\theta} \\
+        \displaystyle\pdv{y}{r} & \displaystyle\pdv{y}{\theta} \\
+    \end{bmatrix}
+    \\
+                                   & =
+    \begin{bmatrix}
+        \cos{\theta} & -r \sin{\theta} \\
+        \sin{\theta} & r \cos{\theta}  \\
+    \end{bmatrix}
+    \\
+    \det{\left( \symbf{J} \right)} & = r \cos^2{\theta} + r \sin^2{\theta} \\
+                                   & = r
+\end{align*}
+The infinitesimal area element \(\odif{A}\) is therefore
+\begin{equation*}
+    \odif{A} = \abs*{\det{\left( \symbf{J} \right)}} \odif{r}\odif{\theta} = r \odif{r}\odif{\theta}.
+\end{equation*}
+Using polar coordinates, the double integral over a region \(R\) is
+defined
+\begin{equation*}
+    \iint_R f\left( x,\: y \right) \odif{A} = \int_0^\infty \int_0^{2\pi} f\left( r \cos{\theta},\: r \sin{\theta} \right) r \odif{r}\odif{\theta}
+\end{equation*}
+\subsection{Strategies for Evaluating Double Integrals}
+\begin{enumerate}
+    \item Decompose the region of integration into simple domains, and
+    if this is not possible, divide the region into subregions.
+    \item Change the variables of integration to simplify the integral.
+    \item Swap the order of integration to simplify the integral.
+\end{enumerate}
 \end{document}
