@@ -4,6 +4,10 @@
 \input{LaTeX-Submodule/template.tex}
 
 % Additional packages & macros
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\divergence}{div}
+\DeclareMathOperator{\curl}{curl}
+\DeclareMathOperator{\sign}{sgn}
 
 % Header and footer
 \newcommand{\unitName}{Advanced Calculus}
@@ -103,7 +107,7 @@ Additionally, we can determine the projection of the vector \(\symbf{x}\) onto t
     \proj_{\symbf{y}} \left( \symbf{x} \right) = \left( \norm{\symbf{x}} \cos{\left( \theta \right)} \right) \hat{\symbf{y}} = \left( \norm{\symbf{x}} \left( \hat{\symbf{x}} \cdot \hat{\symbf{y}} \right) \right) \hat{\symbf{y}} = \left( \symbf{x} \cdot \hat{\symbf{y}} \right) \hat{\symbf{y}}
 \end{equation*}
 where \(\symbf{x} \cdot \hat{\symbf{y}}\) is the norm of the projection vector.
-\subsection{Additional Properties}
+\subsection{Normed Vector Space Axioms}
 \subsubsection{Triangle Inequality}
 \begin{equation*}
     \norm{\symbf{x} + \symbf{y}} \leqslant \norm{\symbf{x}} + \norm{\symbf{y}}
@@ -116,94 +120,213 @@ where \(\symbf{x} \cdot \hat{\symbf{y}}\) is the norm of the projection vector.
 \begin{equation*}
     \abs{\symbf{x} \cdot \symbf{y}} \leqslant \norm{\symbf{x}} \norm{\symbf{y}}
 \end{equation*}
-\subsection{Multivariable Functions}
-A multivariable function \(f\) maps a vector \(\symbf{x} \in \R^n\) to
-a real number \(f \left( \symbf{x} \right) \in \R\). This function can
-be expressed in \textbf{explicit form} as
+\subsection{Topological Properties}
+\begin{definition}
+    An open ball of radius \(r > 0\) centred at a
+    point \(\symbf{p} \in \R^n\) is denoted \(B_r\left( \symbf{p}
+    \right)\), and is defined as
+    \begin{equation*}
+        B_r\left( \symbf{p} \right) = \left\{ \symbf{x} \in \R^n : \norm{\symbf{x} - \symbf{p}} < r \right\}.
+    \end{equation*}
+    This region includes all points less than a distance \(r\) from the
+    vector \(\symbf{p}\), where the distance is typically defined by the
+    \(L_2\)-norm:
+    \begin{equation*}
+        \norm{\symbf{x} - \symbf{p}}_2 = \left( \sum_{i=1}^n \left( x_i - p_i \right)^2 \right)^{1/2}.
+    \end{equation*}
+\end{definition}
+\begin{definition}[Open Set]
+    A set \(S \subset \R^n\) is open if for every point \(\symbf{x} \in S\),
+    there exists \(\delta > 0\), such that the open ball
+    \(B_{\delta}\left( \symbf{x} \right) \in S\).
+\end{definition}
+\begin{definition}[Closed Set]
+    A set \(S \subset \R^n\) is closed if its complement
+    \(\R^n \setminus S\) is open.
+\end{definition}
+\begin{definition}[Connected Set]
+    A set \(S \subset \R^n\) is connected if it cannot be represented as
+    the union of two or more disjoint non-empty open subsets.
+\end{definition}
+\begin{definition}[Path Connected Set]
+    A set \(S \subset \R^n\) is path connected if for every pair of
+    points \(\symbf{x}, \symbf{y} \in S\), there exists a continuous
+    path \(\symbf{r}\left( t \right)\) from \(\symbf{x}\) to \(\symbf{y}\).
+\end{definition}
+\begin{definition}[Simply Connected Set]
+    A set \(S \subset \R^n\) is simply connected if it is path-connected
+    and if every closed path in \(S\) can be continuously contracted to
+    a point in \(S\).
+\end{definition}
+\subsection{Parametrisations of Curves}
+\begin{definition}[Path]
+    A path is a continuous function
+    \begin{equation*}
+        \symbf{r} : \interval{a}{b} \subset \R \to \R^n
+    \end{equation*}
+    where \(t \mapsto \symbf{r}\left( \symbf{x}\left( t \right) \right)\)
+    is the parameter of the path.
+\end{definition}
+\begin{definition}[Curve]
+    A curve \(\mathscr{C}\) is the set of points in \(\R^n\)
+    corresponding to the range of a path \(\symbf{r}\).
+    \begin{equation*}
+        \mathscr{C} = \left\{ \symbf{r}\left( t \right) : t \in \rinterval{a}{b} \right\}
+    \end{equation*}
+\end{definition}
+A curve \(\mathscr{C}\) is \textbf{parametrised} by \(\symbf{r}\left( t \right)\),
+and a path \(\symbf{r}\left( t \right)\) is a \textbf{parametrisation}
+of \(\mathscr{C}\).
+\begin{definition}[Closed Path]
+    A path is closed if it starts and ends at the same point:
+    \begin{equation*}
+        \symbf{r}\left( a \right) = \symbf{r}\left( b \right).
+    \end{equation*}
+\end{definition}
+\begin{definition}[Simple Path]
+    A path is simple if the map \(t \mapsto \symbf{r}\left( t \right)\)
+    is injective. That is, the path does not intersect itself.
+\end{definition}
+\begin{definition}[Regular Path]
+    A path is regular (or smooth) if has nonzero continuous first derivatives:
+    \begin{equation*}
+        \symbf{r}\left( t \right) \in \C^1 \quad \text{and} \quad
+        \symbf{r}'\left( t \right) \neq \symbf{0}
+    \end{equation*}
+    for all \(t\). This restriction ensures that the path does not have
+    any cusps and allows a unit tangent vector to be defined.
+\end{definition}
+\begin{definition}[Piecewise Regular Path]
+    A path is piecewise regular if it can be divided into a finite
+    number of regular paths.
+\end{definition}
+\begin{definition}[Path Concatenation]
+    The path concatenation of two paths \(\symbf{r}_1 : \interval{a}{b} \subset \R \to \R^n\)
+    and \(\symbf{r}_2 : \interval{b}{c} \subset \R \to \R^n\) is defined as
+    \begin{equation*}
+        \symbf{r}\left( t \right) = \left( \symbf{r}_1 \vee \symbf{r}_2 \right)\left( t \right) =
+        \begin{cases}
+            \symbf{r}_1\left( t \right) & t \in \interval{a}{b} \\
+            \symbf{r}_2\left( t \right) & t \in \interval{b}{c}
+        \end{cases}
+    \end{equation*}
+    where \(a < b < c\).
+\end{definition}
+\begin{definition}[Travelling Direction]
+    The travelling direction of a path \(\symbf{r}\left( t \right)\) is
+    the direction of increasing \(t\).
+    A regular curve can be oriented by choosing one of the two
+    travelling directions.
+\end{definition}
+\subsubsection{Remarks}
+\begin{itemize}
+    \item A curve is closed/simple/(piecewise) regular if it has a
+          (closed/simple)/(piecewise) regular parametrisation.
+    \item The implicit/explicit Cartesian representation of a curve is
+          a curve, as it describes a set of points.
+    \item The parametric representation of a curve is a path, as it
+          includes the timing of the points.
+    \item Converting from a curve to a path introduces a parameter.
+    \item Converting from a path to a curve eliminates a parameter.
+    \item \(\symbf{r}'\left( t \right)\) is the velocity vector of a path.
+    \item \(\norm*{\symbf{r}'\left( t \right)}\) is the speed of a path.
+    \item \(\symbf{r}''\left( t \right)\) is the acceleration vector of a path.
+    \item Parametrisations are not unique.
+\end{itemize}
+\subsubsection{Reparametrisation}
+Let \(\mathscr{C}\) be a curve parametrised by \(\symbf{r}\left( t
+\right)\) with \(t \in \interval{a}{b}\). If there exists a bijective
+map \(t = \theta\left( u \right)\), defined by \(\theta :
+\interval{c}{d} \to \interval{a}{b}\) such that
 \begin{equation*}
-    z = f\left( x,\: y \right)
+    \symbf{r}\left( \theta\left( u \right) \right) = \tilde{\symbf{r}}\left( u \right),
 \end{equation*}
-or in \textbf{implicit form} as
+where
+\begin{itemize}
+    \item \(\theta\left( u \right)\) is continuously differentiable, and
+    \item \(\theta'\left( u \right) \neq 0\) for all \(u \in \interval{c}{d}\),
+\end{itemize}
+then \(\tilde{\symbf{r}}\left( u \right)\) is a reparametrisation of
+\(\symbf{r}\left( t \right)\) for \(u \in \interval{c}{d}\), and a
+parametrisation of \(\mathscr{C}\). The map \(\theta\left( u \right)\)
+guarantees that the simple/regular properties of \(\symbf{r}\left( t \right)\)
+are preserved in \(\tilde{\symbf{r}}\left( u \right)\).
+\begin{itemize}
+    \item If \(\theta'\left( u \right) > 0\), then \(\symbf{r}\left( t
+          \right)\) and \(\tilde{\symbf{r}}\left( u \right)\) are
+          \textbf{equivalent} parametrisations.
+    \item If \(\theta'\left( u \right) < 0\), then \(\symbf{r}\left( t
+          \right)\) and \(\tilde{\symbf{r}}\left( u \right)\) are
+          \textbf{opposite} parametrisations.
+\end{itemize}
+The unit tangent vectors of \(\symbf{r}\left( t \right)\) and
+\(\tilde{\symbf{r}}\left( u \right)\) are related by the chain rule:
 \begin{equation*}
-    F\left( x,\: y,\: z \right) = z - f\left( x,\: y \right)
+    \tilde{\symbf{r}}'\left( u \right) = \symbf{r}'\left( \theta\left( u \right) \right) \theta'\left( u \right) \implies \norm*{\tilde{\symbf{r}}'\left( u \right)} = \norm*{\symbf{r}'\left( \theta\left( u \right) \right)} \abs*{\theta'\left( u \right)}
 \end{equation*}
-These equations define a surface in \(\R^3\).
-\subsubsection{Level Curves}
-The level curves of a function \(f \left( x,\: y \right)\) are the
-curves in \(\R^2\) where
-\begin{equation*}
-    f \left( x,\: y \right) = c
-\end{equation*}
-where \(c\) is the height of the curve. Implicitly, this is equivalent to
-\begin{equation*}
-    F\left( x,\: y,\: z \right) = 0.
-\end{equation*}
-Level curves represent paths of equal height on the surface defined by \(z = f \left( x,\: y \right)\).
-\subsection{Special Regions}
-\subsubsection{Balls}
-In an Euclidean space, an open ball of radius \(r > 0\) centred at a
-point \(\symbf{p} \in \R^n\) is denoted \(B_r\left( \symbf{p}
-\right)\), and is defined as
-\begin{equation*}
-    B_r\left( \symbf{p} \right) = \left\{ \symbf{x} \in \R^n : \norm{\symbf{x} - \symbf{p}} < r \right\}.
-\end{equation*}
-This region includes all points less than a distance \(r\) from the vector \(\symbf{p}\),
-where the distance is typically defined by the \(L_2\)-norm:
-\begin{equation*}
-    \norm{\symbf{x} - \symbf{p}}_2 = \left( \sum_{i=1}^n \left( x_i - p_i \right)^2 \right)^{1/2}.
-\end{equation*}
+so that by dividing the first result by the second, we obtain
+\begin{align*}
+    \frac{\symbf{r}'\left( t \right)}{\norm*{\symbf{r}'\left( t \right)}} & = \frac{\tilde{\symbf{r}}'\left( u \right)}{\norm*{\tilde{\symbf{r}}'\left( u \right)}} \frac{\theta'\left( u \right)}{\abs*{\theta'\left( u \right)}} \\
+                                                                          & = \sign{\left( \theta'\left( u \right) \right)} \frac{\tilde{\symbf{r}}'\left( u \right)}{\norm*{\tilde{\symbf{r}}'\left( u \right)}}                  \\
+                                                                          & =
+    \begin{cases}
+        \displaystyle\frac{\tilde{\symbf{r}}'\left( u \right)}{\norm*{\tilde{\symbf{r}}'\left( u \right)}}  & \text{if } \theta'\left( u \right) > 0 \\[2.5ex]
+        -\displaystyle\frac{\tilde{\symbf{r}}'\left( u \right)}{\norm*{\tilde{\symbf{r}}'\left( u \right)}} & \text{if } \theta'\left( u \right) < 0
+    \end{cases}
+\end{align*}
 \subsection{Mathematical Representation of Curves}
-\subsubsection{Explicit Form}
-A curve in \(\R^2\) can be represented in explicit form as
+\begin{definition}[Degree of Freedom]
+    The degree of freedom of a curve is the difference between the
+    number of variables and the number of equations.
+\end{definition}
+\subsubsection{Explicit Form (2D)}
+A curve \(\mathscr{C} \in \R^2\) can be represented explicitly as
 \begin{equation*}
     y = f\left( x \right)
 \end{equation*}
-but this is not possible in \(\R^3\) as a 3D curve requires two equations.
-For a 2D explicit curve:
-\begin{itemize}
-    \item \(x\) is an independent variable such that we have 1 degree of freedom.
-\end{itemize}
+When \(n > 2\), it is not possible to describe a curve explicitly.
+The degree of freedom for a 2D explicit curve is 1.
 \subsubsection{Implicit Form}
-A curve in \(\R^2\) can be represented in implicit form as
-\begin{equation*}
-    F\left( x,\: y \right) = 0.
-\end{equation*}
-In 3D, we must impose an additional equation that intersects a surface.
+A curve \(\mathscr{C} \in \R^n\) can be represented implicitly as the
+intersection of \(n - 1\) surfaces.
 \begin{equation*}
     \left\{
     \begin{aligned}
-        F\left( x,\: y,\: z \right) & = 0 \\
-        G\left( x,\: y,\: z \right) & = 0
+        F_1\left( \symbf{x},\: z \right)       & = 0 \\
+        F_2\left( \symbf{x},\: z \right)       & = 0 \\
+        \vdots                                 &     \\
+        F_{n - 1}\left( \symbf{x},\: z \right) & = 0
     \end{aligned}
     \right.
 \end{equation*}
-In both cases, we have 1 degree of freedom as the degrees of freedom is the
-difference between the number of variables and the number of equations.
+The degree of freedom is 1.
 \subsubsection{Parametric Form}
-In parametric form, curves are parametrised in terms of a parameter
-\(t\). In 2D, this is represented as
+A curve \(\mathscr{C} \in \R^n\) can be represented parametrically as
 \begin{equation*}
-    \symbf{r}\left( t \right) = \abracket*{x\left( t \right),\: y\left( t \right)}
+    \symbf{r}\left( t \right) =
+    \begin{bmatrix}
+        x_1\left( t \right) \\
+        x_2\left( t \right) \\
+        \vdots              \\
+        x_n\left( t \right)
+    \end{bmatrix}
 \end{equation*}
-and similarly in 3D,
-\begin{equation*}
-    \symbf{r}\left( t \right) = \abracket*{x\left( t \right),\: y\left( t \right),\: z\left( t \right)}
-\end{equation*}
+where \(t\) is the parameter. The degree of freedom is \(n - 1\).
 \subsection{Converting Between Representations}
 \subsubsection{Explicit to Implicit}
-The equation \(y = f\left( x \right)\) can always be converted to
-implicit form by rewriting it as
+The equation \(z = f\left( \symbf{x} \right)\) can always be converted
+to implicit form by rewriting it as
 \begin{equation*}
-    F\left( x,\: y \right) = y - f\left( x \right) = 0.
+    F\left( \symbf{x},\: z \right) = z - f\left( \symbf{x} \right) = 0.
 \end{equation*}
 \subsubsection{Implicit to Explicit}
-The equation \(F\left( x,\: y \right) = 0\) can be converted to
-explicit form if we can solve for \(y\) (or \(x\)):
+The equation \(F\left( \symbf{x},\: z \right) = 0\) can be converted to
+explicit form if we can solve for \(z\) in terms of \(\symbf{x}\).
 \subsubsection{Parametric to Explicit/Implicit}
-The equation \(\symbf{r}\left( t \right) = \abracket*{x\left( t
-\right),\: y\left( t \right)}\) can be written in explicit or implicit
-form, if the parameter \(t\) can be eliminated from the simultaneous
-equations.
+The equation \(\symbf{r}\left( t \right) = \abracket*{x_1\left( t
+\right),\: \dots,\: x_n\left( t \right)}\) can be written in explicit
+or implicit form, if the parameter \(t\) can be eliminated from the
+simultaneous equations.
 \subsubsection{Explicit to Parametric}
 The equation \(y = f\left( x \right)\) can always be converted to
 parametric form by choosing the parameter \(t = x\), so that
@@ -211,15 +334,15 @@ parametric form by choosing the parameter \(t = x\), so that
     \symbf{r}\left( t \right) = \abracket*{t,\: f\left( t \right)}.
 \end{equation*}
 \subsubsection{Implicit to Parametric}
-The equation \(F\left( x,\: y \right) = 0\) can be converted to
-parametric form if we can find \(x = p\left( t \right)\) and \(y =
-q\left( t \right)\), such that \(F\left( p\left( t \right),\: q\left( t
-\right) \right) = 0\), and
+The equation \(F\left( \symbf{x} \right) = 0\) can be converted to
+parametric form if we can find \(\symbf{x} = \symbf{r}\left( t
+\right)\) such that \(F\left( \symbf{r}\left( t \right) \right) = 0\),
+and
 \begin{equation*}
-    \symbf{r}\left( t \right) = \abracket*{p\left( t \right),\: q\left( t \right)}
+    \symbf{r}\left( t \right) = \abracket*{x_1\left( t \right),\: \dots,\: x_n\left( t \right)}.
 \end{equation*}
 for all \(t\).
-\subsection{Paramaterisation}
+\subsection{Common Parametrisations}
 To parametrise a curve, consider the following strategies:
 \begin{itemize}
     \item For a closed curve, consider the polar parametrisation in
@@ -287,15 +410,19 @@ angle \(\theta\), then shift the curve by \(\abracket*{x_0,\: y_0}\).
 The velocity vector of a parametrised curve \(\symbf{r}\left( t \right)
 =
 \begin{bmatrix}
-    x\left( t \right) \\
-    y\left( t \right)
+    x_1\left( t \right) \\
+    x_2\left( t \right) \\
+    \vdots              \\
+    x_n\left( t \right)
 \end{bmatrix}
 \) is defined as
 \begin{equation*}
     \symbf{v}\left( t \right) = \symbf{r}'\left( t \right) = \lim_{\Delta t \to 0} \frac{\symbf{r}\left( t + \Delta t \right) - \symbf{r}\left( t \right)}{\Delta t} =
     \begin{bmatrix}
-        x'\left( t \right) \\
-        y'\left( t \right)
+        x_1'\left( t \right) \\
+        x_2'\left( t \right) \\
+        \vdots               \\
+        x_n'\left( t \right)
     \end{bmatrix}
 \end{equation*}
 where \(\symbf{v}\left( t \right)\) is a tangent vector to the curve at the point \(\symbf{r}\left( t \right)\), for all \(t\).
@@ -304,7 +431,7 @@ Following from the definition of the velocity vector, the tangent
 vectors of a parametrised curve are unit vectors in the direction of
 the velocity vector.
 \begin{equation*}
-    \hat{\symbf{\tau}}\left( t \right) = \pm \frac{\symbf{v}\left( t \right)}{\norm{\symbf{v}\left( t \right)}} = \pm \hat{\symbf{v}\left( t \right)}
+    \hat{\symbf{\tau}}\left( t \right) = \pm \frac{\symbf{v}\left( t \right)}{\norm{\symbf{v}\left( t \right)}} = \pm \hat{\symbf{v}}\left( t \right)
 \end{equation*}
 For a curve given in explicit form \(y = f\left( x \right)\), the tangent vectors are given by
 \begin{equation*}
@@ -341,7 +468,7 @@ For a curve given in explicit form \(y = f\left( x \right)\), the tangent vector
     \end{equation*}
 \end{definition}
 \begin{definition}[Graph]
-    The graph of \(f\) is the defined as the set
+    The graph of \(f\) is defined as the set
     \begin{equation*}
         G = \left\{ \abracket*{\symbf{x},\: f\left( \symbf{x} \right)} : \symbf{x} \in E \right\} \subset \R^{n + 1}
     \end{equation*}
@@ -367,9 +494,13 @@ For a curve given in explicit form \(y = f\left( x \right)\), the tangent vector
     In 2D, level sets are called \textbf{level curves}.
 \end{definition}
 \begin{definition}[Contour Map]
-    The projection of all level curves onto the \(xy\)-plane is called the \textbf{contour map} of \(f\). T
-    he lines of a contour map are called \textbf{contours}.
+    The projection of all level curves onto the \(xy\)-plane is called the \textbf{contour map} of \(f\).
+    The lines of a contour map are called \textbf{contours}.
 \end{definition}
+\begin{theorem}[Level Sets and Gradients]
+    The level set of a function \(f\) is perpendicular to the gradient
+    of \(f\).
+\end{theorem}
 \subsection{Derivatives}
 \begin{definition}[Continuity]
     A function \(f\) is continuous at a point \(\symbf{x}_0\) if
@@ -413,7 +544,7 @@ For a curve given in explicit form \(y = f\left( x \right)\), the tangent vector
     For an arbitrary \(n\) and \(k \leqslant n\), if all partials of order \(\leqslant \! k\) are continuous in the neighbourhood of \(\symbf{x}_0\),
     then mixed partials of order \(k\) are equal for any permutation of indices:
     \begin{equation*}
-        \pdv[mixed-order=k]{f}{x_{i_1}...,x_{i_k}} = \pdv[mixed-order=k]{f}{x_{j_1}\ldots,x_{j_k}}
+        \pdv[mixed-order=k]{f}{x_{i_1}\ldots,x_{i_k}} = \pdv[mixed-order=k]{f}{x_{j_1}\ldots,x_{j_k}}
     \end{equation*}
 \end{remark}
 \subsection{Chain Rule}
@@ -425,7 +556,7 @@ summed.
     \odv{}{t} f\left( x\left( t \right),\: y\left( t \right) \right) = \pdv{f}{x} \odv{x}{t} + \pdv{f}{y} \odv{y}{t} \\
     \pdv{}{u} f\left( x\left( u,\: v \right),\: y\left( u,\: v \right) \right) = \pdv{f}{x} \pdv{x}{u} + \pdv{f}{y} \pdv{y}{u}
 \end{gather*}
-\begin{definition}[Total derivative]
+\begin{definition}[Total Derivative]
     The total derivative of a function \(f : \R^n \to \R\) is defined as
     \begin{equation*}
         \odv{f}{t} = \sum_{i = 1}^n \pdv{f}{x_i} \odv{x_i}{t} = \pdv{f}{x_1} \odv{x_1}{t} + \pdv{f}{x_2} \odv{x_2}{t} + \cdots + \pdv{f}{x_n} \odv{x_n}{t}
@@ -465,7 +596,7 @@ The gradient allows us to define the chain rule using the dot product:
 \begin{equation*}
     \odv{f}{t} = \symbf{\nabla} f \cdot \odv{\symbf{x}}{t}
 \end{equation*}
-\subsection{Directional Derivative}
+\subsection{Directional Derivatives}
 The directional derivative of a function \(f : E \subset \R^n \to \R\)
 at a point \(\symbf{x}_0 \in E\) in the direction of a unit vector
 \(\hat{\symbf{u}} \in \R^n\) is the slope of \(f\) in the direction of
@@ -605,7 +736,7 @@ such that the tangent vector is given by
     \end{bmatrix}
 \end{equation*}
 \subsubsection{Implicit Curves in 3D}
-Given the intersectin of two implicit curves \(F\left( x,\: y,\: z
+Given the intersection of two implicit curves \(F\left( x,\: y,\: z
 \right) = 0\) and \(G\left( x,\: y,\: z \right) = 0\), the tangent
 vector along the intersection is given by
 \begin{equation*}
@@ -647,7 +778,7 @@ The linear map \(f'\left( \symbf{a} \right)\) is then the derivative of \(f\) at
     continuous (i.e., \(\pdv{f}{x_i} : \Omega \subset \R^n \to R\) are
     continuous), then \(f\) is differentiable everywhere in \(\Omega\).
 \end{theorem}
-The first result tells us that the derivative is unique, and that \(f\) is
+The first result tells us that the derivative is unique and that \(f\) is
 differentiable at \(\symbf{a}\) if it has a tangent plane at \(\symbf{a}\).
 The second result gives us a sufficient condition for differentiability.
 \subsection{Taylor Series Expansion}
@@ -655,7 +786,7 @@ The Taylor series expansion of a function \(f\) at a point
 \(\symbf{a}\) is given by
 \begin{multline*}
     f\left( \symbf{x} \right) = f\left( \symbf{a} \right) + \sum_{i = 0}^n \pdv{f\left( \symbf{a} \right)}{x_i} \left( x_i - a_i \right) + \frac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n \pdv{f\left( \symbf{a} \right)}{x_i,x_j} \left( x_i - a_i \right) \left( x_j - a_j \right) + \cdots \\
-    + \frac{1}{k!} \sum_{i_1, \ldots, i_k}^{n} \pdv{f\left( \symbf{a} \right)}{x_{i_1}, \cdots, x_{i_k}} \left( x_{i_1} - a_{i_1} \right) \cdots \left( x_{i_k} - a_{i_k} \right) + \cdots
+    + \frac{1}{k!} \sum_{i_1, \ldots, i_k}^{n} \pdv{f\left( \symbf{a} \right)}{x_{i_1}, \ldots, x_{i_k}} \left( x_{i_1} - a_{i_1} \right) \cdots \left( x_{i_k} - a_{i_k} \right) + \cdots
 \end{multline*}
 This allows us to compute the tangent plane, paraboloid, and so on, of
 a function \(f\) at \(\symbf{a}\), by increasing the order \(k\) of the
@@ -735,7 +866,7 @@ Therefore, the double integral is defined
         \iint_{\R^2} f\left( x,\: y \right) \odif{A} = \int_{-\infty}^\infty \left[ \int_{-\infty}^\infty f\left( x,\: y \right) \odif{x} \right] \odif{y} = \int_{-\infty}^\infty \left[ \int_{-\infty}^\infty f\left( x,\: y \right) \odif{y} \right] \odif{x}
     \end{equation*}
 \end{theorem}
-\subsection{Measure of a Region}
+\subsection{Measures}
 \begin{definition}[Indicator Function]
     The indicator function of \(R\) is defined:
     \begin{equation*}
@@ -921,7 +1052,7 @@ All results and properties for double integrals can be extended to
 triple integrals.
 \begin{theorem}[Fubini's Theorem in \(n\)-dimensions]
     If \(f : \R^n \to \R^+\), or \(f : \R^n \to \R\) is integrable, then
-    all \(n!\) permutations of integrals are equal:
+    all \(n! \) permutations of integrals are equal:
     \begin{equation*}
         \int_{\R^n} f\left( x_1,\: \ldots,\: x_n \right) \odif{x_1} \cdots \odif{x_n} = \int_{-\infty}^\infty \left[ \cdots \left[ \int_{-\infty}^\infty f\left( x_1,\: \ldots,\: x_n \right) \odif{x_1} \right] \cdots \right] \odif{x_n}
     \end{equation*}
@@ -1137,4 +1268,518 @@ except for a set of measure zero, then
 \begin{equation*}
     \int_{\R^n} f\left( \symbf{x} \right) \odif{\symbf{x}} = \int_{\R^n} g\left( \symbf{x} \right) \odif{\symbf{x}}
 \end{equation*}
+\section{Vector Calculus}
+A vector-valued multivariable function is a function \(\symbfit{f} : E
+\subset \R^n \to \R^m\) that maps a vector \(\symbf{x} \in \R^n\) to
+the vector \(\symbfit{f}\left( \symbf{x} \right) \in \R^m\). \(f\) is
+continuous if all components of \(\symbfit{f}\) are continuous, and
+differentiable if all components of \(\symbfit{f}\) are differentiable.
+
+If \(\symbfit{f}\) is differentiable at a point \(\symbf{x}_0\), then
+it's derivative \(\symbfit{f}'\left( \symbf{x}_0 \right)\) is uniquely
+defined by the Jacobian matrix of \(\symbfit{f}\) at \(\symbf{x}_0\):
+\begin{equation*}
+    \symbfit{f}'\left( \symbf{x}_0 \right) = \symbf{\nabla} \symbfit{f}\left( \symbf{x}_0 \right) = \symbf{J}^\top \left( \symbf{x}_0 \right)
+\end{equation*}
+\begin{definition}[Scalar Field]
+    If \(m = 1\), then \(f : E \subset \R^n \to \R\) is a scalar field
+    that associates a scalar value to each point \(\symbf{x} \in E\).
+\end{definition}
+\begin{definition}[Vector Field]
+    If \(m = n\), then \(\symbf{F} : E \subset \R^n \to \R^n\) is a
+    vector field that associates a vector to each point \(\symbf{x} \in E\).
+    In this case, the Jacobian matrix is a square matrix and the
+    Jacobian may be defined.
+\end{definition}
+\begin{definition}[Field Lines]
+    The field lines of a vector field \(\symbf{F}\) are a family of
+    curves that are tangent to \(\symbf{F}\) for all \(\symbf{x}\). They
+    are defined as the solutions to the differential equation
+    \begin{equation*}
+        \symbf{r}'\left( t \right) = \symbf{F}\left( \symbf{r}\left( t \right) \right)
+    \end{equation*}
+    for all \(t\). When \(m = 2\),
+    \begin{align*}
+        \odv{x}{t} & = F_1\left( x,\: y \right) \\
+        \odv{y}{t} & = F_2\left( x,\: y \right)
+    \end{align*}
+    and a field line may be defined in Cartesian coordinates as the
+    solution to
+    \begin{equation*}
+        \odv{y}{x} = \frac{F_2\left( x,\: y \right)}{F_1\left( x,\: y \right)}.
+    \end{equation*}
+\end{definition}
+\begin{lemma}
+    The field lines of a scalar multiple of a vector field are the same
+    as the field lines of that vector field.
+\end{lemma}
+\subsection{Differential Operators on Scalar Fields}
+\begin{definition}[Gradient]
+    The gradient of a scalar field is defined as the derivative of the
+    scalar field in every direction:
+    \begin{equation*}
+        \grad{f} = \symbf{\nabla} f = \symbf{J}^\top =
+        \begin{bmatrix}
+            \pdv{f}{\symbf{x}_1} \\
+            \vdots               \\
+            \pdv{f}{\symbf{x}_n}
+        \end{bmatrix}
+    \end{equation*}
+    The gradient measures the rate of change of a scalar field in all
+    directions at a given point.
+\end{definition}
+\begin{definition}[Laplacian]
+    The Laplacian of a scalar field is defined as the divergence of the
+    gradient:
+    \begin{equation*}
+        \symbf{\Delta} f = \divergence{\left( \grad{f} \right)} = \symbf{\nabla}^2 f = \symbf{\nabla} \cdot \symbf{\nabla} f = \sum_{i = 1}^n \pdv[order=2]{f}{\symbf{x}_i}
+    \end{equation*}
+    The Laplacian measures the curvature or convexity of the surface
+    \(z = f\left( \symbf{x} \right)\).
+\end{definition}
+\subsection{Differential Operators on Vector Fields}
+\begin{definition}[Divergence]
+    The divergence of a vector field is defined as the dot product of
+    the gradient and the vector field:
+    \begin{equation*}
+        \divergence{\symbf{F}} = \symbf{\nabla} \cdot \symbf{F} = \pdv{\symbf{F}_1}{\symbf{x}_1} + \cdots + \pdv{\symbf{F}_n}{\symbf{x}_n} = \sum_{i = 1}^n \pdv{\symbf{F}_i}{\symbf{x}_i}.
+    \end{equation*}
+    Divergence measures the expansion of a vector field at a given point.
+\end{definition}
+\begin{itemize}
+    \item \(\divergence{\symbf{F}}\left( \symbf{x}_0 \right) > 0\)
+          indicates that \(\symbf{x}_0\) is a source, and the vector field is
+          diverging out from \(\symbf{x}_0\).
+    \item \(\divergence{\symbf{F}}\left( \symbf{x}_0 \right) < 0\)
+          indicates that \(\symbf{x}_0\) is a sink, and the vector field is
+          converging into \(\symbf{x}_0\).
+    \item \(\divergence{\symbf{F}}\left( \symbf{x}_0 \right) = 0\)
+          indicates that the net flow of the vector field at \(\symbf{x}_0\) is zero.
+\end{itemize}
+\begin{definition}[Curl]
+    The curl of a vector field is defined as the cross product of the
+    gradient and the vector field:
+    \begin{equation*}
+        \curl{\symbf{F}} = \symbf{\nabla} \times \symbf{F} =
+        \begin{vmatrix}
+            \symbf{i}                        & \symbf{j}                        & \symbf{k}                        \\
+            \displaystyle\pdv{}{\symbf{x}_1} & \displaystyle\pdv{}{\symbf{x}_2} & \displaystyle\pdv{}{\symbf{x}_3} \\
+            \symbf{F}_1                      & \symbf{F}_2                      & \symbf{F}_3                      \\
+        \end{vmatrix}
+        =
+        \begin{vmatrix}
+            \displaystyle\pdv{}{\symbf{x}_2} & \displaystyle\pdv{}{\symbf{x}_3} \\
+            \symbf{F}_2                      & \symbf{F}_3                      \\
+        \end{vmatrix}
+        \symbf{i}
+        -
+        \begin{vmatrix}
+            \displaystyle\pdv{}{\symbf{x}_1} & \displaystyle\pdv{}{\symbf{x}_3} \\
+            \symbf{F}_1                      & \symbf{F}_3                      \\
+        \end{vmatrix}
+        \symbf{j}
+        +
+        \begin{vmatrix}
+            \displaystyle\pdv{}{\symbf{x}_1} & \displaystyle\pdv{}{\symbf{x}_2} \\
+            \symbf{F}_1                      & \symbf{F}_2                      \\
+        \end{vmatrix}
+        \symbf{k}
+    \end{equation*}
+    Curl measures the rotation of a vector field at a given point.
+    \begin{itemize}
+        \item \(\curl{\symbf{F}}\left( \symbf{x}_0 \right) > 0\)
+              indicates that the vector field is rotating anticlockwise about
+              \(\symbf{x}_0\).
+        \item \(\curl{\symbf{F}}\left( \symbf{x}_0 \right) < 0\)
+              indicates that the vector field is rotating clockwise about
+              \(\symbf{x}_0\).
+        \item \(\curl{\symbf{F}}\left( \symbf{x}_0 \right) = 0\)
+              indicates that the net rotation about \(\symbf{x}_0\) is zero.
+    \end{itemize}
+\end{definition}
+\subsection{Conservative Fields}
+A vector field \(\symbf{F}\) is conservative if it is the gradient of a
+potential function \(\phi\):
+\begin{equation*}
+    \symbf{F} = \symbf{\nabla} \phi.
+\end{equation*}
+Such a vector field represents a force field in which the total energy is
+conserved.
+
+The contours of the scalar field \(\phi\) are called equipotential
+lines (\(\phi\) is constant). These lines are perpendicular to the
+field lines of \(\symbf{F}\).
+\begin{equation*}
+    \left( \symbf{F} = \symbf{\nabla} \phi \right) \perp \left( \phi = \text{constant} \right)
+\end{equation*}
+This is because the contours of a scalar field are defined to be
+perpendicular to the gradient of that scalar field.
+\subsection{Line Integrals}
+A line integral is an integral where the function to be integrated is
+evaluated along a curve. This function may be a scalar field or a
+vector field. Line integrals can be interpreted as a measure of the
+total effect of a function along a curve.
+
+To evaluate line integrals, we must define a parametrisation of the arc
+length of the curve.
+\subsubsection{Arc Length}
+Arc length is the distance travelled along a path or curve. When
+\(\symbf{r}\left( t \right)\) is a path, the arc length between
+\(\symbf{r}\left( a \right)\) to \(\symbf{r}\left( t \right)\) is given
+by
+\begin{equation*}
+    s\left( t \right) = \int_a^t \norm*{\symbf{r}'\left( \tau \right)} \odif{\tau}
+\end{equation*}
+where the integrand can be interpreted as the product of the speed of
+along the path \(\symbf{r}\left( t \right)\) with a small time interval
+\(\odif{\tau}\).
+The length \(L\) of a path is therefore
+\begin{equation*}
+    L = s\left( b \right) = \int_a^b \norm*{\symbf{r}'\left( \tau \right)} \odif{\tau}.
+\end{equation*}
+\begin{theorem}[Arc Length Reparametrisation]
+    A (piecewise) regular curve \(\mathscr{C}\) can always be
+    reparametrised by the arc length parametrisation \(s\left( t \right)\):
+    \begin{equation*}
+        \tilde{\symbf{r}}\left( s \right) = \symbf{r}\left( \theta\left( s \right) \right)
+    \end{equation*}
+    for \(s \in \interval{0}{L}\).
+\end{theorem}
+\begin{proof}
+    As \(r'\left( t \right) \neq 0\), \(\norm*{r'\left( t \right)} > 0\),
+    and therefore, \(s\left( t \right)\) is a strictly increasing function.
+    This means that \(s\left( t \right)\) is invertible, and therefore,
+    \(t = \theta\left( s \right)\) is a bijective map between \(\interval{0}{L}\)
+    and \(\interval{a}{b}\).
+\end{proof}
+\begin{remark}
+    The rate of change of \(s\left( t \right)\) is the speed of the
+    path \(\symbf{r}\left( t \right)\):
+    \begin{equation*}
+        \odv{s}{t} = \odv{}{t} \left[ \int_a^t \norm*{\symbf{r}'\left( \tau \right)} \odif{\tau} \right] = \norm*{\symbf{r}'\left( t \right)}.
+    \end{equation*}
+\end{remark}
+\begin{remark}
+    The speed of a path parametrised by arc length is always \(1\):
+    \begin{equation*}
+        \norm*{\tilde{\symbf{r}}'\left( s \right)} = \norm*{\symbf{r}'\left( \theta\left( s \right) \right)} \abs*{\odv{\theta\left( s \right)}{s}} = \norm*{\symbf{r}'\left( \theta\left( s \right) \right)} \frac{1}{\abs*{\odv{s}{\theta\left( s \right)}}} = \norm*{\symbf{r}'\left( \theta\left( s \right) \right)} \frac{1}{\norm*{\symbf{r}'\left( \theta\left( s \right) \right)}} = 1.
+    \end{equation*}
+\end{remark}
+\subsubsection{Line Integral of a Scalar Field}
+Let \(\mathscr{C}\) be a simple and piecewise regular curve
+parametrised by \(\symbf{r}\left( t \right)\) with \(t \in
+\interval{a}{b}\). The line integral of a scalar field \(f\) along
+\(\mathscr{C}\) is defined as
+\begin{equation*}
+    \int_{\mathscr{C}} f \odif{s} = \int_a^b f\left( \symbf{r}\left( t \right) \right) \norm*{\symbf{r}'\left( t \right)} \odif{t}
+\end{equation*}
+where \(\odif{s} = \norm*{\symbf{r}'\left( t \right)} \odif{t}\) is the
+differential arc length element along \(\mathscr{C}\).
+
+This integral represents the weighted sum of \(f\) along
+\(\mathscr{C}\), where the weight is the speed of the path
+\(\symbf{r}\left( t \right)\). This line integral can be interpreted as
+the area under the surface defined by \(f\) along \(\mathscr{C}\).
+\begin{lemma}[Equivalence of Parametrisations]
+    Let \(\tilde{\symbf{r}}\left( u \right)\) be a
+    reparametrisation of \(\symbf{r}\left( t \right)\) with \(u \in
+    \interval{c}{d}\). Then
+    \begin{equation*}
+        \int_{\mathscr{C}} f \odif{s} = \int_c^d f\left( \tilde{\symbf{r}}\left( u \right) \right) \norm*{\tilde{\symbf{r}}'\left( u \right)} \odif{u}
+    \end{equation*}
+    and the line integral is independent of the parametrisation of
+    \(\mathscr{C}\).
+\end{lemma}
+\begin{proof}
+    Consider the parametrisation \(t = \theta\left( u \right)\),
+    where the differential time element
+    \(\odif{t} = \abs*{\theta'\left( u \right)} \odif{u}\), by the
+    Change of Variables property. Then
+    \begin{align*}
+        \int_{\mathscr{C}} f \odif{s} & = \int_a^b f\left( \symbf{r}\left( t \right) \right) \norm*{\symbf{r}'\left( t \right)} \odif{t}                                                                          \\
+                                      & = \int_c^d f\left( \symbf{r}\left( \theta\left( u \right) \right) \right) \norm*{\symbf{r}'\left( \theta\left( u \right) \right)} \abs*{\theta'\left( u \right)} \odif{u} \\
+                                      & = \int_c^d f\left( \tilde{\symbf{r}}\left( u \right) \right) \norm*{\tilde{\symbf{r}}'\left( u \right)} \odif{u}.
+    \end{align*}
+\end{proof}
+\subsubsection{Line Integral of a Vector Field}
+Let \(\mathscr{C}\) be a simple and piecewise regular curve
+parametrised by \(\symbf{r}\left( t \right)\) with \(t \in
+\interval{a}{b}\). The line integral of a vector field \(\symbf{F}\)
+along \(\mathscr{C}\) is defined as
+\begin{equation*}
+    \int_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}} = \int_a^b \symbf{F}\left( \symbf{r}\left( t \right) \right) \cdot \symbf{r}'\left( t \right) \odif{t}
+\end{equation*}
+where \(\odif{\symbf{r}} = \symbf{r}'\left( t \right) \odif{t}\) is the
+differential path element along \(\mathscr{C}\).
+
+This integral represents the weighted sum of \(\symbf{F}\) along
+\(\mathscr{C}\), where the weight is the component of the velocity of
+the path \(\symbf{r}\left( t \right)\) in the direction of
+\(\symbf{F}\). This line integral can be interpreted as the work done
+by the force field \(\symbf{F}\) along \(\mathscr{C}\).
+\begin{lemma}[Equivalence of Parametrisations]
+    Let \(\tilde{\symbf{r}}\left( u \right)\) be a
+    reparametrisation of \(\symbf{r}\left( t \right)\) with \(u \in
+    \interval{c}{d}\). Then
+    \begin{equation*}
+        \int_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}} =
+        \begin{cases}
+            \displaystyle\int_c^d \symbf{F}\left( \tilde{\symbf{r}}\left( u \right) \right) \cdot \tilde{\symbf{r}}'\left( u \right) \odif{u}  & \text{if } \theta'\left( u \right) > 0 \\[2.5ex]
+            -\displaystyle\int_c^d \symbf{F}\left( \tilde{\symbf{r}}\left( u \right) \right) \cdot \tilde{\symbf{r}}'\left( u \right) \odif{u} & \text{if } \theta'\left( u \right) < 0
+        \end{cases}
+    \end{equation*}
+    and the line integral is independent of the parametrisation of
+    \(\mathscr{C}\).
+\end{lemma}
+\begin{proof}
+    Consider the parametrisation \(t = \theta\left( u \right)\),
+    where the differential time element
+    \(\odif{t} = \abs*{\theta'\left( u \right)} \odif{u}\), by the
+    Change of Variables property. Then
+    \begin{align*}
+        \int_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}} & = \int_a^b \symbf{F}\left( \symbf{r}\left( t \right) \right) \cdot \symbf{r}'\left( t \right) \odif{t} \\
+                                                            & =
+        \begin{cases}
+            \displaystyle\int_c^d \symbf{F}\left( \symbf{r}\left( \theta\left( u \right) \right) \right) \cdot \symbf{r}'\left( \theta\left( u \right) \right) \abs*{\theta'\left( u \right)} \odif{u}  & \text{if } \theta'\left( u \right) > 0 \\[2.5ex]
+            -\displaystyle\int_c^d \symbf{F}\left( \symbf{r}\left( \theta\left( u \right) \right) \right) \cdot \symbf{r}'\left( \theta\left( u \right) \right) \abs*{\theta'\left( u \right)} \odif{u} & \text{if } \theta'\left( u \right) < 0
+        \end{cases}
+        \\
+                                                            & =
+        \begin{cases}
+            \displaystyle\int_c^d \symbf{F}\left( \tilde{\symbf{r}}\left( u \right) \right) \cdot \tilde{\symbf{r}}'\left( u \right) \odif{u}  & \text{if } \theta'\left( u \right) > 0 \\[2.5ex]
+            -\displaystyle\int_c^d \symbf{F}\left( \tilde{\symbf{r}}\left( u \right) \right) \cdot \tilde{\symbf{r}}'\left( u \right) \odif{u} & \text{if } \theta'\left( u \right) < 0
+        \end{cases}
+    \end{align*}
+\end{proof}
+\begin{corollary}[Line Integrals in the Reverse Direction]
+    Taking the line integral of a path in the reverse direction is
+    equivalent to negating the line integral over the original path.
+    \begin{align*}
+        \int_{-\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}} & = -\int_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}}
+    \end{align*}
+    where \(-\mathscr{C}\) is the curve parametrised by
+    \(\symbf{r}\left( a + b - t \right)\).
+\end{corollary}
+\subsubsection{Relationship between Line Integrals over Scalar and Vector Fields}
+Line integrals over scalar fields may be evaluated with respect to a
+single variable \(x_i\):
+\begin{equation*}
+    \int_{\mathscr{C}} f \odif{x_i} = \int_a^b f\left( \symbf{r}\left( t \right) \right) \symbf{r}'_i\left( t \right) \odif{t}
+\end{equation*}
+where \(\odif{x_i} = \symbf{r}'_i\left( t \right) \odif{t}\) is the
+differential element in the direction of \(x_i\) along \(\mathscr{C}\).
+By adding the line integrals over all \(x_i\), we obtain
+\begin{equation*}
+    \int_{\mathscr{C}} \left( \symbf{F}_1 \odif{x_1} + \cdots + \symbf{F}_n \odif{x_n} \right) = \int_a^b \left( \symbf{F}_1 \symbf{r}'_1 \odif{t} + \cdots + \symbf{F}_n \symbf{r}'_n \odif{t} \right) = \int_a^b \symbf{F}\left( \symbf{r}\left( t \right) \right) \cdot \symbf{r}'\left( t \right) \odif{t} = \int_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}}.
+\end{equation*}
+Line integrals over vector fields may be evaluated using the unit
+tangent vector of the path \(\symbf{r}\left( t \right)\), so that
+\begin{equation*}
+    \int_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}} = \int_a^b \symbf{F}\left( \symbf{r}\left( t \right) \right) \cdot \frac{\symbf{r}'\left( t \right)}{\norm*{\symbf{r}'\left( t \right)}} \norm*{\symbf{r}'\left( t \right)} \odif{t} = \int_a^b \underbrace{\symbf{F}\left( \symbf{r}\left( t \right) \right) \cdot \hat{\symbf{\tau}}\left( t \right)}_f \norm*{\symbf{r}'\left( t \right)} \odif{t} = \int_{\mathscr{C}} f \odif{s}.
+\end{equation*}
+\subsubsection{Line Integrals over Multiple Paths}
+Let \(\mathscr{C}_1\) and \(\mathscr{C}_2\) be two simple and piecewise
+regular curves parametrised by \(\symbf{r}_1 : \interval{a}{b} \subset
+\R \to \R^n\) and \(\symbf{r}_2 : \interval{b}{c} \subset \R \to \R^n\)
+respectively, such that \(\symbf{r}_1\left( b \right) =
+\symbf{r}_2\left( b \right)\). The line integrals over the
+concatenation of \(\mathscr{C}_1\) and \(\mathscr{C}_2\) are defined as
+\begin{align*}
+    \int_{\mathscr{C}_1 + \mathscr{C}_2} f \odif{s}                       & = \int_{\mathscr{C}_1} f \odif{s} + \int_{\mathscr{C}_2} f \odif{s}                                              \\
+    \int_{\mathscr{C}_1 + \mathscr{C}_2} \symbf{F} \cdot \odif{\symbf{r}} & = \int_{\mathscr{C}_1} \symbf{F} \cdot \odif{\symbf{r}} + \int_{\mathscr{C}_2} \symbf{F} \cdot \odif{\symbf{r}}.
+\end{align*}
+\subsubsection{Fundamental Theorem of Line Integrals}
+Let \(\symbf{F} = \symbf{\nabla} \phi\) be a conservative vector field
+and \(\mathscr{C}\) be a simple and piecewise regular curve
+parametrised by \(\symbf{r}\left( t \right)\) with \(t \in
+\interval{a}{b}\). Then
+\begin{equation*}
+    \int_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}} = \int_{\mathscr{C}} \symbf{\nabla} \phi \cdot \odif{\symbf{r}} = \phi\left( \symbf{b} \right) - \phi\left( \symbf{a} \right)
+\end{equation*}
+where \(\symbf{a} = \symbf{r}\left( a \right)\) and \(\symbf{b} = \symbf{r}\left( b \right)\).
+This result demonstrates that a line integral in a conservative field
+is path independent, and depends only on the endpoints of the path.
+\subsubsection{Circulation}
+Let \(\mathscr{C}\) be a simple closed curve parametrised by
+\(\symbf{r}\left( t \right)\) with \(t \in \interval{a}{b}\), where
+\(\symbf{r}\left( a \right) = \symbf{r}\left( b \right)\). The line
+integral of a vector field \(\symbf{F}\) around \(\mathscr{C}\) is
+called the circulation of \(\symbf{F}\) around \(\mathscr{C}\), and is
+notated by a circle inside the integral sign:
+\begin{equation*}
+    \Gamma = \oint_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}}.
+\end{equation*}
+\subsubsection{Theorems in Conservative Fields}
+Let \(\symbf{F}\) be a continuous conservative vector field in an open
+and connected region \(\Omega \subset \R^n\). Then the following
+theorems hold:
+\begin{theorem}[Circulation in a Conservative Field]\label{thm:circulation_in_conservative_field}
+    The circulation of \(\symbf{F}\) around any closed path
+    \(\mathscr{C} \in \Omega\) is zero:
+    \begin{equation*}
+        \oint_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}} = 0.
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    Let \(\mathscr{C}\) be a closed path parametrised by
+    \(\symbf{r}\left( t \right)\) with \(t \in \interval{a}{b}\), where
+    \(\symbf{r}\left( a \right) = \symbf{r}\left( b \right)\). Then
+    \begin{equation*}
+        \oint_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}} = \oint_a^b \symbf{F}\left( \symbf{r}\left( t \right) \right) \cdot \symbf{r}'\left( t \right) \odif{t} = \oint_a^b \symbf{\nabla} \phi\left( \symbf{r}\left( t \right) \right) \cdot \symbf{r}'\left( t \right) \odif{t} = \phi\left( \symbf{r}\left( b \right) \right) - \phi\left( \symbf{r}\left( a \right) \right) = 0.
+    \end{equation*}
+\end{proof}
+\begin{theorem}[Path Independence in a Conservative Field]
+    The line integral of \(\symbf{F}\) between two points \(\symbf{a}\)
+    and \(\symbf{b}\) in \(\Omega\) is independent of the path connecting
+    \(\symbf{a}\) and \(\symbf{b}\):
+    \begin{equation*}
+        \int_{\mathscr{C}_1} \symbf{F} \cdot \odif{\symbf{r}} = \int_{\mathscr{C}_2} \symbf{F} \cdot \odif{\symbf{r}}.
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    Let \(\mathscr{C}_1\) and \(\mathscr{C}_2\) be two different paths
+    parametrised by \(\symbf{r}_1\left( t \right)\) and \(\symbf{r}_2\left( t \right)\)
+    respectively, with \(t \in \interval{a}{b}\), where
+    \(\symbf{r}_1\left( a \right) = \symbf{r}_2\left( a \right)\) and
+    \(\symbf{r}_1\left( b \right) = \symbf{r}_2\left( b \right)\).
+    Consider the opposite reparametrisation of \(\symbf{r}_2\left( t \right)\)
+    such that the concatenation of \(\symbf{r}_1\) and \(\tilde{\symbf{r}}_2\)
+    is a closed path. Then, by Theorem~\ref{thm:circulation_in_conservative_field},
+    \begin{equation*}
+        0 = \oint_{\mathscr{C}_1 - \mathscr{C}_2} \symbf{F} \cdot \odif{\symbf{r}} = \int_{\mathscr{C}_1} \symbf{F} \cdot \odif{\symbf{r}} + \int_{-\mathscr{C}_2} \symbf{F} \cdot \odif{\symbf{r}} = \int_{\mathscr{C}_1} \symbf{F} \cdot \odif{\symbf{r}} - \int_{\mathscr{C}_2} \symbf{F} \cdot \odif{\symbf{r}}
+    \end{equation*}
+    which implies that
+    \begin{equation*}
+        \int_{\mathscr{C}_1} \symbf{F} \cdot \odif{\symbf{r}} = \int_{\mathscr{C}_2} \symbf{F} \cdot \odif{\symbf{r}}.
+    \end{equation*}
+\end{proof}
+Using this theorem, it is possible to show that a conservative field
+is the gradient of a potential function.
+\begin{proof}[Proof for the Definition of a Conservative Field]
+    Consider the line integral of \(\symbf{F}\) from a fixed point
+    \(\symbf{x}_0\) to a variable point \(\symbf{x}\) in \(\Omega\):
+    \begin{equation*}
+        \phi\left( \symbf{x} \right) = \int_{\symbf{x}_0}^{\symbf{x}} \symbf{F} \cdot \odif{\symbf{r}}.
+    \end{equation*}
+    The derivative of \(\phi\left( \symbf{x} \right)\) with
+    respect to \(\symbf{x}_i\) is given by
+    \begin{align*}
+        \pdv{\phi}{\symbf{x}_i} & = \lim_{h \to 0} \frac{1}{h} \left[ \phi\left( \symbf{x} + h \symbf{e}_i \right) - \phi\left( \symbf{x} \right) \right]                                                                       \\
+                                & = \lim_{h \to 0} \frac{1}{h} \left[ \int_{\symbf{x}_0}^{\symbf{x} + h \symbf{e}_i} \symbf{F} \cdot \odif{\symbf{r}} - \int_{\symbf{x}_0}^{\symbf{x}} \symbf{F} \cdot \odif{\symbf{r}} \right] \\
+                                & = \lim_{h \to 0} \frac{1}{h} \int_{\symbf{x}}^{\symbf{x} + h \symbf{e}_i} \symbf{F} \cdot \odif{\symbf{r}}
+    \end{align*}
+    The path of integration is a straight line from \(\symbf{x}\) to
+    \(\symbf{x} + h \symbf{e}_i\), and can be parametrised by
+    \(\symbf{r}\left( t \right) = \symbf{x} + t h \symbf{e}_i\) for
+    \(t \in \interval{0}{1}\). Then
+    \begin{align*}
+        \pdv{\phi}{\symbf{x}_i} & = \lim_{h \to 0} \frac{1}{h} \int_0^1 \symbf{F}\left( \symbf{r}\left( t \right) \right) \cdot \symbf{r}'\left( t \right) \odif{t} \\
+                                & = \lim_{h \to 0} \frac{1}{h} \int_0^1 \symbf{F}\left( \symbf{x} + t h \symbf{e}_i \right) \cdot h \symbf{e}_i \odif{t}            \\
+                                & = \lim_{h \to 0} \int_0^1 \symbf{F}\left( \symbf{x} + t h \symbf{e}_i \right) \odif{t}
+    \end{align*}
+    As the integrand is a continuous function of \(t\) and \(\symbf{x}\),
+    the mean value theorem for integrals implies that there exists a
+    time \(t_0 \in \interval{0}{1}\) where the integral is equal to the
+    mean value of \(\symbf{F}\) on \(\interval{0}{1}\):
+    \begin{equation*}
+        \pdv{\phi}{\symbf{x}_i} = \lim_{h \to 0} \symbf{F}\left( \symbf{x} + t_0 h \symbf{e}_i \right) \cdot \symbf{e}_i = \symbf{F}\left( \symbf{x} \right) \cdot \symbf{e}_i.
+    \end{equation*}
+    Without loss of generality, this can be extended to all \(i \in \interval{1}{n}\),
+    so that:
+    \begin{equation*}
+        \symbf{F}\left( \symbf{x} \right) = \symbf{\nabla} \phi\left( \symbf{x} \right).
+    \end{equation*}
+\end{proof}
+\begin{theorem}[Antiderivative of a Conservative Field]
+    The line integral of \(\symbf{F}\) from a fixed point \(\symbf{x}_0\)
+    to a variable point \(\symbf{x}\) in \(\Omega\) is precisely the
+    potential function \(\phi\left( \symbf{x} \right)\) evaluated at
+    \(\symbf{x}\):
+    \begin{equation*}
+        \phi\left( \symbf{x} \right) = \int_{\symbf{x}_0}^{\symbf{x}} \symbf{F} \cdot \odif{\symbf{r}}.
+    \end{equation*}
+\end{theorem}
+\begin{remark}
+    When \(\symbf{F}\) is not a conservative field, the line integral
+    may still be evaluated, but the result will not be path independent.
+\end{remark}
+\begin{theorem}[Curl Criterion for Conservative Fields]
+    For \(n = 2\) and \(n = 3\), if \(\symbf{F} \subset C^1\) is a
+    continuous vector field in an open and simply-connected region
+    \(\Omega \subset \R^n\), then
+    \begin{equation*}
+        \left( \exists \phi \subset C^2 : \symbf{F} = \symbf{\nabla}\phi \right) \iff \symbf{\nabla} \times \symbf{F} = \symbf{0}.
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    The forward direction uses Schwartz theorem:
+    \begin{equation*}
+        \left( \exists \phi \subset C^2 : \symbf{F} = \symbf{\nabla}\phi \right) \implies \symbf{\nabla} \times \symbf{F} = \symbf{\nabla} \times \symbf{\nabla} \phi =
+        \begin{bmatrix}
+            \partial_x \\
+            \partial_y \\
+            \partial_z
+        \end{bmatrix}
+        \times
+        \begin{bmatrix}
+            \phi_x \\
+            \phi_y \\
+            \phi_z
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            \phi_{zy} - \phi_{yz}                 \\
+            -\left( \phi_{zx} - \phi_{xz} \right) \\
+            \phi_{yx} - \phi_{xy}
+        \end{bmatrix}
+        = \symbf{0}.
+    \end{equation*}
+\end{proof}
+\subsubsection{Energy Theorems}
+\begin{theorem}[Work Energy Theorem]
+    The total work done by a field \(\symbf{F}\) on a particle moving
+    along a curve \(\mathscr{C}\) from point \(\symbf{a}\) to \(\symbf{b}\)
+    is equal to the change in kinetic energy \(T\) of the particle along
+    \(\mathscr{C}\):
+    \begin{equation*}
+        W = T_{\symbf{b}} - T_{\symbf{a}}.
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    From Newton's Second Law
+    \begin{align*}
+        m \symbf{r}''\left( t \right)                                                                                        & = \symbf{F}\left( \symbf{r}\left( t \right) \right)                                                    \\
+        m \symbf{r}'\left( t \right) \cdot \symbf{r}''\left( t \right)                                                       & = \symbf{F}\left( \symbf{r}\left( t \right) \right) \cdot \symbf{r}'\left( t \right)                   \\
+        \int_a^b m \symbf{r}'\left( t \right) \cdot \symbf{r}''\left( t \right) \odif{t}                                     & = \int_a^b \symbf{F}\left( \symbf{r}\left( t \right) \right) \cdot \symbf{r}'\left( t \right) \odif{t} \\
+        \int_a^b \odv*{\left[ \frac{1}{2} m \symbf{r}'\left( t \right) \cdot \symbf{r}'\left( t \right) \right]}{t} \odif{t} & = \int_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}}                                                  \\
+        \int_a^b \odv*{\left[ \frac{1}{2} m \norm*{\symbf{v}\left( t \right)}^2 \right]}{t} \odif{t}                         & = \int_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}}                                                  \\
+        \frac{1}{2} m \norm*{\symbf{v}\left( b \right)}^2 - \frac{1}{2} m \norm*{\symbf{v}\left( a \right)}^2                & = \int_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}}                                                  \\
+        T_{\symbf{b}} - T_{\symbf{a}}                                                                                        & = W
+    \end{align*}
+\end{proof}
+\begin{definition}[Total Energy]
+    The total energy of a particle is given by \(E = T + V\), where \(V\)
+    is the potential energy of conservative forces acting on the particle:
+    \(\symbf{F}_{\text{c}} = -\symbf{\nabla} V\).
+\end{definition}
+\begin{theorem}[Conservation of Energy]
+    The work done by non-conservative forces on a particle moving along
+    a curve \(\mathscr{C}\) from point \(\symbf{a}\) to \(\symbf{b}\) is
+    equal to the change in total energy of the particle along \(\mathscr{C}\):
+    \begin{equation*}
+        W_{\mathrm{nc}} = E_{\symbf{b}} - E_{\symbf{a}}.
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    From the Work Energy Theorem,
+    \begin{align*}
+        T_{\symbf{b}} - T_{\symbf{a}}                                                               & = W                                                                                                                             \\
+        T_{\symbf{b}} - T_{\symbf{a}}                                                               & = \int_{\mathscr{C}} \left( \symbf{F}_{\text{c}} + \symbf{F}_{\text{nc}} \right) \cdot \odif{\symbf{r}}                         \\
+        T_{\symbf{b}} - T_{\symbf{a}}                                                               & = \int_{\mathscr{C}} \left( -\symbf{\nabla} V + \symbf{F}_{\text{nc}} \right) \cdot \odif{\symbf{r}}                            \\
+        T_{\symbf{b}} - T_{\symbf{a}}                                                               & = -\int_{\mathscr{C}} \symbf{\nabla} V \cdot \odif{\symbf{r}} + \int_{\mathscr{C}} \symbf{F}_{\text{nc}} \cdot \odif{\symbf{r}} \\
+        T_{\symbf{b}} - T_{\symbf{a}}                                                               & = -\left( V_{\symbf{b}} - V_{\symbf{a}} \right) + \int_{\mathscr{C}} \symbf{F}_{\text{nc}} \cdot \odif{\symbf{r}}               \\
+        \left( T_{\symbf{b}} + V_{\symbf{b}} \right) - \left( T_{\symbf{a}} + V_{\symbf{a}} \right) & = \int_{\mathscr{C}} \symbf{F}_{\text{nc}} \cdot \odif{\symbf{r}}                                                               \\
+        E_{\symbf{b}} - E_{\symbf{a}}                                                               & = W_{\text{nc}}
+    \end{align*}
+\end{proof}
 \end{document}
