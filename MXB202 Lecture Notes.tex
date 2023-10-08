@@ -2000,11 +2000,13 @@ This integral represents the weighted sum of \(f\) over \(\mathscr{S}\).
 \end{lemma}
 \subsubsection{Surface Integral over a Vector Field}
 Let \(\mathscr{S}\) be an orientable surface parametrised by
-\(\symbf{r}\left( s, t \right)\). The surface integral of a vector
-field \(\symbf{F}\) over \(\mathscr{S}\) is defined as
+\(\symbf{r}\left( s, t \right)\). The surface (flux) integral of a
+vector field \(\symbf{F}\) over \(\mathscr{S}\) is defined as the flux
+\(\Phi\) of \(\symbf{F}\) through \(\mathscr{S}\):
 \begin{equation*}
+    \Phi =
     \iint_{\mathscr{S}} \symbf{F} \cdot \odif{\symbf{\sigma}} =
-    \iint_{\mathscr{S}} \symbf{F}\left( \symbf{r}\left( s, t \right) \right) \cdot \left( \symbf{r}_s \times \symbf{r}_t \right) \odif{s} \odif{t}.
+    \pm \iint_{\mathscr{S}} \symbf{F}\left( \symbf{r}\left( s, t \right) \right) \cdot \left( \symbf{r}_s \times \symbf{r}_t \right) \odif{s} \odif{t}.
 \end{equation*}
 where \(\hat{\symbf{n}}\) is the unit normal vector to \(\mathscr{S}\),
 and \(\odif{\symbf{\sigma}} = \left( \symbf{r}_s \times \symbf{r}_t \right) \odif{s}\odif{t}\)
@@ -2016,17 +2018,19 @@ related to the differential surface element \(\odif{\sigma}\) by
 \end{align*}
 so that this integral may also be written as
 \begin{equation*}
+    \Phi =
     \iint_{\mathscr{S}} \symbf{F} \cdot \odif{\symbf{\sigma}} =
-    \iint_{\mathscr{S}} \symbf{F}\left( \symbf{r}\left( s, t \right) \right) \cdot \hat{\symbf{n}} \odif{\sigma}
+    \pm \iint_{\mathscr{S}} \symbf{F}\left( \symbf{r}\left( s, t \right) \right) \cdot \hat{\symbf{n}} \odif{\sigma}.
 \end{equation*}
-This integral represents the outward flux of \(\symbf{F}\) through
-\(\mathscr{S}\).
+This integral represents the outward or inward flow of \(\symbf{F}\)
+through \(\mathscr{S}\), where the direction of flow depends on the sign
+of \(\hat{\symbf{n}}\).
 \begin{lemma}[Equivalence of Parametrisations]
     Let \(\mathscr{S}\) be an orientable surface parametrised by \(\symbf{r}\left( s, t \right)\)
     and let \(\tilde{\symbf{r}}\left( u, v \right)\) be a reparametrisation
     of \(\symbf{r}\left( s, t \right)\). Then
     \begin{equation*}
-        \iint_{\mathscr{S}} \symbf{F} \cdot \odif{\symbf{\sigma}} = \iint_{\mathscr{S}} \symbf{F}\left( \tilde{\symbf{r}}\left( u,\: v \right) \right) \cdot \left( \tilde{\symbf{r}}_u \times \tilde{\symbf{r}}_v \right) \odif{u} \odif{v}.
+        \iint_{\mathscr{S}} \symbf{F} \cdot \odif{\symbf{\sigma}} = \pm \iint_{\mathscr{S}} \symbf{F}\left( \tilde{\symbf{r}}\left( u,\: v \right) \right) \cdot \left( \tilde{\symbf{r}}_u \times \tilde{\symbf{r}}_v \right) \odif{u} \odif{v}.
     \end{equation*}
     so that the surface integral of a vector field is independent of the
     parametrisation of \(\mathscr{S}\).
