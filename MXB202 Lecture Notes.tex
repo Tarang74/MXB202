@@ -162,7 +162,7 @@ where \(\symbf{x} \cdot \hat{\symbf{y}}\) is the norm of the projection vector.
 \begin{definition}[Path]
     A path is a continuous function
     \begin{equation*}
-        \symbf{r} : \interval{a}{b} \subset \R \to \R^n
+        \symbf{r} : \interval{a}{b} \subset \R \to \mathscr{C} \subset \R^n
     \end{equation*}
     where \(t \mapsto \symbf{r}\left( \symbf{x}\left( t \right) \right)\)
     is the parameter of the path.
@@ -190,7 +190,7 @@ of \(\mathscr{C}\).
 \begin{definition}[Regular Path]
     A path is regular (or smooth) if has nonzero continuous first derivatives:
     \begin{equation*}
-        \symbf{r}\left( t \right) \in \C^1 \quad \text{and} \quad
+        \symbf{r}\left( t \right) \in C^1 \quad \text{and} \quad
         \symbf{r}'\left( t \right) \neq \symbf{0}
     \end{equation*}
     for all \(t\). This restriction ensures that the path does not have
@@ -274,75 +274,7 @@ so that by dividing the first result by the second, we obtain
         -\displaystyle\frac{\tilde{\symbf{r}}'\left( u \right)}{\norm*{\tilde{\symbf{r}}'\left( u \right)}} & \text{if } \theta'\left( u \right) < 0
     \end{cases}
 \end{align*}
-\subsection{Mathematical Representation of Curves}
-\begin{definition}[Degree of Freedom]
-    The degree of freedom of a curve is the difference between the
-    number of variables and the number of equations.
-\end{definition}
-\subsubsection{Explicit Form (2D)}
-A curve \(\mathscr{C} \in \R^2\) can be represented explicitly as
-\begin{equation*}
-    y = f\left( x \right)
-\end{equation*}
-When \(n > 2\), it is not possible to describe a curve explicitly.
-The degree of freedom for a 2D explicit curve is 1.
-\subsubsection{Implicit Form}
-A curve \(\mathscr{C} \in \R^n\) can be represented implicitly as the
-intersection of \(n - 1\) surfaces.
-\begin{equation*}
-    \left\{
-    \begin{aligned}
-        F_1\left( \symbf{x},\: z \right)       & = 0 \\
-        F_2\left( \symbf{x},\: z \right)       & = 0 \\
-        \vdots                                 &     \\
-        F_{n - 1}\left( \symbf{x},\: z \right) & = 0
-    \end{aligned}
-    \right.
-\end{equation*}
-The degree of freedom is 1.
-\subsubsection{Parametric Form}
-A curve \(\mathscr{C} \in \R^n\) can be represented parametrically as
-\begin{equation*}
-    \symbf{r}\left( t \right) =
-    \begin{bmatrix}
-        x_1\left( t \right) \\
-        x_2\left( t \right) \\
-        \vdots              \\
-        x_n\left( t \right)
-    \end{bmatrix}
-\end{equation*}
-where \(t\) is the parameter. The degree of freedom is \(n - 1\).
-\subsection{Converting Between Representations}
-\subsubsection{Explicit to Implicit}
-The equation \(z = f\left( \symbf{x} \right)\) can always be converted
-to implicit form by rewriting it as
-\begin{equation*}
-    F\left( \symbf{x},\: z \right) = z - f\left( \symbf{x} \right) = 0.
-\end{equation*}
-\subsubsection{Implicit to Explicit}
-The equation \(F\left( \symbf{x},\: z \right) = 0\) can be converted to
-explicit form if we can solve for \(z\) in terms of \(\symbf{x}\).
-\subsubsection{Parametric to Explicit/Implicit}
-The equation \(\symbf{r}\left( t \right) = \abracket*{x_1\left( t
-\right),\: \dots,\: x_n\left( t \right)}\) can be written in explicit
-or implicit form, if the parameter \(t\) can be eliminated from the
-simultaneous equations.
-\subsubsection{Explicit to Parametric}
-The equation \(y = f\left( x \right)\) can always be converted to
-parametric form by choosing the parameter \(t = x\), so that
-\begin{equation*}
-    \symbf{r}\left( t \right) = \abracket*{t,\: f\left( t \right)}.
-\end{equation*}
-\subsubsection{Implicit to Parametric}
-The equation \(F\left( \symbf{x} \right) = 0\) can be converted to
-parametric form if we can find \(\symbf{x} = \symbf{r}\left( t
-\right)\) such that \(F\left( \symbf{r}\left( t \right) \right) = 0\),
-and
-\begin{equation*}
-    \symbf{r}\left( t \right) = \abracket*{x_1\left( t \right),\: \dots,\: x_n\left( t \right)}.
-\end{equation*}
-for all \(t\).
-\subsection{Common Parametrisations}
+\subsection{Common Parametrisations of Curves}
 To parametrise a curve, consider the following strategies:
 \begin{itemize}
     \item For a closed curve, consider the polar parametrisation in
@@ -441,6 +373,251 @@ For a curve given in explicit form \(y = f\left( x \right)\), the tangent vector
         f'\left( x \right)
     \end{bmatrix}
 \end{equation*}
+\subsection{Parametrisations of Surfaces}
+\begin{definition}[Homeomorphism]
+    A homeomorphism is a bijective map between two topological spaces
+    \(T\) and \(S\) that preserves the continuity of both the function
+    and its inverse.
+\end{definition}
+\begin{definition}[Parametric Surface]
+    A parametric surface \(S \subset \R^3\) is the set of points
+    \linebreak corresponding to the range of the parametric function
+    \begin{equation*}
+        \symbf{r} : T \subset \R^2 \to S \subset \R^3
+    \end{equation*}
+    where \(T\) is open and connected
+    \begin{equation*}
+        S = \left\{ \symbf{r}\left( s,\: t \right) : \abracket*{s,\: t} \in T \right\}.
+    \end{equation*}
+    Here \(\symbf{r}\) is a homeomorphism between \(T\) and \(S\) of
+    class \(C^1\), and the Jacobian matrix of \(\symbf{r}\) has rank 2
+    for all \(\abracket*{s,\: t} \in T\).
+    In other words, the vectors \(\symbf{r}_u = \pdv{\symbf{r}}{u}\) and
+    \(\symbf{r}_v = \pdv{\symbf{r}}{v}\) are linearly independent so
+    that
+    \begin{equation*}
+        \symbf{r}_u \times \symbf{r}_v \neq \symbf{0}.
+    \end{equation*}
+    This condition is necessary to ensure that the tangent plane and
+    to the surface is well-defined, and allows for the definition of
+    the unit normal vector
+    \begin{equation*}
+        \hat{\symbf{n}} = \frac{\symbf{r}_u \times \symbf{r}_v}{\norm{\symbf{r}_u \times \symbf{r}_v}}.
+    \end{equation*}
+\end{definition}
+\begin{definition}[Chart]
+    The inverse of a parametric surface \(\symbf{r}\) is called a chart:
+    \begin{equation*}
+        \symbf{r}^{-1} : S \subset \R^3 \to T \subset \R^2
+    \end{equation*}
+\end{definition}
+\begin{definition}[Surface]
+    \(\mathscr{S}\) is a surface if it is the union of parametric
+    surfaces \(S_i\) such that the intersection of any two surfaces
+    \(S_i \cap S_j\) is empty, a point, or a curve.
+\end{definition}
+\begin{definition}[Orientable Surface]
+    A surface \(\mathscr{S}\) is orientable if there exists a
+    continuous unit normal vector \(\hat{\symbf{n}}\) defined everywhere
+    on \(\mathscr{S}\).
+\end{definition}
+\subsection{Common Parametrisations of Surfaces}
+To parametrise an implicit surface \(z = f\left( x,\: y \right)\),
+consider the parametrisation
+\begin{equation*}
+    \symbf{r}\left( x,\: y \right) = \abracket*{x,\: y,\: f\left( x,\: y \right)}.
+\end{equation*}
+\subsubsection{Planes}
+To parametrise a plane that passes through the points \(A\), \(B\), and
+\(C\), define a vector from the origin to \(C\), and two vectors from
+\(C\) to \(A\) and \(B\):
+\begin{equation*}
+    \symbf{c} = \overline{OC},\: \symbf{a} = \overline{CA},\: \symbf{b} = \overline{CB}.
+\end{equation*}
+Then, consider the parametrisation
+\begin{equation*}
+    \symbf{r}\left( s,\: t \right) = \symbf{c} + s \symbf{a} + t \symbf{b}.
+\end{equation*}
+The unit normal vector of the plane is given by
+\begin{equation*}
+    \hat{\symbf{n}} = \pm \frac{\symbf{r}_s \times \symbf{r}_t}{\norm{\symbf{r}_s \times \symbf{r}_t}} =
+    \pm \frac{\symbf{a} \times \symbf{b}}{\norm{\symbf{a} \times \symbf{b}}}.
+\end{equation*}
+\subsubsection{Cylindrical Shells}
+A cylindrical shell of radius \(R\) is parametrised by
+\begin{equation*}
+    \symbf{r}\left( \theta,\: z \right) =
+    \begin{bmatrix}
+        R \cos{\theta} \\
+        R \sin{\theta} \\
+        z
+    \end{bmatrix}
+\end{equation*}
+for \(\theta \in \rinterval{0}{2 \pi}\) and \(z \in \R\).
+The unit normal vector is given by
+\begin{equation*}
+    \hat{\symbf{n}} = \pm \frac{\symbf{r}_\theta \times \symbf{r}_z}{\norm{\symbf{r}_\theta \times \symbf{r}_z}} =
+    \pm
+    \begin{bmatrix}
+        \cos{\theta} \\
+        \sin{\theta} \\
+        0
+    \end{bmatrix}
+\end{equation*}
+\subsubsection{Spherical Shells}
+A spherical shell of radius \(R\) is parametrised by
+\begin{equation*}
+    \symbf{r}\left( \phi,\: \theta \right) =
+    \begin{bmatrix}
+        R \sin{\phi} \cos{\theta} \\
+        R \sin{\phi} \sin{\theta} \\
+        R \cos{\phi}
+    \end{bmatrix}
+\end{equation*}
+for \(\phi \in \ointerval{0}{\pi}\) and \(\theta \in \ointerval{0}{2 \pi}\).
+The unit normal vector is given by
+\begin{equation*}
+    \hat{\symbf{n}} = \pm \frac{\symbf{r}_\phi \times \symbf{r}_\theta}{\norm{\symbf{r}_\phi \times \symbf{r}_\theta}} =
+    \pm
+    \begin{bmatrix}
+        \sin{\phi} \cos{\theta} \\
+        \sin{\phi} \sin{\theta} \\
+        \cos{\phi}
+    \end{bmatrix}
+\end{equation*}
+\subsubsection{Conical Shells}
+A conical shell with opening angle \(\alpha\) is parametrised by
+\begin{equation*}
+    \symbf{r}\left( r,\: \theta \right) =
+    \begin{bmatrix}
+        r \cos{\theta} \\
+        r \sin{\theta} \\
+        r \cot{\alpha}
+    \end{bmatrix}
+\end{equation*}
+for \(r \in \ointerval{0}{\infty}\) and \(\theta \in \rinterval{0}{2 \pi}\).
+The unit normal vector is given by
+\begin{equation*}
+    \hat{\symbf{n}} = \pm \frac{\symbf{r}_r \times \symbf{r}_\theta}{\norm{\symbf{r}_r \times \symbf{r}_\theta}} =
+    \pm
+    \begin{bmatrix}
+        -\cos{\alpha} \cos{\theta} \\
+        -\cos{\alpha} \sin{\theta} \\
+        \sin{\alpha}
+    \end{bmatrix}
+\end{equation*}
+\subsubsection{Explicit Surfaces}
+A general surface \(z = f\left( x,\: y \right)\) can be parametrised by
+\begin{equation*}
+    \symbf{r}\left( x,\: y \right) =
+    \begin{bmatrix}
+        x \\
+        y \\
+        f\left( x,\: y \right)
+    \end{bmatrix}
+\end{equation*}
+The unit normal vector is given by
+\begin{equation*}
+    \hat{\symbf{n}} = \pm \frac{\symbf{r}_x \times \symbf{r}_y}{\norm{\symbf{r}_x \times \symbf{r}_y}} =
+    \pm \frac{1}{\sqrt{f_x^2 + f_y^2 + 1}}
+    \begin{bmatrix}
+        -f_x \\
+        -f_y \\
+        1
+    \end{bmatrix}
+\end{equation*}
+\subsection{Mathematical Representation of Curves and Surfaces}
+\begin{definition}[Degree of Freedom]
+    The degree of freedom of a curve is the difference between the
+    number of variables and the number of equations.
+\end{definition}
+\subsubsection{Curves in Explicit Form (2D)}
+A curve \(\mathscr{C} \in \R^2\) can be represented explicitly as
+\begin{equation*}
+    y = f\left( x \right)
+\end{equation*}
+When \(n > 2\), it is not possible to describe a curve explicitly.
+The degree of freedom for a 2D explicit curve is 1.
+\subsubsection{Curves in Implicit Form}
+A curve \(\mathscr{C} \in \R^n\) can be represented implicitly as the
+intersection of \(n - 1\) surfaces.
+\begin{equation*}
+    \left\{
+    \begin{aligned}
+        F_1\left( \symbf{x},\: z \right)       & = 0 \\
+        F_2\left( \symbf{x},\: z \right)       & = 0 \\
+        \vdots                                 &     \\
+        F_{n - 1}\left( \symbf{x},\: z \right) & = 0
+    \end{aligned}
+    \right.
+\end{equation*}
+The degree of freedom is 1.
+\subsubsection{Curves in Parametric Form}
+A curve \(\mathscr{C} \in \R^n\) can be represented parametrically as
+\begin{equation*}
+    \symbf{r}\left( t \right) =
+    \begin{bmatrix}
+        x_1\left( t \right) \\
+        x_2\left( t \right) \\
+        \vdots              \\
+        x_n\left( t \right)
+    \end{bmatrix}
+\end{equation*}
+where \(t\) is the parameter. The degree of freedom is \(n - 1\).
+\subsubsection{Surfaces in Explicit Form}
+A surface \(\mathscr{S} \in \R^3\) can be represented explicitly as
+\begin{equation*}
+    z = f\left( x,\: y \right)
+\end{equation*}
+The degree of freedom is 2.
+\subsubsection{Surfaces in Implicit Form}
+A surface \(\mathscr{S} \in \R^3\) can be represented implicitly as
+\begin{equation*}
+    F\left( x,\: y,\: z \right) = 0
+\end{equation*}
+The degree of freedom is 2.
+\subsubsection{Surfaces in Parametric Form}
+A surface \(\mathscr{S} \in \R^3\) can be represented parametrically as
+\begin{equation*}
+    \symbf{r}\left( s,\: t \right) =
+    \begin{bmatrix}
+        x\left( s,\: t \right) \\
+        y\left( s,\: t \right) \\
+        z\left( s,\: t \right)
+    \end{bmatrix}
+\end{equation*}
+where \(s\) and \(t\) are the parameters. The degree of freedom is 1.
+\subsection{Converting Between Representations}
+\subsubsection{Explicit to Implicit}
+The equation \(z = f\left( \symbf{x} \right)\) can always be converted
+to implicit form by rewriting it as
+\begin{equation*}
+    F\left( \symbf{x},\: z \right) = z - f\left( \symbf{x} \right) = 0.
+\end{equation*}
+\subsubsection{Implicit to Explicit}
+The equation \(F\left( \symbf{x},\: z \right) = 0\) can be converted to
+explicit form if we can solve for \(z\) in terms of \(\symbf{x}\).
+\subsubsection{Parametric to Explicit/Implicit}
+The equation \(\symbf{r}\left( \symbf{t} \right) = \abracket*{x_1\left(
+\symbf{t} \right),\: \dots,\: x_n\left( \symbf{t} \right)}\) can be
+written in explicit or implicit form, if the parameters \(\symbf{t}\)
+can be eliminated from the simultaneous equations.
+\subsubsection{Explicit to Parametric}
+The equation \(z = f\left( \symbf{x} \right)\) can always be converted
+to parametric form by choosing the parameter \(\symbf{t} = \symbf{x}\),
+so that
+\begin{equation*}
+    \symbf{r}\left( \symbf{t} \right) = \abracket*{\symbf{t},\: f\left( \symbf{t} \right)}.
+\end{equation*}
+\subsubsection{Implicit to Parametric}
+The equation \(F\left( \symbf{x} \right) = 0\) can be converted to
+parametric form if we can find \(\symbf{x} = \symbf{r}\left( \symbf{t}
+\right)\) such that \(F\left( \symbf{r}\left( \symbf{t} \right) \right)
+= 0\), and
+\begin{equation*}
+    \symbf{r}\left( \symbf{t} \right) = \abracket*{x_1\left( \symbf{t} \right),\: \dots,\: x_n\left( \symbf{t} \right)}.
+\end{equation*}
+for all \(t\).
 \section{Multivariable Calculus}
 \subsection{Multivariable Functions}
 \begin{definition}[Multivariable Function]
@@ -693,6 +870,13 @@ For an explicit curve \(y = f\left( x \right)\), we must convert the
 curve to implicit or parametric form.
 \subsection{Normal Vectors to Surfaces}
 \subsubsection{Parametric Surfaces}
+For a parametric surface \(\symbf{r}\left( s,\: t \right)\), the normal
+vector is given by
+\begin{equation*}
+    \hat{\symbf{n}} = \pm \frac{\symbf{r}_s \times \symbf{r}_t}{\norm{\symbf{r}_s \times \symbf{r}_t}}
+\end{equation*}
+where \(\symbf{r}_s\) and \(\symbf{r}_t\) are tangent vectors to the
+surface.
 \subsubsection{Implicit Surfaces}
 For an implicit surface \(F\left( x,\: y,\: z \right) = 0\), the normal
 vector is given by
@@ -1487,8 +1671,8 @@ the area under the surface defined by \(f\) along \(\mathscr{C}\).
     \begin{equation*}
         \int_{\mathscr{C}} f \odif{s} = \int_c^d f\left( \tilde{\symbf{r}}\left( u \right) \right) \norm*{\tilde{\symbf{r}}'\left( u \right)} \odif{u}
     \end{equation*}
-    and the line integral is independent of the parametrisation of
-    \(\mathscr{C}\).
+    so that the line integral of a scalar field is independent of the
+    parametrisation of \(\mathscr{C}\).
 \end{lemma}
 \begin{proof}
     Consider the parametrisation \(t = \theta\left( u \right)\),
@@ -1528,8 +1712,8 @@ by the force field \(\symbf{F}\) along \(\mathscr{C}\).
             -\displaystyle\int_c^d \symbf{F}\left( \tilde{\symbf{r}}\left( u \right) \right) \cdot \tilde{\symbf{r}}'\left( u \right) \odif{u} & \text{if } \theta'\left( u \right) < 0
         \end{cases}
     \end{equation*}
-    and the line integral is independent of the parametrisation of
-    \(\mathscr{C}\).
+    so that the line integral of a vector field is independent of the
+    parametrisation of \(\mathscr{C}\).
 \end{lemma}
 \begin{proof}
     Consider the parametrisation \(t = \theta\left( u \right)\),
@@ -1782,4 +1966,69 @@ is the gradient of a potential function.
         E_{\symbf{b}} - E_{\symbf{a}}                                                               & = W_{\text{nc}}
     \end{align*}
 \end{proof}
+\subsection{Surface Integrals}
+A surface integral is a multiple integral where the function to be
+integrated is evaluated across a curved surface. This function may be a
+scalar field or a vector field.
+\subsubsection{Surface Area}
+The surface area of a surface \(\mathscr{S}\) parametrised by
+\(\symbf{r}\left( s, t \right)\) is given by
+\begin{equation*}
+    A = \iint_{\mathscr{S}} \odif{\sigma} = \iint_{\mathscr{S}} \norm*{\symbf{r}_s \times \symbf{r}_t} \odif{s} \odif{t}
+\end{equation*}
+where \(\norm*{\symbf{r}_s \times \symbf{r}_t}\) represents the area of
+the parallelogram spanned by \(\symbf{r}_s\) and \(\symbf{r}_t\).
+\subsubsection{Surface Integral over a Scalar Field}
+Let \(\mathscr{S}\) be a surface parametrised by \(\symbf{r}\left( s, t
+\right)\). The surface integral of a scalar field \(f\) over
+\(\mathscr{S}\) is defined as
+\begin{equation*}
+    \iint_{\mathscr{S}} f \odif{\sigma} = \iint_{\mathscr{S}} f\left( \symbf{r}\left( s, t \right) \right) \norm*{\symbf{r}_s \times \symbf{r}_t} \odif{s} \odif{t}.
+\end{equation*}
+where \(\odif{\sigma} = \norm*{\symbf{r}_s \times \symbf{r}_t} \odif{s}\odif{t}\)
+is the differential surface element of \(\mathscr{S}\).
+This integral represents the weighted sum of \(f\) over \(\mathscr{S}\).
+\begin{lemma}[Equivalence of Parametrisations]
+    Let \(\mathscr{S}\) be a surface parametrised by \(\symbf{r}\left( s, t \right)\)
+    and let \(\tilde{\symbf{r}}\left( u, v \right)\) be a reparametrisation
+    of \(\symbf{r}\left( s, t \right)\). Then
+    \begin{equation*}
+        \iint_{\mathscr{S}} f \odif{\sigma} = \iint_{\mathscr{S}} f\left( \tilde{\symbf{r}}\left( u,\: v \right) \right) \norm*{\tilde{\symbf{r}}_u \times \tilde{\symbf{r}}_v} \odif{u} \odif{v}.
+    \end{equation*}
+    so that the surface integral of a scalar field is independent of the
+    parametrisation of \(\mathscr{S}\).
+\end{lemma}
+\subsubsection{Surface Integral over a Vector Field}
+Let \(\mathscr{S}\) be an orientable surface parametrised by
+\(\symbf{r}\left( s, t \right)\). The surface integral of a vector
+field \(\symbf{F}\) over \(\mathscr{S}\) is defined as
+\begin{equation*}
+    \iint_{\mathscr{S}} \symbf{F} \cdot \odif{\symbf{\sigma}} =
+    \iint_{\mathscr{S}} \symbf{F}\left( \symbf{r}\left( s, t \right) \right) \cdot \left( \symbf{r}_s \times \symbf{r}_t \right) \odif{s} \odif{t}.
+\end{equation*}
+where \(\hat{\symbf{n}}\) is the unit normal vector to \(\mathscr{S}\),
+and \(\odif{\symbf{\sigma}} = \left( \symbf{r}_s \times \symbf{r}_t \right) \odif{s}\odif{t}\)
+is the differential vector surface element of \(\mathscr{S}\), which is
+related to the differential surface element \(\odif{\sigma}\) by
+\begin{align*}
+    \odif{\sigma}         & = \norm*{\odif{\symbf{\sigma}}} \\
+    \odif{\symbf{\sigma}} & = \hat{\symbf{n}} \odif{\sigma}
+\end{align*}
+so that this integral may also be written as
+\begin{equation*}
+    \iint_{\mathscr{S}} \symbf{F} \cdot \odif{\symbf{\sigma}} =
+    \iint_{\mathscr{S}} \symbf{F}\left( \symbf{r}\left( s, t \right) \right) \cdot \hat{\symbf{n}} \odif{\sigma}
+\end{equation*}
+This integral represents the outward flux of \(\symbf{F}\) through
+\(\mathscr{S}\).
+\begin{lemma}[Equivalence of Parametrisations]
+    Let \(\mathscr{S}\) be an orientable surface parametrised by \(\symbf{r}\left( s, t \right)\)
+    and let \(\tilde{\symbf{r}}\left( u, v \right)\) be a reparametrisation
+    of \(\symbf{r}\left( s, t \right)\). Then
+    \begin{equation*}
+        \iint_{\mathscr{S}} \symbf{F} \cdot \odif{\symbf{\sigma}} = \iint_{\mathscr{S}} \symbf{F}\left( \tilde{\symbf{r}}\left( u,\: v \right) \right) \cdot \left( \tilde{\symbf{r}}_u \times \tilde{\symbf{r}}_v \right) \odif{u} \odif{v}.
+    \end{equation*}
+    so that the surface integral of a vector field is independent of the
+    parametrisation of \(\mathscr{S}\).
+\end{lemma}
 \end{document}
