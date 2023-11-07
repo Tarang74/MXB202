@@ -988,9 +988,9 @@ by
 Similarly, the signed volume under the surface \(f\left( x,\: y \right)\)
 is represented by
 \begin{equation*}
-    \iint_R f\left( x,\: y \right) \odif{A} = \lim_{\Delta A_i \to 0} \sum_{i = 1}^n f\left( x_i,\: y_i \right) \Delta A_i
+    \iint_D f\left( x,\: y \right) \odif{A} = \lim_{\Delta A_i \to 0} \sum_{i = 1}^n f\left( x_i,\: y_i \right) \Delta A_i
 \end{equation*}
-where \(R\) is the region of integration.
+where \(D\) is the region of integration.
 \subsection{Lebesgue Integrals}
 Lebesgue integrals are a top down approach to multiple integrals that
 allow us to integrate a wider class of nonnegative functions. This
@@ -1006,12 +1006,12 @@ or when the domain of integration is unbounded.
 The above theorem holds for particular classes of functions. The
 following techniques can be used to integrate arbitrary functions.
 \subsubsection{Finite Domains}
-For double integrals over domains \(R \subset \R^2\), we can define a
+For double integrals over domains \(D \subset \R^2\), we can define a
 new function \(\tilde{f}\) such that
 \begin{equation*}
-    \iint_R f\left( x,\: y \right) \odif{A} \equiv \iint_{\R^2} \tilde{f}\left( x,\: y \right) \odif{A}, \qquad \text{where } \tilde{f}\left( x,\: y \right) =
+    \iint_D f\left( x,\: y \right) \odif{A} \equiv \iint_{\R^2} \tilde{f}\left( x,\: y \right) \odif{A}, \qquad \text{where } \tilde{f}\left( x,\: y \right) =
     \begin{cases}
-        f\left( x,\: y \right) & \left( x,\: y \right) \in R \\
+        f\left( x,\: y \right) & \left( x,\: y \right) \in D \\
         0                      & \text{otherwise}
     \end{cases}
 \end{equation*}
@@ -1052,27 +1052,27 @@ Therefore, the double integral is defined
 \end{theorem}
 \subsection{Measures}
 \begin{definition}[Indicator Function]
-    The indicator function of \(R\) is defined:
+    The indicator function of \(D\) is defined:
     \begin{equation*}
-        1_R\left( x,\: y \right) =
+        1_D\left( x,\: y \right) =
         \begin{cases}
-            1 & \left( x,\: y \right) \in R \\
+            1 & \left( x,\: y \right) \in D \\
             0 & \text{otherwise}
         \end{cases}
     \end{equation*}
 \end{definition}
 \begin{definition}[Measure]
-    The measure of a region \(R\) is defined as
+    The measure of a region \(D\) is defined as
     \begin{equation*}
-        \mu\left( R \right) = \iint_{\R^2} 1_R \odif{A}
+        \mu\left( D \right) = \iint_{\R^2} 1_D \odif{A}
     \end{equation*}
     In two dimensions, the measure is the area of the region.
 \end{definition}
 \subsubsection{Rectangular Regions}
-For a rectangular region \(R = \left[ a,\: b \right] \times \left[ c,\:
+For a rectangular region \(D = \left[ a,\: b \right] \times \left[ c,\:
 d \right]\), the indicator function is given by
 \begin{align*}
-    1_R\left( x,\: y \right) & =
+    1_D\left( x,\: y \right) & =
     \begin{cases}
         1 & \left( x,\: y \right) \in D \\
         0 & \text{otherwise}
@@ -1080,23 +1080,23 @@ d \right]\), the indicator function is given by
     \\
                              & = 1_{\left[ a,\: b \right]} \left( x \right) 1_{\left[ c,\: d \right]} \left( y \right)
 \end{align*}
-so that the area of \(R\) is given by
+so that the area of \(D\) is given by
 \begin{align*}
-    \mu\left( R \right) & = \iint_{\R^2} 1_R \odif{A} = \int_{-\infty}^\infty \int_{-\infty}^\infty 1_{\left[ a,\: b \right]} \left( x \right) 1_{\left[ c,\: d \right]} \left( y \right) \odif{y} \odif{x} = \int_{-\infty}^\infty 1_{\left[ a,\: b \right]} \left( x \right) \int_{-\infty}^\infty 1_{\left[ c,\: d \right]} \left( y \right) \odif{y} \odif{x} \\
+    \mu\left( D \right) & = \iint_{\R^2} 1_D \odif{A} = \int_{-\infty}^\infty \int_{-\infty}^\infty 1_{\left[ a,\: b \right]} \left( x \right) 1_{\left[ c,\: d \right]} \left( y \right) \odif{y} \odif{x} = \int_{-\infty}^\infty 1_{\left[ a,\: b \right]} \left( x \right) \int_{-\infty}^\infty 1_{\left[ c,\: d \right]} \left( y \right) \odif{y} \odif{x} \\
                         & = \int_a^b 1 \left[ \int_c^d 1 \odif{y} \right] \odif{x} = \int_a^b \left( d - c \right) \odif{x} = \left( b - a \right) \left( d - c \right)
 \end{align*}
 \subsubsection{Integrating Functions over Regions}
 When integrating over a nonuniform density \(f\), we can multiply \(f\)
-with the indicator function over \(R\):
+with the indicator function over \(D\):
 \begin{equation*}
-    \iint_R f\left( x,\: y \right) \odif{A} = \iint_{\R^2} f\left( x,\: y \right) 1_R \odif{A}
+    \iint_D f\left( x,\: y \right) \odif{A} = \iint_{\R^2} f\left( x,\: y \right) 1_D \odif{A}
 \end{equation*}
 \subsection{Simple Domains}
 \subsubsection{Type I --- \texorpdfstring{\(y\)}{y}-Simple}
 Let \(Y\) be defined as a region bounded by
 \(x_1 \leqslant x \leqslant x_2\) and
 \(y_1\left( x \right) \leqslant y \leqslant y_2\left( x \right)\).
-\(Y\) is called \(y\)-simple as it can be split into subdomains \(R_i\)
+\(Y\) is called \(y\)-simple as it can be split into subdomains \(Y_i\)
 with continuous lines \textbf{parallel to the \(y\)-axis}.
 
 The double integral over \(Y\) can then be decomposed into the sum of
@@ -1113,7 +1113,7 @@ subdomain \(Y_i\) within the \(x\)-bounds of \(Y\):
 Let \(X\) be defined as a region bounded by
 \(x_1\left( y \right) \leqslant x \leqslant x_2\left( y \right)\) and
 \(y_1 \leqslant y \leqslant y_2\).
-\(X\) is called \(x\)-simple as it can be split into subdomains \(R_i\)
+\(X\) is called \(x\)-simple as it can be split into subdomains \(X_i\)
 with continuous lines \textbf{parallel to the \(x\)-axis}.
 
 The double integral over \(X\) can then be decomposed into the sum of
@@ -1158,8 +1158,8 @@ the Jacobian matrix.
 \end{definition}
 \begin{definition}[Jacobian]
     When \(m = n\), we can determine the ratio of the area of the
-    original region \(R\) to the area of the transformed region
-    \(T\left( R \right)\) using the determinant of the Jacobian matrix:
+    original region \(D\) to the area of the transformed region
+    \(T\left( D \right)\) using the determinant of the Jacobian matrix:
     \begin{equation*}
         \abs*{\symbf{J}} = \det{\left( \symbf{J} \right)} = \abs*{\frac{\partial\left( x_1,\: \ldots,\: x_n \right)}{\partial\left( u_1,\: \ldots,\: u_n \right)}}.
     \end{equation*}
@@ -1183,7 +1183,7 @@ Using this matrix determinant allows us to change the variables of
 integration from \(\left( x,\: y \right)\) to \(\left( u,\: v \right)\)
 using the following formula:
 \begin{equation*}
-    \iint_{R} f\left( x,\: y \right) \odif{x}\odif{y} = \iint_{T\left( R \right)} f\left( T\left( u,\: v \right) \right) \abs*{\det{\left( \symbf{J} \right)}} \odif{u}\odif{v}
+    \iint_D f\left( x,\: y \right) \odif{x}\odif{y} = \iint_{T\left( D \right)} f\left( T\left( u,\: v \right) \right) \abs*{\det{\left( \symbf{J} \right)}} \odif{u}\odif{v}
 \end{equation*}
 where \(f\left( T\left( u,\: v \right) \right)\) is multiplied by the absolute value of the
 Jacobian.
@@ -1219,10 +1219,10 @@ Jacobian.
         \odif{A} = \abs*{\det{\left( \symbf{J} \right)}} \odif{r}\odif{\theta} = r \odif{r}\odif{\theta}.
     \end{equation*}
 \end{definition}
-Using polar coordinates, the double integral over a region \(R\) is
+Using polar coordinates, the double integral over a region \(D\) is
 defined
 \begin{equation*}
-    \iint_R f\left( x,\: y \right) \odif{A} = \int_0^\infty \int_0^{2\pi} f\left( r \cos{\theta},\: r \sin{\theta} \right) r \odif{\theta} \odif{r}
+    \iint_D f\left( x,\: y \right) \odif{A} = \int_0^\infty \int_0^{2\pi} f\left( r \cos{\theta},\: r \sin{\theta} \right) r \odif{\theta} \odif{r}
 \end{equation*}
 \subsection{Strategies for Evaluating Double Integrals}
 \begin{enumerate}
@@ -1296,7 +1296,7 @@ The integral of a vector-valued function is defined as
         \det{\left( \symbf{J} \right)} & = r \cos^2{\theta} + r \sin^2{\theta} \\
                                        & = r
     \end{align*}
-    The infinitesimal area element \(\odif{V}\) is therefore
+    The infinitesimal volume element \(\odif{V}\) is therefore
     \begin{equation*}
         \odif{V} = \abs*{\det{\left( \symbf{J} \right)}} \odif{r}\odif{\theta}\odif{z} = r \odif{r}\odif{\theta}\odif{z}.
     \end{equation*}
@@ -1304,7 +1304,7 @@ The integral of a vector-valued function is defined as
 Using cylindrical coordinates, the triple integral over a region \(R\) is
 defined
 \begin{equation*}
-    \iint_R f\left( x,\: y,\: z \right) \odif{V} = \int_{-\infty}^{\infty} \int_0^\infty \int_0^{2\pi} f\left( r \cos{\theta},\: r \sin{\theta},\: z \right) r \odif{\theta} \odif{r} \odif{z}
+    \iint_D f\left( x,\: y,\: z \right) \odif{V} = \int_{-\infty}^{\infty} \int_0^\infty \int_0^{2\pi} f\left( r \cos{\theta},\: r \sin{\theta},\: z \right) r \odif{\theta} \odif{r} \odif{z}
 \end{equation*}
 \subsubsection{Spherical Coordinate Transformation}
 \begin{definition}[Spherical Coordinates]
@@ -1340,7 +1340,7 @@ defined
                                        & = \rho^2 \sin{\phi} \left( \sin^2{\theta} + \cos^2{\theta} \right)                                                                                                                                   \\
                                        & = \rho^2 \sin{\phi}
     \end{align*}
-    The infinitesimal area element \(\odif{V}\) is therefore
+    The infinitesimal volume element \(\odif{V}\) is therefore
     \begin{equation*}
         \odif{V} = \abs*{\det{\left( \symbf{J} \right)}} \odif{\rho}\odif{\phi}\odif{\theta} = \rho^2 \sin{\phi} \odif{\rho}\odif{\phi}\odif{\theta}.
     \end{equation*}
@@ -1348,61 +1348,61 @@ defined
 Using spherical coordinates, the triple integral over a region \(R\) is
 defined
 \begin{equation*}
-    \iiint_R f\left( x,\: y,\: z \right) \odif{V} = \int_0^\infty \int_0^{2\pi} \int_0^\pi f\left( \rho \sin{\phi} \cos{\theta},\: \rho \sin{\phi} \sin{\theta},\: \rho \cos{\phi} \right) \rho^2 \sin{\phi} \odif{\phi} \odif{\theta} \odif{\rho}
+    \iiint_D f\left( x,\: y,\: z \right) \odif{V} = \int_0^\infty \int_0^{2\pi} \int_0^\pi f\left( \rho \sin{\phi} \cos{\theta},\: \rho \sin{\phi} \sin{\theta},\: \rho \cos{\phi} \right) \rho^2 \sin{\phi} \odif{\phi} \odif{\theta} \odif{\rho}
 \end{equation*}
 \subsection{Interpretations of Integrals}
 \subsubsection*{Measure}
-The measure of a region \(R \in \R^n\) is given by:
+The measure of a region \(D \in \R^n\) is given by:
 \begin{equation*}
-    \mu\left( R \right) = \int_R \odif{\symbf{x}}
+    \mu\left( D \right) = \int_D \odif{\symbf{x}}
 \end{equation*}
 In two dimensions, the measure is the area of the region:
 \begin{equation*}
-    \mu\left( R \right) = \iint_R \odif{A}
+    \mu\left( D \right) = \iint_D \odif{A}
 \end{equation*}
 In three dimensions, the measure is the volume of the region:
 \begin{equation*}
-    \mu\left( R \right) = \iiint_R \odif{V}
+    \mu\left( D \right) = \iiint_D \odif{V}
 \end{equation*}
 \subsubsection*{Mass}
-The mass of a region \(R \in \R^n\) with density function \(\rho\) is
+The mass of a region \(D \in \R^n\) with density function \(\rho\) is
 given by:
 \begin{equation*}
-    M = \int_R \rho\left( \symbf{x} \right) \odif{\symbf{x}}
+    M = \int_D \rho\left( \symbf{x} \right) \odif{\symbf{x}}
 \end{equation*}
 \subsubsection*{Centroid}
 The average position of a region \(R \in \R^n\) with uniform density is
 given by:
 \begin{equation*}
-    \abracket*{\symbf{r}} = \frac{1}{\mu\left( R \right)} \int_R \symbf{x} \odif{\symbf{x}}
+    \abracket*{\symbf{r}} = \frac{1}{\mu\left( R \right)} \int_D \symbf{x} \odif{\symbf{x}}
 \end{equation*}
-This point is the geometric centre of the region where the region would
+This point is the geometric center of the region where the region would
 balance if it were made of a uniform material.
 \subsubsection*{Centre of Mass}
-The average position of a region \(R \in \R^n\) with density function
+The average position of a region \(D \in \R^n\) with density function
 \(\rho\) is given by:
 \begin{equation*}
-    \abracket*{\symbf{r}}_\rho = \frac{1}{M} \int_R \rho\left( \symbf{x} \right) \symbf{x} \odif{\symbf{x}}
+    \abracket*{\symbf{r}}_\rho = \frac{1}{M} \int_D \rho\left( \symbf{x} \right) \symbf{x} \odif{\symbf{x}}
 \end{equation*}
-This point is the centre of mass of the region where the region would
+This point is the center of mass of the region where the region would
 balance if it were made of a material with density \(\rho\).
 \subsubsection*{Average Value}
-The average value of a function \(f : \R^n \to \R\) over a region \(R
+The average value of a function \(f : \R^n \to \R\) over a region \(D
 \in \R^n\) is given by:
 \begin{equation*}
-    \abracket*{f\left( \symbf{r} \right)} = \frac{1}{\mu\left( R \right)} \int_R f\left( \symbf{x} \right) \odif{\symbf{x}}
+    \abracket*{f\left( \symbf{r} \right)} = \frac{1}{\mu\left( D \right)} \int_D f\left( \symbf{x} \right) \odif{\symbf{x}}
 \end{equation*}
 \subsubsection*{Expected Value}
-The average value of a function \(f : \R^n \to \R\) over a region \(R
+The average value of a function \(f : \R^n \to \R\) over a region \(D
 \in \R^n\) with density function \(p\) is given by:
 \begin{equation*}
-    \abracket*{f\left( \symbf{r} \right)}_p = \int_R p\left( \symbf{x} \right) f\left( \symbf{x} \right) \odif{\symbf{x}}
+    \abracket*{f\left( \symbf{r} \right)}_p = \int_D p\left( \symbf{x} \right) f\left( \symbf{x} \right) \odif{\symbf{x}}
 \end{equation*}
 where \(p\) is a probability density function satisfying
 \begin{equation*}
-    \int_R p\left( \symbf{x} \right) \odif{\symbf{x}} = 1
+    \int_D p\left( \symbf{x} \right) \odif{\symbf{x}} = 1
 \end{equation*}
-This result is the expected value of \(f\) over \(R\) if the region
+This result is the expected value of \(f\) over \(D\) if the region
 is randomly sampled according to the probability density function \(p\).
 \subsection{Properties of Integrals}
 \subsubsection*{Linearity of Integrals}
@@ -1433,17 +1433,17 @@ If \(f\) is an integrable function, then
 \end{equation*}
 \subsubsection*{Change of Variables}
 When \(f\) is positive or integrable, the bijective transformation
-\(\symbf{T} : R \subset \R^n \to R' \subset \R^n\) with continuous
+\(\symbf{T} : D \subset \R^n \to R' \subset \R^n\) with continuous
 first derivative \(\symbf{T}'\) allows us to change the variables of
 integration from \(\symbf{x}\) to \(\symbf{u}\):
 \begin{equation*}
-    \int_{R} f\left( \symbf{x} \right) \odif{\symbf{x}} = \int_{R'} f\left( \symbf{T}\left( \symbf{u} \right) \right) \abs*{\det{\left( \symbf{J} \right)}} \odif{\symbf{u}}
+    \int_D f\left( \symbf{x} \right) \odif{\symbf{x}} = \int_{D'} f\left( \symbf{T}\left( \symbf{u} \right) \right) \abs*{\det{\left( \symbf{J} \right)}} \odif{\symbf{u}}
 \end{equation*}
 where \(\symbf{J}\) is the Jacobian matrix of \(\symbf{T}\).
 \subsubsection*{Measure Zero Integrals}
-If \(\mu\left( R \right) = \int_R \odif{\symbf{x}} = 0\), then
+If \(\mu\left( D \right) = \int_D \odif{\symbf{x}} = 0\), then
 \begin{equation*}
-    \int_R f\left( \symbf{x} \right) \odif{\symbf{x}} = 0
+    \int_D f\left( \symbf{x} \right) \odif{\symbf{x}} = 0
 \end{equation*}
 \subsubsection*{Almost Equal Functions}
 If \(f\) and \(g\) are integrable functions, and \(f\left( \symbf{x}
@@ -2035,4 +2035,108 @@ of \(\hat{\symbf{n}}\).
     so that the surface integral of a vector field is independent of the
     parametrisation of \(\mathscr{S}\).
 \end{lemma}
+\subsection{Fundamental Theorems of Calculus}
+The three vector calculus operators have corresponding theorems which
+generalise the Fundamental Theorem of Calculus to higher dimensions.
+They are commonly used to evaluate line and surface integrals.
+\subsubsection{Fundamental Theorem of Calculus Part II}
+Let \(F : \interval{a}{b} \subset \R \to \R\) be a continuously
+differentiable function on \(\interval{a}{b}\). Then
+\begin{equation*}
+    \int_a^b \odv{F}{x} \odif{x} = F\left( b \right) - F\left( a \right).
+\end{equation*}
+The fundamental theorem of calculus part II states that the integral of
+the derivative of a function is equal to the difference in the values of
+the function at the endpoints of the interval.
+\subsubsection{Gradient Theorem}
+Given the scalar field \(\phi : D \subset \R^n \to \R\) and a curve
+\(\mathscr{C}\) parametrised by \(\symbf{r}\left( t \right)\) with \(t
+\in \interval{a}{b}\), where \(\symbf{r}\left( a \right) =
+\symbf{r}\left( b \right)\), the line integral of \(\phi\) over
+\(\mathscr{C}\) is given by
+\begin{equation*}
+    \int_{\mathscr{C}} \symbf{\nabla} \phi \cdot \odif{\symbf{r}} = \phi\left( \symbf{r}\left( b \right) \right) - \phi\left( \symbf{r}\left( a \right) \right).
+\end{equation*}
+The gradient theorem implies that line integrals through conservative
+fields \(\symbf{F} = \symbf{\nabla} \phi\) are path independent.
+This result is also known as the Fundamental Theorem of Line
+Integrals.
+\subsubsection{Divergence Theorem}
+Let \(\Omega \subset \R^n\) be an open, connected, bounded domain,
+whose boundary \(\partial \Omega\) is a finite collection of closed, piecewise-smooth
+    orientable surface. Let \(\symbf{F} : \Omega \to \R^n\) be a
+    continuously differentiable vector field in \(\Omega\). Then
+\begin{equation*}
+    \underbrace{\int \cdots \int_\Omega}_{n} \left( \symbf{\nabla} \cdot \symbf{F} \right) \odif{\symbf{x}} = \underbrace{\oint \cdots \oint_{\partial \Omega}}_{n-1} \symbf{F} \cdot \odif{\symbf{\sigma}}.
+\end{equation*}
+The divergence theorem states that the volume integral of the divergence
+of a vector field over the volume enclosed by a surface \(\Omega\) is
+equal to the surface integral of the vector field over the boundary of
+the surface \(\partial \Omega\). This theorem is also known as Gauss's Theorem or
+    Ostrogradsky's Theorem.
+\subsubsection{Curl Theorem in \texorpdfstring{\(\R^3\)}{R3}}
+Let \(\mathscr{S} \subset \R^3\) be a piecewise-smooth, orientable
+surface, whose boundary \(\partial \mathscr{S}\) is a finite collection of closed,
+    piecewise-regular curves oriented positively with respect to the
+    unit normal vector \(\hat{\symbf{n}}\) of \(\mathscr{S}\). Let
+    \(\symbf{F} : \R^3\) be a continuously differentiable vector field
+    in \(\mathscr{S}\). Then
+\begin{equation*}
+    \iint_{\mathscr{S}} \left( \symbf{\nabla} \times \symbf{F} \right) \cdot \odif{\symbf{\sigma}} = \oint_{\partial \mathscr{S}} \symbf{F} \cdot \odif{\symbf{r}}.
+\end{equation*}
+The curl theorem states that the surface integral of the circulation of
+a vector field over a surface \(\mathscr{S}\) is equal to the line integral
+of the vector field along the boundary of the surface \(\partial \mathscr{S}\). This theorem is also known as Stokes' Theorem.
+\subsubsection{Green's Theorem}
+Let \(D \subset \R^2\) be an open, connected, and bounded domain, whose
+boundary \(\partial D\) is simple, closed, and piecewise regular, oriented
+    positively (the boundary is traversed in the counterclockwise
+    direction). Let \(\symbf{F} : D \to \R^2\) be a continuously
+    differentiable vector field in \(D\). Then
+\begin{equation*}
+    \iint_D \left( \symbf{\nabla} \times \symbf{F} \right) \odif{A} = \oint_{\partial D} \symbf{F} \cdot \odif{\symbf{r}}.
+\end{equation*}
+As this theorem holds in 2D, it is often expressed as
+\begin{equation*}
+    \iint_D \left( \pdv{Q}{x} - \pdv{P}{y} \right) \odif{x} \odif{y} = \oint_{\partial D} P \odif{x} + Q \odif{y}.
+\end{equation*}
+where \(\symbf{F} = \left( P,\: Q \right)\). This theorem states
+that the double integral over a closed region \(D\) is equal to the line
+integral over its boundary \(\partial D\).
+
+Green's theorem is a special case of both the divergence theorem and
+the curl theorem in 2 dimensions. This allows us to relate the integral
+of the divergence of \(\symbf{F}\) to the integral of the circulation
+of \(\symbf{F}\):
+\begin{equation*}
+    \iint_D \left( \symbf{\nabla} \times \symbf{F} \right) \odif{A} = \iint_D \left( \symbf{\nabla} \cdot \symbf{F} \right) \odif{A} = \oint_{\partial D} \symbf{F} \cdot \odif{\symbf{r}}.
+\end{equation*}
+\begin{corollary}[Divergence Theorem in 2D]
+    Consider the vector field \(\symbf{G} = \left( Q,\: -P \right)\)
+    with \(\odif{\symbf{\sigma}} =
+    \begin{bmatrix}
+        \odif{y} \\
+        -\odif{x}
+    \end{bmatrix}
+    \).
+    Then
+    \begin{equation*}
+        \iint_D \left( \symbf{\nabla} \cdot \symbf{G} \right) \odif{A} = \iint_D \left( \pdv{Q}{x} - \pdv{P}{y} \right) \odif{x} \odif{y}
+    \end{equation*}
+    and
+    \begin{equation*}
+        \oint_{\partial D} \symbf{G} \cdot \odif{\symbf{\sigma}} = \oint_{\partial D} P \odif{x} + Q \odif{y}.
+    \end{equation*}
+\end{corollary}
+\begin{corollary}[Curl Theorem in 2D]
+Consider the vector field \(\symbf{G} = \left( P,\: Q,\: 0 \right)\).
+Then
+\begin{equation*}
+    \iint_D \left( \symbf{\nabla} \times \symbf{G} \right) \cdot \odif{\symbf{\sigma}} = \iint_D \left( \pdv{Q}{x} - \pdv{P}{y} \right) \odif{x} \odif{y}
+\end{equation*}
+and
+\begin{equation*}
+    \oint_{\partial D} \symbf{G} \cdot \odif{\symbf{r}} = \oint_{\partial D} P \odif{x} + Q \odif{y}.
+\end{equation*}
+\end{corollary}
 \end{document}
