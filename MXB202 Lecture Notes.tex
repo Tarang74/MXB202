@@ -2049,13 +2049,13 @@ The fundamental theorem of calculus part II states that the integral of
 the derivative of a function is equal to the difference in the values of
 the function at the endpoints of the interval.
 \subsubsection{Gradient Theorem}
-Given the scalar field \(\phi : D \subset \R^n \to \R\) and a curve
-\(\mathscr{C}\) parametrised by \(\symbf{r}\left( t \right)\) with \(t
-\in \interval{a}{b}\), where \(\symbf{r}\left( a \right) =
-\symbf{r}\left( b \right)\), the line integral of \(\phi\) over
-\(\mathscr{C}\) is given by
+Consider the differentiable scalar field \(\phi : D \subset \R^n \to \R\).
+Let \(\mathscr{C} \subset D\) be a piecewise-smooth curve parametrised by
+\(\symbf{r}\left( t \right)\) with \(t \in \interval{a}{b}\), where
+\(\symbf{a} = \symbf{r}\left( a \right)\) and \(\symbf{b} = \symbf{r}\left( b
+\right)\). Then
 \begin{equation*}
-    \int_{\mathscr{C}} \symbf{\nabla} \phi \cdot \odif{\symbf{r}} = \phi\left( \symbf{r}\left( b \right) \right) - \phi\left( \symbf{r}\left( a \right) \right).
+    \int_{\mathscr{C}} \symbf{\nabla} \phi \cdot \odif{\symbf{r}} = \phi\left( \symbf{b} \right) - \phi\left( \symbf{a} \right).
 \end{equation*}
 The gradient theorem implies that line integrals through conservative
 fields \(\symbf{F} = \symbf{\nabla} \phi\) are path independent.
@@ -2064,7 +2064,7 @@ Integrals.
 \subsubsection{Divergence Theorem}
 Let \(\Omega \subset \R^n\) be an open, connected, bounded domain,
 whose boundary \(\partial \Omega\) is a finite collection of closed, piecewise-smooth
-    orientable surface. Let \(\symbf{F} : \Omega \to \R^n\) be a
+    orientable surfaces. Let \(\symbf{F} : \Omega \to \R^n\) be a
     continuously differentiable vector field in \(\Omega\). Then
 \begin{equation*}
     \underbrace{\int \cdots \int_\Omega}_{n} \left( \symbf{\nabla} \cdot \symbf{F} \right) \odif{\symbf{x}} = \underbrace{\oint \cdots \oint_{\partial \Omega}}_{n-1} \symbf{F} \cdot \odif{\symbf{\sigma}}.
@@ -2129,14 +2129,14 @@ of \(\symbf{F}\):
     \end{equation*}
 \end{corollary}
 \begin{corollary}[Curl Theorem in 2D]
-Consider the vector field \(\symbf{G} = \left( P,\: Q,\: 0 \right)\).
-Then
-\begin{equation*}
-    \iint_D \left( \symbf{\nabla} \times \symbf{G} \right) \cdot \odif{\symbf{\sigma}} = \iint_D \left( \pdv{Q}{x} - \pdv{P}{y} \right) \odif{x} \odif{y}
-\end{equation*}
-and
-\begin{equation*}
-    \oint_{\partial D} \symbf{G} \cdot \odif{\symbf{r}} = \oint_{\partial D} P \odif{x} + Q \odif{y}.
-\end{equation*}
+    Consider the vector field \(\symbf{G} = \left( P,\: Q,\: 0 \right)\).
+    Then
+    \begin{equation*}
+        \iint_D \left( \symbf{\nabla} \times \symbf{G} \right) \cdot \odif{\symbf{\sigma}} = \iint_D \left( \pdv{Q}{x} - \pdv{P}{y} \right) \odif{x} \odif{y}
+    \end{equation*}
+    and
+    \begin{equation*}
+        \oint_{\partial D} \symbf{G} \cdot \odif{\symbf{r}} = \oint_{\partial D} P \odif{x} + Q \odif{y}.
+    \end{equation*}
 \end{corollary}
 \end{document}
