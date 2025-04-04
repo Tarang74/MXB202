@@ -4,6 +4,8 @@
 \input{LaTeX-Submodule/template.tex}
 
 % Additional packages & macros
+\newtheorem{proposition}{Proposition}[subsection]
+
 \DeclareMathOperator{\grad}{grad}
 \DeclareMathOperator{\divergence}{div}
 \DeclareMathOperator{\curl}{curl}
@@ -174,7 +176,7 @@ where \(\symbf{x} \cdot \hat{\symbf{y}}\) is the norm of the projection vector.
         \mathscr{C} = \left\{ \symbf{r}\left( t \right) : t \in \rinterval{a}{b} \right\}
     \end{equation*}
 \end{definition}
-A curve \(\mathscr{C}\) is \textbf{parametrised} by \(\symbf{r}\left( t \right)\),
+A curve \(\mathscr{C}\) is \textbf{parameterised} by \(\symbf{r}\left( t \right)\),
 and a path \(\symbf{r}\left( t \right)\) is a \textbf{parametrisation}
 of \(\mathscr{C}\).
 \begin{definition}[Closed Path]
@@ -188,7 +190,7 @@ of \(\mathscr{C}\).
     is injective. That is, the path does not intersect itself.
 \end{definition}
 \begin{definition}[Regular Path]
-    A path is regular (or smooth) if has nonzero continuous first derivatives:
+    A path is regular (or smooth) if it has nonzero continuous first derivatives:
     \begin{equation*}
         \symbf{r}\left( t \right) \in C^1 \quad \text{and} \quad
         \symbf{r}'\left( t \right) \neq \symbf{0}
@@ -234,7 +236,7 @@ of \(\mathscr{C}\).
     \item Parametrisations are not unique.
 \end{itemize}
 \subsubsection{Reparametrisation}
-Let \(\mathscr{C}\) be a curve parametrised by \(\symbf{r}\left( t
+Let \(\mathscr{C}\) be a curve parameterised by \(\symbf{r}\left( t
 \right)\) with \(t \in \interval{a}{b}\). If there exists a bijective
 map \(t = \theta\left( u \right)\), defined by \(\theta :
 \interval{c}{d} \to \interval{a}{b}\) such that
@@ -615,7 +617,7 @@ parametric form if we can find \(\symbf{x} = \symbf{r}\left( \symbf{t}
 \right)\) such that \(F\left( \symbf{r}\left( \symbf{t} \right) \right)
 = 0\), and
 \begin{equation*}
-    \symbf{r}\left( \symbf{t} \right) = \abracket*{x_1\left( \symbf{t} \right),\: \dots,\: x_n\left( \symbf{t} \right)}.
+    \symbf{r}\left( \symbf{t} \right) = \abracket*{x_1\left( \symbf{t} \right),\: \dots,\: x_n\left( \symbf{t} \right)}
 \end{equation*}
 for all \(t\).
 \section{Multivariable Calculus}
@@ -689,7 +691,6 @@ for all \(t\).
         \lim_{n \to \infty} f\left( \symbf{x}_n \right) = f\left( \symbf{x}_0 \right)
     \end{equation*}
     for all sequences \(\left\{ \symbf{x}_n \right\} \) where \(\symbf{x}_n \to \symbf{x}_0\).
-
     A function \(f\) is continuous on a set \(E\) if it is continuous
     at every point in \(E\).
 \end{definition}
@@ -811,7 +812,7 @@ at a point \(\symbf{x}_0 \in E\) in the direction of a unit vector
                            & = \symbf{\nabla} f\left( \symbf{x}_0 \right) \cdot \hat{\symbf{u}}
     \end{align*}
     where \(\hat{u}_i\) is the \(i\)-th component of \(\hat{\symbf{u}}\).
-    Therefore \(D_{\symbf{u}} f\left( \symbf{x}_0 \right) = \symbf{\nabla} f\left( \symbf{x}_0 \right) \cdot \hat{\symbf{u}}\).
+    Therefore, \(D_{\symbf{u}} f\left( \symbf{x}_0 \right) = \symbf{\nabla} f\left( \symbf{x}_0 \right) \cdot \hat{\symbf{u}}\).
 \end{proof}
 \begin{remark}
     Partial derivatives are directional derivatives in the direction of the canonical basis vectors \(\hat{\symbf{e}}_i\).
@@ -992,12 +993,12 @@ is represented by
 \end{equation*}
 where \(D\) is the region of integration.
 \subsection{Lebesgue Integrals}
-Lebesgue integrals are a top down approach to multiple integrals that
-allow us to integrate a wider class of nonnegative functions. This
+Lebesgue integrals are a top-down approach to multiple integrals that
+allow us to integrate a wider class of non-negative functions. This
 includes improper integrals where \(f\) is discontinuous or singular,
 or when the domain of integration is unbounded.
 \begin{theorem}[Fubini's Theorem]
-    For a nonnegative function \(f : \R^2 \to \rinterval{0}{\infty}\),
+    For a non-negative function \(f : \R^2 \to \rinterval{0}{\infty}\),
     the following equality holds,
     \begin{equation*}
         0 \leqslant \iint_{\R^2} f\left( x,\: y \right) \odif{A} = \int_{-\infty}^\infty \left[ \int_{-\infty}^\infty f\left( x,\: y \right) \odif{x} \right] \odif{y} = \int_{-\infty}^\infty \left[ \int_{-\infty}^\infty f\left( x,\: y \right) \odif{y} \right] \odif{x} \leqslant \infty
@@ -1015,8 +1016,8 @@ new function \(\tilde{f}\) such that
         0                      & \text{otherwise}
     \end{cases}
 \end{equation*}
-\subsubsection{Nonpositive Functions}
-For nonpositive functions \(f : \R^2 \to \ointerval{-\infty}{\infty}\),
+\subsubsection{Non-positive Functions}
+For non-positive functions \(f : \R^2 \to \ointerval{-\infty}{\infty}\),
 we can express \(f\) as \(f = f^{+} - f^{-}\), where \(f^{+}\) and
 \(f^{-}\) are the positive and negative parts of \(f\) respectively:
 \begin{align*}
@@ -1098,7 +1099,6 @@ Let \(Y\) be defined as a region bounded by
 \(y_1\left( x \right) \leqslant y \leqslant y_2\left( x \right)\).
 \(Y\) is called \(y\)-simple as it can be split into subdomains \(Y_i\)
 with continuous lines \textbf{parallel to the \(y\)-axis}.
-
 The double integral over \(Y\) can then be decomposed into the sum of
 integrals over each subdomain \(Y_i\):
 \begin{equation*}
@@ -1115,7 +1115,6 @@ Let \(X\) be defined as a region bounded by
 \(y_1 \leqslant y \leqslant y_2\).
 \(X\) is called \(x\)-simple as it can be split into subdomains \(X_i\)
 with continuous lines \textbf{parallel to the \(x\)-axis}.
-
 The double integral over \(X\) can then be decomposed into the sum of
 integrals over each subdomain \(X_i\):
 \begin{equation*}
@@ -1241,7 +1240,7 @@ triple integrals.
         \int_{\R^n} f\left( x_1,\: \ldots,\: x_n \right) \odif{x_1} \cdots \odif{x_n} = \int_{-\infty}^\infty \left[ \cdots \left[ \int_{-\infty}^\infty f\left( x_1,\: \ldots,\: x_n \right) \odif{x_1} \right] \cdots \right] \odif{x_n}
     \end{equation*}
 \end{theorem}
-As with double integrals, we can evaluate integrals of nonpositive
+As with double integrals, we can evaluate integrals of non-positive
 functions by using the positive and negative parts of the function.
 \subsection{Vector-Valued Functions}
 \begin{definition}[Vector-Valued Function]
@@ -1376,7 +1375,7 @@ given by:
 \begin{equation*}
     \abracket*{\symbf{r}} = \frac{1}{\mu\left( R \right)} \int_D \symbf{x} \odif{\symbf{x}}
 \end{equation*}
-This point is the geometric center of the region where the region would
+This point is the geometric centre of the region where the region would
 balance if it were made of a uniform material.
 \subsubsection*{Centre of Mass}
 The average position of a region \(D \in \R^n\) with density function
@@ -1384,7 +1383,7 @@ The average position of a region \(D \in \R^n\) with density function
 \begin{equation*}
     \abracket*{\symbf{r}}_\rho = \frac{1}{M} \int_D \rho\left( \symbf{x} \right) \symbf{x} \odif{\symbf{x}}
 \end{equation*}
-This point is the center of mass of the region where the region would
+This point is the centre of mass of the region where the region would
 balance if it were made of a material with density \(\rho\).
 \subsubsection*{Average Value}
 The average value of a function \(f : \R^n \to \R\) over a region \(D
@@ -1453,17 +1452,16 @@ except for a set of measure zero, then
     \int_{\R^n} f\left( \symbf{x} \right) \odif{\symbf{x}} = \int_{\R^n} g\left( \symbf{x} \right) \odif{\symbf{x}}
 \end{equation*}
 \section{Vector Calculus}
-A vector-valued multivariable function is a function \(\symbfit{f} : E
+A vector-valued multivariable function is a function \(\symbf{f} : E
 \subset \R^n \to \R^m\) that maps a vector \(\symbf{x} \in \R^n\) to
-the vector \(\symbfit{f}\left( \symbf{x} \right) \in \R^m\). \(f\) is
-continuous if all components of \(\symbfit{f}\) are continuous, and
-differentiable if all components of \(\symbfit{f}\) are differentiable.
-
-If \(\symbfit{f}\) is differentiable at a point \(\symbf{x}_0\), then
-it's derivative \(\symbfit{f}'\left( \symbf{x}_0 \right)\) is uniquely
-defined by the Jacobian matrix of \(\symbfit{f}\) at \(\symbf{x}_0\):
+the vector \(\symbf{f}\left( \symbf{x} \right) \in \R^m\). \(f\) is
+continuous if all components of \(\symbf{f}\) are continuous, and
+differentiable if all components of \(\symbf{f}\) are differentiable.
+If \(\symbf{f}\) is differentiable at a point \(\symbf{x}_0\), then
+it's derivative \(\symbf{f}'\left( \symbf{x}_0 \right)\) is uniquely
+defined by the Jacobian matrix of \(\symbf{f}\) at \(\symbf{x}_0\):
 \begin{equation*}
-    \symbfit{f}'\left( \symbf{x}_0 \right) = \symbf{\nabla} \symbfit{f}\left( \symbf{x}_0 \right) = \symbf{J}^\top \left( \symbf{x}_0 \right)
+    \symbf{f}'\left( \symbf{x}_0 \right) = \symbf{\nabla} \symbf{f}\left( \symbf{x}_0 \right) = \symbf{J}^\top \left( \symbf{x}_0 \right)
 \end{equation*}
 \begin{definition}[Scalar Field]
     If \(m = 1\), then \(f : E \subset \R^n \to \R\) is a scalar field
@@ -1589,7 +1587,6 @@ potential function \(\phi\):
 \end{equation*}
 Such a vector field represents a force field in which the total energy is
 conserved.
-
 The contours of the scalar field \(\phi\) are called equipotential
 lines (\(\phi\) is constant). These lines are perpendicular to the
 field lines of \(\symbf{F}\).
@@ -1603,7 +1600,6 @@ A line integral is an integral where the function to be integrated is
 evaluated along a curve. This function may be a scalar field or a
 vector field. Line integrals can be interpreted as a measure of the
 total effect of a function along a curve.
-
 To evaluate line integrals, we must define a parametrisation of the arc
 length of the curve.
 \subsubsection{Arc Length}
@@ -1659,7 +1655,6 @@ parametrised by \(\symbf{r}\left( t \right)\) with \(t \in
 \end{equation*}
 where \(\odif{s} = \norm*{\symbf{r}'\left( t \right)} \odif{t}\) is the
 differential arc length element along \(\mathscr{C}\).
-
 This integral represents the weighted sum of \(f\) along
 \(\mathscr{C}\), where the weight is the speed of the path
 \(\symbf{r}\left( t \right)\). This line integral can be interpreted as
@@ -1695,7 +1690,6 @@ along \(\mathscr{C}\) is defined as
 \end{equation*}
 where \(\odif{\symbf{r}} = \symbf{r}'\left( t \right) \odif{t}\) is the
 differential path element along \(\mathscr{C}\).
-
 This integral represents the weighted sum of \(\symbf{F}\) along
 \(\mathscr{C}\), where the weight is the component of the velocity of
 the path \(\symbf{r}\left( t \right)\) in the direction of
@@ -1784,7 +1778,7 @@ where \(\symbf{a} = \symbf{r}\left( a \right)\) and \(\symbf{b} = \symbf{r}\left
 This result demonstrates that a line integral in a conservative field
 is path independent, and depends only on the endpoints of the path.
 \subsubsection{Circulation}
-Let \(\mathscr{C}\) be a simple closed curve parametrised by
+Let \(\mathscr{C}\) be a simple, closed curve parametrised by
 \(\symbf{r}\left( t \right)\) with \(t \in \interval{a}{b}\), where
 \(\symbf{r}\left( a \right) = \symbf{r}\left( b \right)\). The line
 integral of a vector field \(\symbf{F}\) around \(\mathscr{C}\) is
@@ -1983,7 +1977,7 @@ Let \(\mathscr{S}\) be a surface parametrised by \(\symbf{r}\left( s, t
 \right)\). The surface integral of a scalar field \(f\) over
 \(\mathscr{S}\) is defined as
 \begin{equation*}
-    \iint_{\mathscr{S}} f \odif{\sigma} = \iint_{\mathscr{S}} f\left( \symbf{r}\left( s, t \right) \right) \norm*{\symbf{r}_s \times \symbf{r}_t} \odif{s} \odif{t}.
+    \iint_{\mathscr{S}} f \odif{\sigma} = \iint_{\mathscr{S}} f\left( \symbf{r}\left( s, t \right) \right) \norm*{\symbf{r}_s \times \symbf{r}_t} \odif{s} \odif{t}
 \end{equation*}
 where \(\odif{\sigma} = \norm*{\symbf{r}_s \times \symbf{r}_t} \odif{s}\odif{t}\)
 is the differential surface element of \(\mathscr{S}\).
@@ -1993,7 +1987,7 @@ This integral represents the weighted sum of \(f\) over \(\mathscr{S}\).
     and let \(\tilde{\symbf{r}}\left( u, v \right)\) be a reparametrisation
     of \(\symbf{r}\left( s, t \right)\). Then
     \begin{equation*}
-        \iint_{\mathscr{S}} f \odif{\sigma} = \iint_{\mathscr{S}} f\left( \tilde{\symbf{r}}\left( u,\: v \right) \right) \norm*{\tilde{\symbf{r}}_u \times \tilde{\symbf{r}}_v} \odif{u} \odif{v}.
+        \iint_{\mathscr{S}} f \odif{\sigma} = \iint_{\mathscr{S}} f\left( \tilde{\symbf{r}}\left( u,\: v \right) \right) \norm*{\tilde{\symbf{r}}_u \times \tilde{\symbf{r}}_v} \odif{u} \odif{v}
     \end{equation*}
     so that the surface integral of a scalar field is independent of the
     parametrisation of \(\mathscr{S}\).
@@ -2006,7 +2000,7 @@ vector field \(\symbf{F}\) over \(\mathscr{S}\) is defined as the flux
 \begin{equation*}
     \Phi =
     \iint_{\mathscr{S}} \symbf{F} \cdot \odif{\symbf{\sigma}} =
-    \pm \iint_{\mathscr{S}} \symbf{F}\left( \symbf{r}\left( s, t \right) \right) \cdot \left( \symbf{r}_s \times \symbf{r}_t \right) \odif{s} \odif{t}.
+    \pm \iint_{\mathscr{S}} \symbf{F}\left( \symbf{r}\left( s, t \right) \right) \cdot \left( \symbf{r}_s \times \symbf{r}_t \right) \odif{s} \odif{t}
 \end{equation*}
 where \(\hat{\symbf{n}}\) is the unit normal vector to \(\mathscr{S}\),
 and \(\odif{\symbf{\sigma}} = \left( \symbf{r}_s \times \symbf{r}_t \right) \odif{s}\odif{t}\)
@@ -2030,7 +2024,7 @@ of \(\hat{\symbf{n}}\).
     and let \(\tilde{\symbf{r}}\left( u, v \right)\) be a reparametrisation
     of \(\symbf{r}\left( s, t \right)\). Then
     \begin{equation*}
-        \iint_{\mathscr{S}} \symbf{F} \cdot \odif{\symbf{\sigma}} = \pm \iint_{\mathscr{S}} \symbf{F}\left( \tilde{\symbf{r}}\left( u,\: v \right) \right) \cdot \left( \tilde{\symbf{r}}_u \times \tilde{\symbf{r}}_v \right) \odif{u} \odif{v}.
+        \iint_{\mathscr{S}} \symbf{F} \cdot \odif{\symbf{\sigma}} = \pm \iint_{\mathscr{S}} \symbf{F}\left( \tilde{\symbf{r}}\left( u,\: v \right) \right) \cdot \left( \tilde{\symbf{r}}_u \times \tilde{\symbf{r}}_v \right) \odif{u} \odif{v}
     \end{equation*}
     so that the surface integral of a vector field is independent of the
     parametrisation of \(\mathscr{S}\).
@@ -2098,12 +2092,11 @@ boundary \(\partial D\) is simple, closed, and piecewise regular, oriented
 \end{equation*}
 As this theorem holds in 2D, it is often expressed as
 \begin{equation*}
-    \iint_D \left( \pdv{Q}{x} - \pdv{P}{y} \right) \odif{x} \odif{y} = \oint_{\partial D} P \odif{x} + Q \odif{y}.
+    \iint_D \left( \pdv{Q}{x} - \pdv{P}{y} \right) \odif{x} \odif{y} = \oint_{\partial D} P \odif{x} + Q \odif{y}
 \end{equation*}
 where \(\symbf{F} = \left( P,\: Q \right)\). This theorem states
 that the double integral over a closed region \(D\) is equal to the line
 integral over its boundary \(\partial D\).
-
 Green's theorem is a special case of both the divergence theorem and
 the curl theorem in 2 dimensions. This allows us to relate the integral
 of the divergence of \(\symbf{F}\) to the integral of the circulation
